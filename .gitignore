@@ -1,0 +1,7 @@
+.idea
+target/
+target/**
+.tmp
+*.iml
+bower_components
+frontend/webapp/resources/bower_componets
