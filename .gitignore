@@ -5,3 +5,5 @@ target/**
 *.iml
 bower_components
 frontend/webapp/resources/bower_componets
+classes
+classes/**
