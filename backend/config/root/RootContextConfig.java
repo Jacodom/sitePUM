@@ -14,14 +14,14 @@ import javax.persistence.EntityManagerFactory;
  */
 
 @Configuration
-@ComponentScan({"app.services","app.dao",})
+@ComponentScan({"app.service","app.dao"})
 public class RootContextConfig {
-    @Bean(name = "transactionManager")
+    /*@Bean(name = "transactionManager")
     public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory,
                                                          DriverManagerDataSource dataSource){
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         transactionManager.setDataSource(dataSource);
         return transactionManager;
-    }
+    }*/
 }

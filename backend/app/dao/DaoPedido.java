@@ -57,5 +57,7 @@ public class DaoPedido implements DaoBase {
             if(sesion!=null)
                 sesion.close();
         }
+
+        return true;
     }
 }
