@@ -2,7 +2,7 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +11,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "platos")
-@NamedQuery(name = "plato.findAll",query = "SELECT p from Plato p")
+@NamedQuery(name = "Plato.findAll",query = "SELECT p from Plato p")
 public class Plato implements Serializable{
     private static final long serialVersionUID = 1L;
 
@@ -38,8 +38,8 @@ public class Plato implements Serializable{
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Categoria categoria;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "plato")
-    private Set<DetallePedido> detallePedidos = new HashSet<DetallePedido>();
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "plato")
+    private DetallePedido detallePedido;
 
     public int getIdPlato() {
         return idPlato;
@@ -116,7 +116,6 @@ public class Plato implements Serializable{
 
         return true;
     }
-
     @Override
     public int hashCode() {
         return detallePedidos.hashCode();

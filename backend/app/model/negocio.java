@@ -8,7 +8,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "negocios")
-@NamedQuery(name = "negocio.findall",query = "select n from Negocio n")
+@NamedQuery(name = "Negocio.findall",query = "select n from Negocio n")
 public class Negocio implements Serializable{
     private static final long serialVersionUID = 1L;
 

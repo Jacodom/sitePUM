@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "menues")
-@NamedQuery(name = "menu.findAll",query = "SELECT m from Menu m")
+@NamedQuery(name = "Menu.findAll",query = "SELECT m from Menu m")
 public class Menu implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -28,7 +28,7 @@ public class Menu implements Serializable {
     private Negocio negocio;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "menu")
-    private Set<Menu> menues = new HashSet<Menu>();
+    private Set<Plato> platos = new HashSet<Plato>();
 
     public int getIdMenu() {
         return idMenu;
