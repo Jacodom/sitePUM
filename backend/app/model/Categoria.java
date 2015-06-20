@@ -1,7 +1,7 @@
-package model;
+package app.model;
+
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +13,7 @@ import java.util.Set;
 @Table(name ="categorias")
 @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c")
 
-public class Categoria implements Serializable {
+public class Categoria extends BaseModelEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -49,22 +49,5 @@ public class Categoria implements Serializable {
 
     public void setPlatos(Set<Plato> platos) {
         this.platos = platos;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Categoria categoria = (Categoria) o;
-
-        if (platos != null ? !platos.equals(categoria.platos) : categoria.platos != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return platos != null ? platos.hashCode() : 0;
     }
 }

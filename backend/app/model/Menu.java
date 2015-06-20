@@ -1,18 +1,19 @@
-package model;
+package app.model;
 
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.*;
-
 
 /**
- * Created by Pablo on 19/06/2015.
+ * Created by Jacobo on 20/06/2015.
  */
+
 @Entity
 @Table(name = "menues")
 @NamedQuery(name = "Menu.findAll",query = "SELECT m from Menu m")
-public class Menu implements Serializable {
+public class Menu extends BaseModelEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -23,6 +24,8 @@ public class Menu implements Serializable {
     @Column(name = "nombre_menu")
     private String nombreMenu;
 
+    @Column(name = "estado")
+    private Boolean estadoMenu;
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Negocio negocio;
@@ -46,6 +49,15 @@ public class Menu implements Serializable {
         this.nombreMenu = nombreMenu;
     }
 
+    public Boolean getEstadoMenu() {
+        return estadoMenu;
+    }
+
+    public void setEstadoMenu(Boolean estadoMenu) {
+        this.estadoMenu = estadoMenu;
+    }
+
+
     public Negocio getNegocio() {
         return negocio;
     }
@@ -62,20 +74,4 @@ public class Menu implements Serializable {
         this.platos = platos;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Menu menu = (Menu) o;
-
-        if (platos != null ? !platos.equals(menu.platos) : menu.platos != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return platos != null ? platos.hashCode() : 0;
-    }
 }

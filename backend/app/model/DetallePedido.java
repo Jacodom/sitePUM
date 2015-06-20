@@ -1,9 +1,9 @@
-package model;
+package app.model;
+
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by Pablo on 19/06/2015.
@@ -12,7 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "detallePedidos")
 @NamedQuery(name = "DetallePedido.findAll",query = "SELECT d FROM DetallePedido d")
-public class DetallePedido implements Serializable {
+public class DetallePedido extends BaseModelEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -29,7 +29,7 @@ public class DetallePedido implements Serializable {
     @Column(name = "subtotal_detallePedido")
     private BigDecimal subtotalDetalle;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy = "detallePedido")
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Plato plato;
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)

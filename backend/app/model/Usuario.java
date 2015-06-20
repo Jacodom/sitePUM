@@ -1,6 +1,7 @@
-package model;
-import java.io.Serializable;
+package app.model;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 /**
@@ -10,7 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "usuarios")
 @NamedQuery(name = "Usuario.findAll",query = "SELECT u FROM Usuario u")
-public class Usuario implements Serializable{
+public class Usuario extends BaseModelEntity implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -112,22 +113,5 @@ public class Usuario implements Serializable{
 
     public void setPedidos(Set<Pedido> pedidos) {
         Pedidos = pedidos;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Usuario usuario = (Usuario) o;
-
-        if (Pedidos != null ? !Pedidos.equals(usuario.Pedidos) : usuario.Pedidos != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return Pedidos != null ? Pedidos.hashCode() : 0;
     }
 }
