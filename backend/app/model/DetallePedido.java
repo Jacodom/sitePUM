@@ -1,7 +1,7 @@
-package dao;
+package model;
 
 /**
  * Created by Pablo on 19/06/2015.
  */
-public class DaoNegocio {
+public class DetallePedido {
 }
