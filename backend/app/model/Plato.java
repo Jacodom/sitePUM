@@ -1,9 +1,8 @@
-package model;
+package app.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -38,8 +37,8 @@ public class Plato implements Serializable{
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Categoria categoria;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "plato")
-    private DetallePedido detallePedido;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "plato")
+    private Set<DetallePedido> detallesPedido;
 
     public int getIdPlato() {
         return idPlato;
@@ -97,27 +96,12 @@ public class Plato implements Serializable{
         this.categoria = categoria;
     }
 
-    public Set<DetallePedido> getDetallePedidos() {
-        return detallePedidos;
+    public Set<DetallePedido> getDetallesPedido() {
+        return detallesPedido;
     }
 
-    public void setDetallePedidos(Set<DetallePedido> detallePedidos) {
-        this.detallePedidos = detallePedidos;
+    public void setDetallesPedido(Set<DetallePedido> detallesPedido) {
+        this.detallesPedido = detallesPedido;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Plato plato = (Plato) o;
-
-        if (!detallePedidos.equals(plato.detallePedidos)) return false;
-
-        return true;
-    }
-    @Override
-    public int hashCode() {
-        return detallePedidos.hashCode();
-    }
 }
