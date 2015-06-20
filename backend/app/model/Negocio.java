@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import app.model.BaseModelEntity;
 
 /**
  * Created by Jacobo on 20/06/2015.
