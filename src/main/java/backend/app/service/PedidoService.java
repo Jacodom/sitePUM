@@ -19,4 +19,5 @@ public class PedidoService {
         daoPedido = new DaoPedido();
         return daoPedido.guardarPedido(pedido);
     }
+    //falta obtener platos mandando el menu
 }
