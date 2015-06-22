@@ -1,6 +1,7 @@
 package backend.app.service;
 
 import backend.app.dao.DaoPedido;
+import backend.app.dto.DtoNewPedido;
 import backend.app.model.Pedido;
 
 import java.util.List;
