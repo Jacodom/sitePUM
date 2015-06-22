@@ -45,6 +45,7 @@ public class DaoUsuario implements DaoBase<Usuario>{
         try{
             iniciarOperacion();
             List<Pedido> listaPedidosUsuario = sesion.createQuery("SELECT pedidos from Usuarios u where u.idUsuario = :idUsuario")
+                    .setParameter("idUsuario",idUsuario)
                     .setMaxResults(5).list();
             return listaPedidosUsuario;
         }catch (HibernateException he){

@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Pablo on 20/06/2015.
  */
 public class CategoriaService {
-    DaoCategoria daoCategoria;
+    private DaoCategoria daoCategoria;
 
     public Categoria obtenerCategoria(int idCategoria){
         daoCategoria = new DaoCategoria();

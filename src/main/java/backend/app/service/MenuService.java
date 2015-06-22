@@ -14,6 +14,6 @@ public class MenuService {
     private DaoMenu daoMenu = new DaoMenu();
 
     public List<Plato> obtenerPlatosMenu(Menu menu){
-        return daoMenu.obtenerPlatosMenu(menu);
+        return daoMenu.obtenerPlatosMenu(menu.getIdMenu());
     }
 }

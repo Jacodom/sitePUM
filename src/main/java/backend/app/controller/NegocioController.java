@@ -21,15 +21,14 @@ import java.util.List;
 @RequestMapping("/elegirNegocio")
 public class NegocioController {
 
-    @Autowired
-    private CategoriaService categoriaService;
-    private NegocioService negocioService;
-    private UsuarioService usuarioService;
 
-    //obtener Categorias
+    private CategoriaService categoriaService = new CategoriaService();
+    private NegocioService negocioService = new NegocioService();
+    private UsuarioService usuarioService = new UsuarioService();
+
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/obtenerCategorias", method = RequestMethod.GET)
     public List<Categoria> obtenerCategorias(){
         List<Categoria> listaCategorias = categoriaService.obtenerCategorias();
         return listaCategorias;
@@ -37,15 +36,15 @@ public class NegocioController {
 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.GET)
-    public List<Negocio> obtenerMegocio(){
-        List<Negocio> listaNegocio = negocioService.obtenerNegocios();
-        return listaNegocio;
+    @RequestMapping(value = "/obtenerNegocios", method = RequestMethod.GET)
+    public List<Negocio> obtenerNegocios(){
+        List<Negocio> listaNegocios = negocioService.obtenerNegocios();
+        return listaNegocios;
     }
 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/obtenerPedidosUsuario", method = RequestMethod.GET)
     public List<Pedido> obtenerPedidosUsuario(@RequestBody int idUsuario){
         List<Pedido> listaPedidosUsuario = usuarioService.obtenerPedidosUsuario(idUsuario);
         return listaPedidosUsuario;
