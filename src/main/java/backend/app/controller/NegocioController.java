@@ -1,12 +1,12 @@
 package backend.app.controller;
 
-import app.model.Categoria;
-import app.model.Negocio;
-import app.model.Pedido;
-import app.model.Usuario;
-import app.service.CategoriaService;
-import app.service.NegocioService;
-import app.service.UsuarioService;
+
+import backend.app.model.Categoria;
+import backend.app.model.Negocio;
+import backend.app.model.Pedido;
+import backend.app.service.CategoriaService;
+import backend.app.service.NegocioService;
+import backend.app.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -46,7 +46,7 @@ public class NegocioController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET)
-    public List<Pedido> obtenerPedidosUsuario(@PathVariable("idUsuario") int idUsuario){
+    public List<Pedido> obtenerPedidosUsuario(@RequestBody int idUsuario){
         List<Pedido> listaPedidosUsuario = usuarioService.obtenerPedidosUsuario(idUsuario);
         return listaPedidosUsuario;
     }
