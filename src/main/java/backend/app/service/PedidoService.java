@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Pablo on 20/06/2015.
  */
 public class PedidoService {
-    DaoPedido daoPedido;
+    private DaoPedido daoPedido;
 
     public List<Pedido> obtenerPedidos(){
         daoPedido = new DaoPedido();
@@ -19,5 +19,4 @@ public class PedidoService {
         daoPedido = new DaoPedido();
         return daoPedido.guardarPedido(pedido);
     }
-    //falta obtener platos mandando el menu
 }
