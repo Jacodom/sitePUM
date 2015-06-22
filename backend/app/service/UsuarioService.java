@@ -23,8 +23,8 @@ public class UsuarioService {
         daoUsuario = new DaoUsuario();
         return daoUsuario.obtener();
     }
-    public List<Pedido> obtenerPedidosUsuario(Usuario usuario){
+    public List<Pedido> obtenerPedidosUsuario(int idUsuario){
         daoUsuario = new DaoUsuario();
-        return daoUsuario.obtenerPedidosUsuario(usuario);
+        return daoUsuario.obtenerPedidosUsuario(idUsuario);
     }
 }

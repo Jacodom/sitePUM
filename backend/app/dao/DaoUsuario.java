@@ -40,11 +40,11 @@ public class DaoUsuario implements DaoBase<Usuario>{
              sesion.close();
      }
     }
-    public List<Pedido> obtenerPedidosUsuario(Usuario usuario){
+    public List<Pedido> obtenerPedidosUsuario(int idUsuario){
         try{
             iniciarOperacion();
             List<Pedido> listaPedidosUsuario = sesion.createQuery("SELECT pedidos from Usuarios u where u.idUsuario = :idUsuario")
-                    .setParameter("idUsuario",usuario.getIdUsuario()).setMaxResults(5).list();
+                    .setMaxResults(5).list();
             return listaPedidosUsuario;
         }catch (HibernateException he){
             manejarExcepcion(he);
