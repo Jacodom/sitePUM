@@ -116,4 +116,21 @@ public class PedidoController {
         }
     }
 
+
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/magia", method = RequestMethod.GET)
+    public void guardar(){
+        DtoNewPedido pedido = new DtoNewPedido();
+
+        pedido.setEstadoPedido("activo");
+
+        Pedido pedidoG = new Pedido();
+
+        pedidoG.setEstadoPedido(pedido.getEstadoPedido());
+
+        if(pedidoService.guardarPedido(pedidoG))
+            System.out.println("Se guardo!!!");
+    }
+
 }
