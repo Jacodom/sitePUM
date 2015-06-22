@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Pablo on 20/06/2015.
  */
 public class UsuarioService {
-    DaoUsuario daoUsuario;
+    private DaoUsuario daoUsuario;
 
     public Usuario obtenerUsuario(int idUsuario){
         daoUsuario = new DaoUsuario();

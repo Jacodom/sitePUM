@@ -6,11 +6,13 @@ import java.util.List;
 import backend.app.model.Negocio;
 import backend.app.model.Categoria;
 import backend.app.model.Menu;
+import backend.app.model.Plato;
+
 /**
  * Created by Pablo on 20/06/2015.
  */
 public class NegocioService {
-    DaoNegocio daoNegocio;
+    private DaoNegocio daoNegocio;
 
     public Negocio obtenerNegocio(int idNegocio){
         daoNegocio = new DaoNegocio();
@@ -31,5 +33,4 @@ public class NegocioService {
         daoNegocio= new DaoNegocio();
         return daoNegocio.obtenerMenuActivo(negocio);
     }
-
 }

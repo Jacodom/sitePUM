@@ -47,11 +47,11 @@ public class DaoMenu implements DaoBase {
         }
     }
 
-    public List<Plato> obtenerPlatosMenu(Menu menu){
+    public List<Plato> obtenerPlatosMenu(int idMenu){
         try{
             iniciarOperacion();
             List<Plato> listaPlatos = sesion.createQuery("SELECT platos FROM Menu m where m.idMenu = :idMenu")
-                    .setParameter("idMenu",menu.getIdMenu()).list();
+                    .setParameter("idMenu",idMenu).list();
             return listaPlatos;
         }catch (HibernateException he){
             manejarExcepcion(he);
