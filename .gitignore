@@ -4,6 +4,6 @@ target/**
 .tmp
 *.iml
 bower_components
-frontend/webapp/resources/bower_componets
+src/main/webapp/resources/bower_componets
 classes
 classes/**
