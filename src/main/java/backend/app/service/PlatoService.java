@@ -1,6 +1,5 @@
 package backend.app.service;
 
-import backend.app.dao.DaoNegocio;
 import backend.app.dao.DaoPlato;
 import backend.app.model.Plato;
 
@@ -17,5 +16,12 @@ public class PlatoService {
         return daoPlato.obtener();
     }
 
+    public Plato obtenerPlato(int idPlato){
+        daoPlato = new DaoPlato();
+        for(Plato plato: daoPlato.obtener())
+            if(plato.getIdPlato()==idPlato)
+                return plato;
+        return null;
+    }
 
 }
