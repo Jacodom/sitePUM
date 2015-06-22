@@ -4,6 +4,7 @@ target/**
 .tmp
 *.iml
 bower_components
-src/main/webapp/resources/bower_componets
+src/main/webapp/resources/bower_components
 classes
 classes/**
+src/main/resources/hibernate.cfg.xml

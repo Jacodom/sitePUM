@@ -69,6 +69,12 @@
         <scope>provided</scope>
     </dependency>
 
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.6.4</version>
+    </dependency>
+
     <!-- Dependencias de java servlet -->
     <dependency>
         <groupId>javax.servlet</groupId>
