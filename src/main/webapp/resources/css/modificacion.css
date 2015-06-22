@@ -1,0 +1,16 @@
+.contenido{
+    padding-top: 70px;
+}
+.list-group:active {
+    background-color: red;
+    color: aqua;
+}
+.pedidos5{
+    background-color: #EE3A39;
+    color: white;
+    
+}
+.categorias{
+    background-color: #E57D24;
+    color: white;
+}
