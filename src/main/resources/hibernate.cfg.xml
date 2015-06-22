@@ -18,12 +18,12 @@
 
 
         <!-- Clases entidades a las que mapea el hibernate -->
-        <mapping class="app.model.Negocio" />
-        <mapping class="app.model.Usuario" />
-        <mapping class="app.model.Pedido" />
-        <mapping class="app.model.DetallePedido" />
-        <mapping class="app.model.Menu" />
-        <mapping class="app.model.Plato" />
-        <mapping class="app.model.Categoria" />
+        <mapping class="backend.app.model.Categoria" />
+        <mapping class="backend.app.model.Usuario" />
+        <mapping class="backend.app.model.Pedido" />
+        <mapping class="backend.app.model.DetallePedido" />
+        <mapping class="backend.app.model.Menu" />
+        <mapping class="backend.app.model.Plato" />
+        <mapping class="backend.app.model.Negocio" />
     </session-factory>
 </hibernate-configuration>

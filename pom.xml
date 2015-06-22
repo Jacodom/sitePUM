@@ -122,51 +122,5 @@
         <artifactId>jackson-databind</artifactId>
         <version>2.2.2</version>
     </dependency>
-
-    <!-- servlet container provided dependencies -->
-    <dependency>
-        <groupId>org.apache.tomcat</groupId>
-        <artifactId>tomcat-servlet-api</artifactId>
-        <version>7.0.30</version>
-        <scope>provided</scope>
-    </dependency>
-
-
-
 </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>${maven-war.version}</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>${tomcat.version}</version>
-                <configuration>
-                    <port>8080</port>
-                    <path>/</path>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-
 </project>
