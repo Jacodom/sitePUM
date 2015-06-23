@@ -25,10 +25,15 @@ public class PedidoController {
     private PlatoService platoService = new PlatoService();
     private MenuService menuService = new MenuService();
 
+    @RequestMapping(method = RequestMethod.GET)
+    public String showPage(){
+        return "/views/gestionarPedido.html";
+    }
+
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/obtenerCategoriasNegocio", method = RequestMethod.GET)
-    public List<DtoCategoria> obtenerCategoriasNegocio(@RequestBody int idNegocio) throws Exception {
+    public List<DtoCategoria> obtenerCategoriasNegocio(@RequestParam int idNegocio) throws Exception {
         List<Categoria> listaCategorias =  negocioService.obtenerCategoriasNegocio(negocioService.obtenerNegocio(idNegocio));
         List<DtoCategoria> listaCategoriasDTO = new ArrayList<DtoCategoria>();
 
@@ -45,7 +50,7 @@ public class PedidoController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/obtenerMenuActivo", method = RequestMethod.GET)
-    public DtoMenu obtenerMenuActivo (@RequestBody int idNegocio){
+    public DtoMenu obtenerMenuActivo (@RequestParam int idNegocio){
         Menu menu = negocioService.obtenerMenuActivo(negocioService.obtenerNegocio(idNegocio));
         DtoMenu menuDto = new DtoMenu();
 
@@ -59,7 +64,7 @@ public class PedidoController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/obtenerPlatosMenu", method = RequestMethod.GET)
-    public List<DtoPlato> obtenerPlatosMenu(@RequestBody int idMenu){
+    public List<DtoPlato> obtenerPlatosMenu(@RequestParam int idMenu){
         List<Plato> listaPlatos = menuService.obtenerPlatosMenu(menuService.obtenerMenu(idMenu));
         List<DtoPlato> listaPlatosDTO = new ArrayList<DtoPlato>();
 
