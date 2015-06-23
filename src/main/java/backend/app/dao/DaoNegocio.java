@@ -1,10 +1,12 @@
 package backend.app.dao;
+import java.util.ArrayList;
 import java.util.List;
 
 import backend.app.hibernate.HibernateUtil;
 import backend.app.model.Categoria;
 import backend.app.model.Menu;
 import backend.app.model.Negocio;
+import backend.app.model.Plato;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -46,8 +48,18 @@ public class DaoNegocio implements DaoBase<Negocio>{
     public List<Categoria> obtenerCategoriasNegocio(Negocio negocio){
         try{
             iniciarOperacion();
-            List<Categoria> listaCategorias= sesion.createQuery("select categorias from Negocio n WHERE n.idNegocio = :idNegocio")
+            List<Categoria> listaCategorias = new ArrayList<Categoria>();
+
+            List<Menu> listaMenues= sesion.createQuery("select menues from Negocio n WHERE n.idNegocio = :idNegocio")
                     .setParameter("idNegocio",negocio.getIdNegocio()).list();
+
+
+            for(Menu menu : listaMenues){
+                for(Plato plato : menu.getPlatos()){
+                    listaCategorias.add(plato.getCategoria());
+                }
+            }
+
             return listaCategorias;
         }catch (HibernateException he){
             manejarExcepcion(he);
@@ -60,8 +72,14 @@ public class DaoNegocio implements DaoBase<Negocio>{
     public Menu obtenerMenuActivo(Negocio negocio){
         try{
             iniciarOperacion();
-            Menu menu =(Menu)sesion.createQuery("select menu from Negocio n where n.idNegocio = :idNegocio and n.menu.estado = true")
-                    .setParameter("idNegocio",negocio.getIdNegocio());
+            List<Menu> listaMenues =sesion.createQuery("select menues from Negocio n where n.idNegocio = :idNegocio")
+                    .setParameter("idNegocio",negocio.getIdNegocio()).list();
+            Menu menu = new Menu();
+            for(Menu menuf : listaMenues){
+                if(menuf.getEstadoMenu()){
+                    menu=menuf;
+                }
+            }
             return menu;
         }catch (HibernateException he){
             manejarExcepcion(he);

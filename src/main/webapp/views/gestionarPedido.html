@@ -40,27 +40,15 @@
                 <div class="col-sm-3 col-md-2 sidebar">
                     <div class="list-group">
                         <span href="#" class="list-group-item categorias">Categorias</span>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-search"></i> Pastas
+                       <input class="list-group-item" type="text" placeholder="Buscar" ng-model="filtro">                        
+                        <a ng-repeat="categoria in listaCategorias" href="#" class="list-group-item">
+                            <i class="fa fa-search"></i> {{categoria.nombreCategoria}}
                         </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-search"></i> Parrilla
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-search"></i> Pizzas
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-search"></i> Empanadas
-                        </a>
-                        </div>        
+                    </div>        
                 </div>
                 <div class="col-md-8 col-sm-6"> <!--  -->
                     <div class="row">
-                        <div class="col-md-4 col-xs-12">
-                            <div class="thumbnail">
-                                <img src="../resources/"
-                            </div>
-                        </div>
+<!--                        <h1>{{menuActivo.nombreMenu}}</h1>-->
                     </div>
                     <!--<div class="jumbotron">
                         <a>dsaas</a>                
@@ -68,11 +56,14 @@
                 </div>
                 <div class="col-md-2 col-sm-3">
                     <div class="list-group">
-                        <span href="#" class="list-group-item pedidos5">asdasd</span>
+                        <span href="#" class="list-group-item pedidos5">Ultimos 5 Pedidos</span>
                     </div>
                 </div>
             </div>
         </div>
 </div>
+    
+    <script src="../resources/bower_components/angular/angular.min.js"></script>
+    <script src="../resources/js/controller/pedidoController.js"></script>
 </body>
 </html>
