@@ -1,19 +1,26 @@
-var app = angular.module('app');
+var myApp = angular.module('myApp');
 
-app.controller('pedidoController', ['$scope', 'pedidoService', function($scope, pedidoService){
-    
-    var cargarPagina = function(){
-        var obtenerCategoriasNegocio = function(){
-            $scope.listaCategorias = pedidoService.obtenerCategoriasNegocio();
-        }
-        
-        var obtenerMenuActivo = function(){
-            $scope.menuActivo = pedidoService.obtenerMenuActivo();
-        }
-        
-        var obtenerPlatosMenu = function(){
-            $scope.platosMenu = pedidoService.obtenerPlatosMenu();
-        }
-    }
+myApp.controller('PedidoCtrl', ['$scope', 'PedidoService',  function($scope, PedidoService){
 
+    obtenerCategoriasNegocio();
+    obtenerMenuActivo();
+    obtenerPlatosMenu();
+
+        function obtenerCategoriasNegocio(){
+            PedidoService.obtenerCategoriasNegocio().then(function(categorias){
+                $scope.listaCategorias = categorias;
+            });
+        }    
+        
+        function obtenerMenuActivo(){
+            PedidoService.obtenerMenuActivo().then(function(menu){
+                $scope.menuActivo = menu;
+            });
+        }
+
+        function obtenerPlatosMenu(){
+            PedidoService.obtenerPlatosMenu().then(function(platos){
+                $scope.platosMenu = platos;
+            });
+        }
 }]);

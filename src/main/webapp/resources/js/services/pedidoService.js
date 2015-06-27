@@ -1,27 +1,31 @@
-var app = angular.module('app');
+var myApp = angular.module('myApp');
 
-app.service('pedidoService', ['$http', '$q', function($http, $q){
+
+myApp.service('PedidoService', ['$http', '$q', function($http, $q){
     
     return {
         
-        this.obtenerCategoriasNegocio = function(){
+        obtenerCategoriasNegocio : function(){
         
             var deferred = $q.defer();
 
-            $http({
+            var response = $http({
                     method: "GET",
                     url: "/gestionarPedido/obtenerCategoriasNegocio",
                     params: {
                         idNegocio : 1
                     }
-                }).success(function(response){
-                console.log(response.data);
-                deferred.resolve(response.data);
-            });    
+                }).then(function(response){ //response
+                    if(response.status == 200){
+                        deferred.resolve(response.data);
+                    }else{
+                        deferred.reject('Error');
+                    }
+            });
             return deferred.promise;
-    }
+        },
                               
-        this.obtenerMenuActivo = function(){
+        obtenerMenuActivo : function(){
                               
             var deferred = $q.defer();
 
@@ -31,15 +35,18 @@ app.service('pedidoService', ['$http', '$q', function($http, $q){
                     params: {
                         idNegocio: 1
                     }
-                }).success(function(response){
-                    console.log(response.data)
-                    deferred.resolve(response.data);
+                }).then(function(response){
+                    if(response.status == 200){
+                        deferred.resolve(response.data);
+                    }else{
+                        deferred.reject('Error');
+                    }
                 });
 
             return deferred.promise;
-    }
+    },
                               
-        this.obtenerPlatosMenu = function(){
+        obtenerPlatosMenu : function(){
                               
             var deferred = $q.defer();                      
         
@@ -49,11 +56,15 @@ app.service('pedidoService', ['$http', '$q', function($http, $q){
                 params: {
                     idMenu: 1
                 }
-            }).success(function(response.data){
-                console.log(response.data);
-                deferred.resolve(response.data);
+            }).then(function(response){
+                if(response.status == 200){
+                        deferred.resolve(response.data);
+                }else{
+                        deferred.reject('Error');
+                }
             });
-        }                     
-                              
+            
+            return deferred.promise;
+        }                                   
     }    
 }]);

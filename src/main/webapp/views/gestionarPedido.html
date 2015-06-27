@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html ng-app="myApp">
     <head>
         <meta charset="UTF-8">
         <title>Gestionar Pedido</title>
         <link rel="stylesheet" href="../resources/bower_components/bootstrap/dist/css/bootstrap.css">
+    <script src="../resources/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../resources/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <link rel="stylesheet" href="../resources/bower_components/fontawesome/css/font-awesome.css"></link>
     <link rel="stylesheet" href="../resources/css/modificacion.css"></link>
+
     </head>
-<body ng-controller="pedidoController">
+<body ng-controller="PedidoCtrl">
     <div class="container-fluid">
         <div class="nvar navbar-default navbar-fixed-top">
             <div class="container-fluid">
@@ -48,7 +50,11 @@
                 </div>
                 <div class="col-md-8 col-sm-6"> <!--  -->
                     <div class="row">
-<!--                        <h1>{{menuActivo.nombreMenu}}</h1>-->
+                        <h1>{{menuActivo.nombreMenu}}</h1>
+                        
+                        
+                        <p ng-repeat="plato in platosMenu">{{plato.nombrePlato}}</p>
+                        
                     </div>
                     <!--<div class="jumbotron">
                         <a>dsaas</a>                
@@ -62,8 +68,10 @@
             </div>
         </div>
 </div>
-    
     <script src="../resources/bower_components/angular/angular.min.js"></script>
-    <script src="../resources/js/app/app.js"></script>
+    <script src="../resources/js/app/myApp.js"></script>
+    <script src="../resources/js/services/pedidoService.js"></script>
+    <script src="../resources/js/controllers/pedidoController.js"></script>
+
 </body>
 </html>
