@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Jacobo on 20/06/2015.
  */
-public class DaoPlato {
+public class DaoPlato implements DaoBase {
     private Session sesion;
     private Transaction transaccion;
 
