@@ -1,6 +1,6 @@
-var app = angular.module('sitePumApp',[]);
+var app = angular.module('app', ['ngRoute','negocioController', 'pedidoController']);
 
-app.config(function($routeProvider){
+app.config(function ($routeProvider) {
     $routeProvider
         .when('/',
         {
