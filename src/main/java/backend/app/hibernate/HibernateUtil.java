@@ -20,6 +20,8 @@ public class HibernateUtil {
                 serviceRegistry = new ServiceRegistryBuilder().applySettings(cfg.getProperties()).buildServiceRegistry();
 
                 sessionFactory = cfg.buildSessionFactory(serviceRegistry);
+            }else{
+                return sessionFactory;
             }
         } catch (Throwable ex) {
             ex.printStackTrace();
