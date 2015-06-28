@@ -41,9 +41,9 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <div  class="list-group">
-                        <span href="#" class="list-group-item categorias">Categorias</span>
+                        <span class="list-group-item categorias">Categorias</span>
                        <input class="list-group-item" type="text" placeholder="Buscar" ng-model="filtro">
-                        <a ng-repeat="categoria in listaCategorias" href="#" class="list-group-item">
+                        <a ng-repeat="categoria in listaCategorias" ng-href="#/{{categoria.idCategoria}}" class="list-group-item">
                             <i class="fa fa-search"></i> {{categoria.nombreCategoria}}
                         </a>
                         <!--<a href="#" class="list-group-item">
@@ -85,9 +85,15 @@
             </div>
         </div>
 </div>
-            <script src="../resources/js/app/myApp.js"></script>
+<div class="footer navbar-fixed-bottom">
+    <div class="container">
+        <p class="text-center">Desarrollado por @Jacobo y @Pablo</p>    
+    </div>
+    
+</div>
     <script src="../resources/bower_components/angular/angular.min.js"></script>
-
-    <!--<script src="../resources/js/controller/negocioController.js"></script>-->
+    <script src="../resources/js/app/myApp.js"></script>
+    <script src="../resources/js/services/negocioService.js"></script>
+    <script src="../resources/js/controllers/negocioController.js"></script>
 </body>
 </html>
