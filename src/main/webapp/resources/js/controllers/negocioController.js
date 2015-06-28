@@ -1,7 +1,18 @@
-angular.module("sitePumApp",[])
-    .controller("negocioController", function obtenerNegocio($scope,$http){
-        var url = "/elegirNegocio/obtenerNegocios";
-        $http.get(url).success( function(data){
-            $scope.listaNegocio = data;  
+var myApp = angular.module('myApp');
+
+myApp.controller('NegocioController',['$scope','NegocioService',function($scope, NegocioService){
+    
+    obtenerCategorias();
+    obtenerNegocios();
+    
+    function obtenerCategorias(){
+        NegocioService.obtenerCategorias().then(function(categorias){
+            $scope.listaCategorias = categorias;
         });
-    })
+    }
+    function obtenerNegocios(){
+        NegocioService.obtenerNegocios().then(function(){
+            $scope.listaNegocio = negocios;
+        });
+    }
+}]);

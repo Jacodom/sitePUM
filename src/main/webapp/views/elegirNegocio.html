@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html ng-app="myApp">
 <head lang="en">
     <meta charset="UTF-8">
     <title>Elegir Negocio</title>
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../resources/css/modificacion.css"></link>
 
 </head>
-<body ng-controller="negocioController">
+<body ng-controller="NegocioController">
     <div class="container-fluid">
         <div class="nvar navbar-default navbar-fixed-top">
             <div class="container-fluid">
@@ -43,7 +43,7 @@
                     <div  class="list-group">
                         <span href="#" class="list-group-item categorias">Categorias</span>
                        <input class="list-group-item" type="text" placeholder="Buscar" ng-model="filtro">
-                        <a ng-repeat="categoria in Categorias" href="#" class="list-group-item">
+                        <a ng-repeat="categoria in listaCategorias" href="#" class="list-group-item">
                             <i class="fa fa-search"></i> {{categoria.nombreCategoria}}
                         </a>
                         <!--<a href="#" class="list-group-item">
