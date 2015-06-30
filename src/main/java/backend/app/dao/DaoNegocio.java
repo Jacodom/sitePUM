@@ -56,7 +56,8 @@ public class DaoNegocio implements DaoBase<Negocio>{
 
             for(Menu menu : listaMenues){
                 for(Plato plato : menu.getPlatos()){
-                    listaCategorias.add(plato.getCategoria());
+                    if(!listaCategorias.contains(plato.getCategoria()))
+                        listaCategorias.add(plato.getCategoria());
                 }
             }
 

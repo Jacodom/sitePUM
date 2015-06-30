@@ -25,9 +25,20 @@ public class PedidoController {
     private PlatoService platoService = new PlatoService();
     private MenuService menuService = new MenuService();
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String showPage(){
-        return "/views/gestionarPedido.html";
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/obtenerNegocio", method = RequestMethod.GET)
+    public DtoNegocio obtenerNegocio(@RequestParam int idNegocio){
+        Negocio negocio = negocioService.obtenerNegocio(idNegocio);
+        DtoNegocio dtoNegocio = new DtoNegocio();
+
+        dtoNegocio.setIdNegocio(negocio.getIdNegocio());
+        dtoNegocio.setTelefonoNegocio(negocio.getTelefonoNegocio());
+        dtoNegocio.setNombreNegocio(negocio.getNombreNegocio());
+        dtoNegocio.setLogoNegocio(negocio.getLogoNegocio());
+        dtoNegocio.setDomicilioNegocio(negocio.getDomicilioNegocio());
+
+        return dtoNegocio;
     }
 
     @ResponseBody
@@ -73,9 +84,7 @@ public class PedidoController {
             DtoCategoria dtoCategoria = new DtoCategoria();
             dtoPlato.setNombrePlato(plato.getNombrePlato());
 
-            dtoCategoria.setIdCategoria(plato.getCategoria().getIdCategoria());
-            dtoCategoria.setNombreCategoria(plato.getCategoria().getNombreCategoria());
-            dtoPlato.setCategoria(dtoCategoria);
+            dtoPlato.setCategoria(plato.getCategoria().getNombreCategoria());
 
             dtoPlato.setCoccionPlato(plato.getCoccionPlato());
             dtoPlato.setDescPlato(plato.getDescPlato());
