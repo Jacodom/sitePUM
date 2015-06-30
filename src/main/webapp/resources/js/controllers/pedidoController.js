@@ -1,38 +1,41 @@
 var myApp = angular.module('myApp');
 
 myApp.controller('PedidoCtrl', ['$scope', 'PedidoService', '$location', '$anchorScroll', '$routeParams',  function($scope, PedidoService, $location, $anchorScroll, $routeParams){
+        $scope.idNegocio = $routeParams.idNegocio;
+        
 
-    
+        
         cargarPagina();
     
     
         function cargarPagina(){
-            obtenerNegocio();
-            obtenerCategoriasNegocio();
-            obtenerMenuActivo();
-            obtenerPlatosMenu();
+            obtenerNegocio($scope.idNegocio);
+            obtenerCategoriasNegocio($scope.idNegocio);
+            obtenerMenuActivo($scope.idNegocio);
+           // obtenerPlatosMenu($scope.menuActivo);
         }
     
-        function obtenerNegocio(){
-            PedidoService.obtenerNegocio().then(function(negocio){
+        function obtenerNegocio(idNegocio){
+            PedidoService.obtenerNegocio(idNegocio).then(function(negocio){
                $scope.negocio = negocio; 
             });
         }
 
-        function obtenerCategoriasNegocio(){
-            PedidoService.obtenerCategoriasNegocio().then(function(categorias){
+        function obtenerCategoriasNegocio(idNegocio){
+            PedidoService.obtenerCategoriasNegocio(idNegocio).then(function(categorias){
                 $scope.listaCategorias = categorias;
             });
         }    
         
-        function obtenerMenuActivo(){
-            PedidoService.obtenerMenuActivo().then(function(menu){
+        function obtenerMenuActivo(idNegocio){
+            PedidoService.obtenerMenuActivo(idNegocio).then(function(menu){
                 $scope.menuActivo = menu;
+                obtenerPlatosMenu(menu);
             });
         }
 
-        function obtenerPlatosMenu(){
-            PedidoService.obtenerPlatosMenu().then(function(platos){
+        function obtenerPlatosMenu(menuActivo){
+            PedidoService.obtenerPlatosMenu(menuActivo).then(function(platos){
                 $scope.platosMenu = platos;
             });
         }   

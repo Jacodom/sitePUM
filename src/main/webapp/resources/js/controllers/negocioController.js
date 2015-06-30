@@ -47,11 +47,12 @@ myApp.controller('NegocioCtrl',['$scope','NegocioService',function($scope, Negoc
 
     
     obtenerCategorias();
-    obtenerNegocios();
+    //obtenerNegocios();
     
     function obtenerCategorias(){
         NegocioService.obtenerCategorias().then(function(categorias){
             $scope.listaCategorias = categorias;
+            obtenerNegocios();
         });
     }
     

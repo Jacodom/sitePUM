@@ -7,7 +7,7 @@ myApp.config(['$routeProvider', function ($routeProvider) {
             templateUrl: "/views/elegirNegocio.html",
             controller: "NegocioCtrl"
         })
-        .when('/gestionarPedido', {
+        .when('/gestionarPedido/:idNegocio', {
             templateUrl: "/views/gestionarPedido.html",
             controller: "PedidoCtrl"
         })
