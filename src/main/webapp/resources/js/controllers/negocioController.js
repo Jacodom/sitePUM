@@ -6,7 +6,7 @@ myApp.filter('negociosFiltrados',[function(){
         console.log(categoriaSeleccionada + ' :CategoriasSeleccionadas');
         if(!angular.isUndefined(negocios) && !angular.isUndefined(categoriaSeleccionada) && categoriaSeleccionada.length > 0){
             var listaTemporal = [];
-            console.log("Pasa primer if")
+            console.log("Pasa primer if");
             angular.forEach(categoriaSeleccionada, function(id){
                 angular.forEach(negocios, function(valor,att){
                     angular.forEach(valor.listaCategorias,function(categoria,index){
@@ -24,7 +24,7 @@ myApp.filter('negociosFiltrados',[function(){
     };
 }]); 
     
-myApp.controller('NegocioController',['$scope','NegocioService',function($scope, NegocioService){
+myApp.controller('NegocioCtrl',['$scope','NegocioService',function($scope, NegocioService){
     
     $scope.categoriaSeleccionada = [];
     $scope.setCategoria = function(){
