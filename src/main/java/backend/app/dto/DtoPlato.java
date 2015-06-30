@@ -13,7 +13,7 @@ public class DtoPlato {
     private String descPlato;
     private BigDecimal precioPlato;
     private int coccionPlato;
-    private DtoCategoria categoria;
+    private String categoria;
 
     public int getIdPlato() {
         return idPlato;
@@ -55,11 +55,11 @@ public class DtoPlato {
         this.coccionPlato = coccionPlato;
     }
 
-    public DtoCategoria getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(DtoCategoria categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 }

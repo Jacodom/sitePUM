@@ -14,3 +14,17 @@
     background-color: #E57D24;
     color: white;
 }
+
+.affix {
+    position: fixed;
+}
+
+
+
+section.anchor{padding-top: 100px ,visibility: hidden;}
+
+@media (max-width: 768px) {
+    .affix {
+        position: static;
+    }
+}

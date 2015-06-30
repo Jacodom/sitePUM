@@ -44,7 +44,7 @@ myApp.service('PedidoService', ['$http', '$q', function($http, $q){
                 });
 
             return deferred.promise;
-    },
+        },
                               
         obtenerPlatosMenu : function(){
                               
@@ -65,6 +65,27 @@ myApp.service('PedidoService', ['$http', '$q', function($http, $q){
             });
             
             return deferred.promise;
-        }                                   
+        },
+        
+        obtenerNegocio : function(){
+            
+            var deferred = $q.defer();
+            
+            $http({
+                method: "GET",
+                url: "/gestionarPedido/obtenerNegocio",
+                params:{
+                    idNegocio: 1
+                }
+            }).then(function (response) {
+                if(response.status == 200){
+                    deferred.resolve(response.data);
+                }else{
+                    deferred.reject('Error');
+                }
+            });
+            
+            return deferred.promise;
+        }
     }    
 }]);
