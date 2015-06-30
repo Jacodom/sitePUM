@@ -32,6 +32,21 @@ myApp.service('NegocioService',['$http','$q',function($http,$q){
                 }
             });
             return deferred.promise;
-        } 
+        }
+        
+       /* filtrarPorCategoria : function(){
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: "/elegirNegocio/obtenerNegocios"
+            }).then(function(response){
+                if(response.status == 200){
+                    deferred.resolve(response.data);
+                }else{
+                    deferred.reject('Error');
+                }
+            });
+            return deferred.promise;
+        }*/
     }
 }]);
