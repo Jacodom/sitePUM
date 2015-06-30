@@ -1,7 +1,8 @@
-<!DOCTYPE html>
-<html ng-app="app">
+<!--<!DOCTYPE html>
+<html ng-app="myApp">
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>Elegir Negocio</title>
     <link rel="stylesheet" href="../resources/bower_components/bootstrap/dist/css/bootstrap.css">
     <script src="../resources/bower_components/jquery/dist/jquery.min.js"></script>
@@ -9,8 +10,8 @@
     <link rel="stylesheet" href="../resources/bower_components/fontawesome/css/font-awesome.css"></link>
     <link rel="stylesheet" href="../resources/css/modificacion.css"></link>
 
-</head>
-<body ng-controller="negocioController">
+</head> -->
+<body ng-controller="NegocioController">
     <div class="container-fluid">
         <div class="nvar navbar-default navbar-fixed-top">
             <div class="container-fluid">
@@ -40,13 +41,13 @@
         <div class="contenido">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
-                    <div class="list-group">
-                        <span href="#" class="list-group-item categorias">Categorias</span>
+                    <div  class="list-group">
+                        <span class="list-group-item categorias">Categorias</span>
                        <input class="list-group-item" type="text" placeholder="Buscar" ng-model="filtro">
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-search"></i> Pastas
+                        <a ng-repeat="categoria in listaCategorias" href="#" ng-click="setCategoria()"  class="list-group-item">
+                            <i ng-class="isChecked(categoria.idCategoria)"></i> {{categoria.nombreCategoria}} <i ></i>
                         </a>
-                        <a href="#" class="list-group-item">
+                        <!--<a href="#" class="list-group-item">
                             <i class="fa fa-search"></i> Parrilla
                         </a>
                         <a href="#" class="list-group-item">
@@ -54,18 +55,19 @@
                         </a>
                         <a href="#" class="list-group-item">
                             <i class="fa fa-search"></i> Empanadas
-                        </a>
-                        </div>        
+                        </a> -->
+                        </div>
                 </div>
                 <div class="col-md-8 col-sm-6"> <!--  -->
                     <div class="row">
-                        <div ng-repeat="negocio in listaNegocio |filter :filtro" class="col-md-4 col-xs-12">
+                        <div ng-repeat="negocio in listaNegocio |filter :filtro | negociosFiltrados:categoriaSeleccionada" class="col-md-4 col-xs-12">
                             <div class="thumbnail">
                                 <img src="../resources/img/resto.png"/>
                                 <div class="row text-center">
                                     <div class="col-md-12 col-xs-12">
-                                        <h4>{{negocio.nombre}}</h4>
-                                        <h4>{{negocio.direccion}}</h4>
+                                        <h4>{{negocio.nombreNegocio}}</h4>
+                                        <h4>{{negocio.domicilioNegocio}}</h4>
+                                        <h4>{{negocio.telefonoNegocio}}</h4>
                                     </div>
                                 
                                 </div>
@@ -84,9 +86,16 @@
             </div>
         </div>
 </div>
-            <script src="../resources/js/app/myApp.js"></script>
+<div class="footer navbar-fixed-bottom">
+    <div class="container">
+        <p class="text-center">Desarrollado por @Jacobo y @Pablo</p>    
+    </div>
+    
+</div>
+  <!--  <script src="../resources/bower_components/underscore/underscore-min.js"></script>
     <script src="../resources/bower_components/angular/angular.min.js"></script>
-
-    <!--<script src="../resources/js/controller/negocioController.js"></script>-->
+    <script src="../resources/js/app/myApp.js"></script>
+    <script src="../resources/js/services/negocioService.js"></script>
+    <script src="../resources/js/controllers/negocioController.js"></script> -->
 </body>
 </html>

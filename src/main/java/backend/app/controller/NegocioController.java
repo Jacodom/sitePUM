@@ -4,11 +4,9 @@ package backend.app.controller;
 import backend.app.dto.DtoCategoria;
 import backend.app.dto.DtoDetallePedido;
 import backend.app.dto.DtoNegocio;
-import backend.app.model.Categoria;
-import backend.app.model.DetallePedido;
-import backend.app.model.Negocio;
-import backend.app.model.Pedido;
+import backend.app.model.*;
 import backend.app.service.CategoriaService;
+import backend.app.service.MenuService;
 import backend.app.service.NegocioService;
 import backend.app.service.UsuarioService;
 import org.springframework.http.HttpStatus;
@@ -29,7 +27,7 @@ public class NegocioController {
     private CategoriaService categoriaService = new CategoriaService();
     private NegocioService negocioService = new NegocioService();
     private UsuarioService usuarioService = new UsuarioService();
-
+    private MenuService menuService = new MenuService();
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/obtenerCategorias", method = RequestMethod.GET)
@@ -46,14 +44,13 @@ public class NegocioController {
 
         return listaCategoriasDTO;
     }
-
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/obtenerNegocios", method = RequestMethod.GET)
-    public List<DtoNegocio> obtenerNegocios(){
+    public List<DtoNegocio> obtenerNegocios() throws Exception {
         List<Negocio> listaNegocios = negocioService.obtenerNegocios();
         List<DtoNegocio> listaNegociosDTO = new ArrayList<DtoNegocio>();
-
+        List<DtoCategoria> listaDtoCategoria = new ArrayList<DtoCategoria>();
         for(Negocio negocio : listaNegocios){
             DtoNegocio dtoNegocio = new DtoNegocio();
             dtoNegocio.setIdNegocio(negocio.getIdNegocio());
@@ -61,6 +58,14 @@ public class NegocioController {
             dtoNegocio.setLogoNegocio(negocio.getLogoNegocio());
             dtoNegocio.setNombreNegocio(negocio.getNombreNegocio());
             dtoNegocio.setTelefonoNegocio(negocio.getTelefonoNegocio());
+            for(Categoria categoria : negocioService.obtenerCategoriasNegocio(negocio)){
+                DtoCategoria dtoCategoria = new DtoCategoria();
+                dtoCategoria.setIdCategoria(categoria.getIdCategoria());
+                dtoCategoria.setNombreCategoria(categoria.getNombreCategoria());
+                listaDtoCategoria.add(dtoCategoria);
+
+                dtoNegocio.setListaCategorias(listaDtoCategoria);
+            }
             listaNegociosDTO.add(dtoNegocio);
         }
 
@@ -85,4 +90,5 @@ public class NegocioController {
 
         return listaDetallesPedidoDto;
     }
+
 }

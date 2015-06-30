@@ -1,5 +1,7 @@
 package backend.app.dto;
 
+import java.util.List;
+
 /**
  * Created by Pablo on 20/06/2015.
  */
@@ -10,6 +12,16 @@ public class DtoNegocio {
     private String domicilioNegocio;
     private String telefonoNegocio;
     private String logoNegocio;
+    private List<DtoCategoria> listaCategorias;
+
+    public List<DtoCategoria> getListaCategorias() {
+        return listaCategorias;
+    }
+
+    public void setListaCategorias(List<DtoCategoria> listaCategorias) {
+        this.listaCategorias = listaCategorias;
+    }
+
 
     public int getIdNegocio() {
         return idNegocio;
