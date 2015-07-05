@@ -7,11 +7,11 @@ myApp.filter('negociosFiltrados',[function(){
         if(!angular.isUndefined(negocios) && !angular.isUndefined(categoriaSeleccionada) && categoriaSeleccionada.length > 0){
             var listaTemporal = [];
             console.log("Pasa primer if");
-            angular.forEach(categoriaSeleccionada, function(id){
-                angular.forEach(negocios, function(valor,att){
-                    angular.forEach(valor.listaCategorias,function(categoria,index){
-                        if(angular.equals(categoria.idCategoria,id)){
-                            //console.log(valor);
+            categoriaSeleccionada.forEach(function(id){
+                negocios.forEach(function(valor,att){
+                    valor.listaCategorias.forEach(function(categoria,index){
+                        if(id == categoria.idCategoria){
+                            console.log(valor);
                            listaTemporal.push(valor);
                            }
                     });

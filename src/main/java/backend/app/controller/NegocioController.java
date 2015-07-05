@@ -50,7 +50,7 @@ public class NegocioController {
     public List<DtoNegocio> obtenerNegocios() throws Exception {
         List<Negocio> listaNegocios = negocioService.obtenerNegocios();
         List<DtoNegocio> listaNegociosDTO = new ArrayList<DtoNegocio>();
-        List<DtoCategoria> listaDtoCategoria = new ArrayList<DtoCategoria>();
+
         for(Negocio negocio : listaNegocios){
             DtoNegocio dtoNegocio = new DtoNegocio();
             dtoNegocio.setIdNegocio(negocio.getIdNegocio());
@@ -58,14 +58,14 @@ public class NegocioController {
             dtoNegocio.setLogoNegocio(negocio.getLogoNegocio());
             dtoNegocio.setNombreNegocio(negocio.getNombreNegocio());
             dtoNegocio.setTelefonoNegocio(negocio.getTelefonoNegocio());
+            List<DtoCategoria> listaDtoCategoria = new ArrayList<DtoCategoria>();
             for(Categoria categoria : negocioService.obtenerCategoriasNegocio(negocio)){
                 DtoCategoria dtoCategoria = new DtoCategoria();
                 dtoCategoria.setIdCategoria(categoria.getIdCategoria());
                 dtoCategoria.setNombreCategoria(categoria.getNombreCategoria());
                 listaDtoCategoria.add(dtoCategoria);
-
-                dtoNegocio.setListaCategorias(listaDtoCategoria);
             }
+            dtoNegocio.setListaCategorias(listaDtoCategoria);
             listaNegociosDTO.add(dtoNegocio);
         }
 
