@@ -23,7 +23,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                     <a class="navbar-brand" href="/">Pickupmeal</a>     
+                     <a class="navbar-brand" href="/">Pickupmeal</a>
                 </div>
                 <div class="navbar-collapse collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
@@ -33,7 +33,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a >Usuario</a>                        
+                            <a >Usuario</a>
                         </li>
                     </ul>
                 </div>
@@ -45,15 +45,15 @@
                             <div class="sidebar affix">
                                 <div class="list-group">
                                     <span href="#" class="list-group-item categorias">Categorias</span>
-                                    <input class="list-group-item" type="text" placeholder="Buscar" ng-model="filtro">                        
+                                    <input class="list-group-item" type="text" placeholder="Buscar" ng-model="filtro">
                                     <a ng-repeat="categoria in listaCategorias | orderBy: 'nombreCategoria'" class="list-group-item" ng-click="scrollTo(categoria.nombreCategoria)" href="">
                                         <i class="fa fa-search"></i> {{categoria.nombreCategoria}}
                                     </a>
-                                </div>        
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="col-md-8 col-sm-6 col-lg-8"> <!--  -->   
+
+                        <div class="col-md-8 col-sm-6 col-lg-8"> <!--  -->
                                 <!--<div class="row"> -->
 
                                         <div ng-repeat="categoria in listaCategorias | orderBy: 'nombreCategoria' | filter:filtro">
@@ -71,15 +71,16 @@
                                                                             <h4>{{plato.descPlato}}</h4>
                                                                             <h4>{{plato.coccionPlato}}</h4>
                                                                             <h4>${{plato.precioPlato}}</h4>
-        <input type="button" class="fa fa-plus-circle" ng-click="agregarPlatoPedido(plato)" value="+">                                                           
+                                                                            <button ng-click="abrirModal(plato)" data-toggle="modal" data-target="#myModal">
+                                                                                              <i class="fa fa-plus-circle"></i>
+                                                                            </button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>  
+                                                            </div>
                                                         </div>
-
                                         </div>
-                                   <!-- </div> -->   
+                                   <!-- </div> -->
                         </div>
 
                             <div class="col-md-2 col-sm-3 col-lg-2">
@@ -98,7 +99,7 @@
                                     </div>
                                 </div>
                             </div> -->
-                        
+
                         <div class="col-md-2 col-sm-3 col-lg-2">
                                 <div class="sidebar affix">
                                     <div class="well">
@@ -118,10 +119,47 @@
 
                     </div>
     </div>
-    
 
-    
-    
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Agregar Plato al pedido</h4>
+          </div>
+          <div class="modal-body">
+              <h1>Detalle de Pedido</h1>
+              <div class="row">
+                  <div class="col-md-8 col-sm-12 col-lg-8">
+                      <h2>Aclaración</h2>
+                      <textarea class="form-control" ng-model="pedidoModal.aclaracionDetalle"></textarea>
+                  </div>
+                  <div class="col-md-4 col-sm-12 col-lg-4">
+                      <h2>Cantidad</h2>
+                      <select class="form-control" ng-model="pedidoModal.cantidadDetalle">
+                          <option ng-repeat="n in cantidades">
+                              {{n}}
+                          </option>
+                      </select>
+                      <h3>Subtotal:</h3>
+                      <h3>${{calcularSubtotal(pedidoModal)}}</h3>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" ng-click="agregarPlatoPedido(pedidoModal)">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
 </div>
 <!--
     <script src="../resources/bower_components/angular/angular.min.js"></script>
