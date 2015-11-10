@@ -1,15 +1,13 @@
 var myApp = angular.module('myApp');
 
 
-myApp.service('PedidoService', ['$http', '$q', function($http, $q){
+myApp.factory('PedidoService', ['$http', '$q', function($http){
     
     return {
         
         obtenerCategoriasNegocio : function(parametroIdNegocio){
         
-            var deferred = $q.defer();
-
-            var response = $http({
+            return $http({
                     method: "GET",
                     url: "/gestionarPedido/obtenerCategoriasNegocio",
                     params: {
@@ -17,19 +15,18 @@ myApp.service('PedidoService', ['$http', '$q', function($http, $q){
                     }
                 }).then(function(response){ //response
                     if(response.status == 200){
-                        deferred.resolve(response.data);
+                        return response.data;
                     }else{
-                        deferred.reject('Error');
+                        return("error");
                     }
             });
-            return deferred.promise;
+        
         },
                               
         obtenerMenuActivo : function(parametroIdNegocio){
                               
-            var deferred = $q.defer();
 
-            $http({
+            return $http({
                     method: "GET",
                     url: "/gestionarPedido/obtenerMenuActivo",
                     params: {
@@ -37,20 +34,17 @@ myApp.service('PedidoService', ['$http', '$q', function($http, $q){
                     }
                 }).then(function(response){
                     if(response.status == 200){
-                        deferred.resolve(response.data);
+                        return response.data;
                     }else{
-                        deferred.reject('Error');
+                        return("error");
                     }
                 });
-
-            return deferred.promise;
         },
                               
         obtenerPlatosMenu : function(menuActivoParametro){
-                              
-            var deferred = $q.defer();                      
+                                                
         
-            $http({
+            return $http({
                 method: "GET",
                 url: "/gestionarPedido/obtenerPlatosMenu",
                 params: {
@@ -58,20 +52,18 @@ myApp.service('PedidoService', ['$http', '$q', function($http, $q){
                 }
             }).then(function(response){
                 if(response.status == 200){
-                        deferred.resolve(response.data);
+                        response.data;
                 }else{
-                        deferred.reject('Error');
+                        return("error");
                 }
             });
-            
-            return deferred.promise;
+
         },
         
         obtenerNegocio : function(parametroIdNegocio){
             
-            var deferred = $q.defer();
-            console.log(parametroIdNegocio + "  parametro Negocioooo")
-            $http({
+
+            return $http({
                 method: "GET",
                 url: "/gestionarPedido/obtenerNegocio",
                 params:{
@@ -79,13 +71,12 @@ myApp.service('PedidoService', ['$http', '$q', function($http, $q){
                 }
             }).then(function (response) {
                 if(response.status == 200){
-                    deferred.resolve(response.data);
+                    return response.data;
                 }else{
-                    deferred.reject('Error');
+                    return response.error;
                 }
             });
             
-            return deferred.promise;
         }
     }    
 }]);
