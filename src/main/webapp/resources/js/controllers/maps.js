@@ -7,7 +7,7 @@
  * # MapsCtrl
  * Controller of the dashboardApp
  */
-angular.module('dashboardApp')
+angular.module('myApp')
   .controller('MapsCtrl',['factoryMaps', '$scope', function (factoryMaps, $scope) {
     console.log("Controladora mapas");
 
