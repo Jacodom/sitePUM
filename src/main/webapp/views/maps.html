@@ -1,0 +1,19 @@
+<h2>Dirección</h2>
+<div class="container padding">
+  <div class="row">
+    <div class="col-lg-8">
+      <input class="form-control" id="searchBox" type="text" placeholder="Cordoba 1250, Rosario, Santa Fe, Argentina" ng-model="address"/>
+    </div>
+    <div class="col-lg-2">
+      <button class="btn btn-success form-control" ng-click="addAddress()">Buscar <i class="fa fa-search"></i></button>
+    </div>
+    <div class="col-lg-2">
+      <button class="btn btn-primary" ng-click="addCurrentLocation()">Localizar! <i class="fa fa-map-marker"></i></button>
+    </div>
+  </div>
+</div>
+<br>
+<ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" control="map.control" options="map.options">
+  <ui-gmap-marker ng-repeat="m in map.markers" coords="m.coords"
+  icon="m.icon" idkey="m.id" options="m.options"></ui-gmap-marker>
+</ui-gmap-google-map>
