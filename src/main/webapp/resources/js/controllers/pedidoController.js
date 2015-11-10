@@ -78,13 +78,26 @@ myApp.controller('PedidoCtrl', [
             if(!pedidoModal){
                 return;
             }
-            var d = {};
-            d.nombrePlato = $scope.platoModal.nombrePlato;
-            d.precioPlato = $scope.platoModal.precioPlato;
-            d.cantidadDetalle = pedidoModal.cantidadDetalle;
-            d.subtotalDetalle = d.cantidadDetalle * d.precioPlato;
-            d.aclaracionDetalle = pedidoModal.aclaracionDetalle;
-            $scope.listaDetallesPedido.push(d);
+            $scope.e = false;
+            $scope.listaDetallesPedido.forEach(function (detalle, index) {
+                if(detalle.idPlato == $scope.platoModal.idPlato){
+
+                    detalle.cantidadDetalle += parseInt(pedidoModal.cantidadDetalle);
+                    detalle.subtotalDetalle = parseFloat($scope.platoModal.precioPlato*detalle.cantidadDetalle);
+                    $scope.e = true;
+                }
+            });
+            if($scope.e==false){
+                var d = {};
+                d.idPlato = parseInt($scope.platoModal.idPlato);
+                d.nombrePlato = $scope.platoModal.nombrePlato;
+                d.precioPlato = parseFloat($scope.platoModal.precioPlato);
+                d.cantidadDetalle = parseInt(pedidoModal.cantidadDetalle);
+                d.subtotalDetalle = parseFloat(d.cantidadDetalle * d.precioPlato);
+                d.aclaracionDetalle = pedidoModal.aclaracionDetalle;
+                $scope.listaDetallesPedido.push(d); 
+            }
+            
             $scope.pedidoModal = {};
             $('#myModal').modal('hide');
         }
