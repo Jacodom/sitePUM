@@ -8,7 +8,7 @@
 .pedidos5{
     background-color: #EE3A39;
     color: white;
-    
+
 }
 .categorias{
     background-color: #E57D24;
@@ -17,6 +17,10 @@
 
 .affix {
     position: fixed;
+}
+
+.angular-google-map-container {
+  height: 400px;
 }
 
 
