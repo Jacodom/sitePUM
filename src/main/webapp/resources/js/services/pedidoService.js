@@ -52,7 +52,7 @@ myApp.factory('PedidoService', ['$http', '$q', function($http){
                 }
             }).then(function(response){
                 if(response.status == 200){
-                        response.data;
+                        return response.data;
                 }else{
                         return("error");
                 }

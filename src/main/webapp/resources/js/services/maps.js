@@ -7,7 +7,7 @@
  * # maps
  * Factory in the dashboardApp.
  */
-angular.module('dashboardApp')
+angular.module('myApp')
   .factory('factoryMaps', function () {
     var markerId = 0;
 

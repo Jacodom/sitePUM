@@ -102,5 +102,9 @@ myApp.controller('PedidoCtrl', [
             $('#myModal').modal('hide');
         }
 
+        
+        $scope.guardarPedido = function(listaDetallesPedido){
+            alert(listaDetallesPedido);
+        }
 
 }]);
