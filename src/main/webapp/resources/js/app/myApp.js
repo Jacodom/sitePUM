@@ -11,6 +11,10 @@ myApp.config(['$routeProvider', 'uiGmapGoogleMapApiProvider', function ($routePr
             templateUrl: "/views/gestionarPedido.html",
             controller: "PedidoCtrl"
         })
+        .when('/map',{
+            templateUrl: "views/maps.html",
+            controller: "MapsCtrl"
+        })
         .otherwise({
             redirectTo: "/"
         });
