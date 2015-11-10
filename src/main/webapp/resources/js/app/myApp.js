@@ -1,6 +1,6 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute','uiGmapgoogle-maps']);
 
-myApp.config(['$routeProvider', function ($routeProvider) {
+myApp.config(['$routeProvider', function ($routeProvider,uiGmapgoogle-maps) {
     $routeProvider
         .when('/',
         {
@@ -13,11 +13,14 @@ myApp.config(['$routeProvider', function ($routeProvider) {
         })
         .otherwise({
             redirectTo: "/"
-        })
+        });
+        uiGmapGoogleMapApiProvider.configure({
+            v: '3.20', //defaults to latest 3.X anyhow
+            libraries: 'weather,geometry,visualization'
+        });
+
 }]);
 
 myApp.run(['$anchorScroll', function($anchorScroll) {
       $anchorScroll.yOffset = 75;   // always scroll by 50 extra pixels
     }]);
-
-
