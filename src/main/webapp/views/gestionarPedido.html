@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="contenido">
         <div class="row">
-            <div class="col-sm-3 col-md-2 col-lg-2">
+            <div class="col-sm-12 col-md-2 col-lg-2">
                 <div class="sidebar affix">
                     <div class="list-group">
                         <span href="#" class="list-group-item categorias">Categorias</span>
@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 col-sm-6 col-lg-8">
+            <div class="col-sm-6 col-md-8 col-lg-8">
                 <div ng-repeat="categoria in listaCategorias | orderBy: 'nombreCategoria' | filter:filtro">
                     <section class="anchor" id="{{categoria.nombreCategoria}}">
                     </section>
@@ -38,7 +38,7 @@
                         </div>
                 </div>
             </div>
-            <div class="col-md-2 col-sm-3 col-lg-2">
+            <div class="col-sm-12 col-md-2 col-lg-2">
                 <div class="col-md-2 col-sm-3 col-lg-2">
                     <div class="sidebar affix">
                         <div class="well">
