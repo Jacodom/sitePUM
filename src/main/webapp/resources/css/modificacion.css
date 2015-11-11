@@ -58,11 +58,31 @@
     color: white;
 }
 
+
+.detallePedido{
+    height: 250px;
+    width: 300px;   
+    cursor: pointer;
+}
+
 .angular-google-map-container {
   height: 400px;
 }
 
+header .fa-trash {
+    font-size: 18px;
+    color: gray;
+}
 
+header .fa-trash:hover {
+    color: red;
+}
+
+.scrollContainer {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
 
 section.anchor{padding-top: 100px ,visibility: hidden;}
 

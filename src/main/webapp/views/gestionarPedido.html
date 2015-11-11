@@ -59,19 +59,34 @@
                 
             <!--Detalle de pedido -->
             <div class="col-xs-12 col-md-4 col-lg-4">
-                    <div class="sidebar affix">
-                        <div class="well">
-                            <div class="text-center">
-                                <h5>Pedido</h5>
+                    <div class="sidebar affix detallePedido">
+                        
+                            <div class="well">
+                                <header>
+                                    <span>Pedido</span>
+                                    <i class="fa fa-trash pull-right"></i>
+                                </header>
+                                <div class="scrollContainer">
+                                    <div class="scrollContent">
+                                        <ul class="list-group">
+                                            <li class="list-group-item" ng-repeat="detalle in listaDetallesPedido track by $index">
+                                                <div class="textPedido">
+                                                    <p>{{detalle.nombrePlato}}</p>
+                                                    <p>{{detalle.aclaracionDetalle}}</p>
+                                                </div>
+                                                <div class="modificacionPedido">
+                                                    <select class="form-control">
+                                                        Cant:{{detalle.cantidadDetalle}}
+                                                    </select>
+                                                    <span>${{detalle.subtotalDetalle}} </span>
+                                                </div>   
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                                <ul class="list-group">
-                                    <li class="list-group-item" ng-repeat="detalle in listaDetallesPedido track by $index">
-                                        {{detalle.nombrePlato}}  |   
-                                        Cant:{{detalle.cantidadDetalle}} - {{detalle.subtotalDetalle}}
-                                        <em>{{detalle.aclaracionDetalle}}</em>
-                                    </li>
-                                </ul>
-                        </div>
+                        
+
                         <div class="btns">
                             <button class="btn btn-primary" ng-click="guardarPedido(listaDetallesPedido)">
                                 <i class="fa fa-floppy-o"></i>
