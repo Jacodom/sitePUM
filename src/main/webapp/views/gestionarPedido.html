@@ -1,7 +1,9 @@
 <div class="container-fluid">
     <div class="contenido">
         <div class="row">
-            <div class="col-sm-12 col-md-2 col-lg-2">
+            
+            <!--filtro de categorias -->
+            <div class="col-xs-12 col-md-4 col-lg-2">
                 <div class="sidebar affix">
                     <div class="list-group">
                         <span class="list-group-item categorias">Categorias</span>
@@ -13,17 +15,32 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-6">
+            
+            <!--locales-->
+            <div class="col-xs-12 col-md-6 col-lg-6">
                 <div ng-repeat="categoria in listaCategorias | orderBy: 'nombreCategoria' | filter:filtro">
                     <section class="anchor" id="{{categoria.nombreCategoria}}">
                     </section>
-                    <h1>{{categoria.nombreCategoria}}</h1>
+                    <h1 class="categoryLead">{{categoria.nombreCategoria}}</h1>
                         <div class="row">
-                            <div ng-repeat="plato in platosMenu | filter: {categoria : categoria.nombreCategoria} | filter:filtro" class="col-lg-4 col-md-4 col-xs-12">
-                                <div class="thumbnail">
-                                    <img src="../resources/img/resto.png"/>
-                                    <div class="row text-center">
-                                        <div class="col-md-12 col-xs-12">
+                            <div ng-repeat="plato in platosMenu | filter: {categoria : categoria.nombreCategoria} | filter:filtro" class="col-lg-6 col-md-6 col-xs-6">
+                                <div class="thumbnail" ng-click="abrirModal(plato)" data-toggle="modal" data-target="#myModal">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-8 col-lg-8">
+                                            <div class="infoPlate">
+                                                <h4>{{plato.nombrePlato}}</h4>
+                                                <p>{{plato.descPlato}}</p>
+                                                <i class="fa fa-clock-o"></i> {{plato.coccionPlato}} mins
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-4 col-lg-4">
+                                            <div class="infoPlate">
+                                                <span class="price">${{plato.precioPlato}}</span>
+                                                <i class="fa fa-plus-circle addPlate"></i>
+                                            </div>
+                                        </div>
+<!--
+                                    <div class="text-center">
                                             <h4>{{plato.nombrePlato}}</h4>
                                             <h4>{{plato.descPlato}}</h4>
                                             <h4>{{plato.coccionPlato}}</h4>
@@ -31,15 +48,17 @@
                                             <button ng-click="abrirModal(plato)" data-toggle="modal" data-target="#myModal">
                                                 <i class="fa fa-plus-circle"></i>
                                             </button>
-                                        </div>
+                                    </div>
+-->
                                     </div>
                                 </div>
                             </div>
                         </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-4 col-lg-2">
-                <div class="col-md-2 col-sm-3 col-lg-2">
+                
+            <!--Detalle de pedido -->
+            <div class="col-xs-12 col-md-4 col-lg-4">
                     <div class="sidebar affix">
                         <div class="well">
                             <div class="text-center">
@@ -60,7 +79,6 @@
                             </button>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
 
@@ -79,7 +97,7 @@
           <div class="modal-body">
             <h1>Detalle de Pedido</h1>
                 <div class="row">
-                  <div class="col-md-8 col-sm-12 col-lg-8">
+                  <div class="col-md-8 col-xs-12 col-lg-8">
                     <h2>Aclaración</h2>
                     <textarea class="form-control" ng-model="pedidoModal.aclaracionDetalle"></textarea>
                   </div>
