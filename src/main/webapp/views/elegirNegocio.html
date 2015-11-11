@@ -1,14 +1,16 @@
     <div class="container-fluid">
         <div class="contenido">
             <div class="row">
-                <div class="col-sm-3 col-md-2 sidebar">
-                    <div  class="list-group">
-                        <span class="list-group-item categorias">Categorias</span>
-                       <input class="list-group-item" type="text" placeholder="Buscar" ng-model="filtro">
-                        <a ng-repeat="categoria in listaCategorias" href="" ng-click="setCategoria()"  class="list-group-item">
-                            <i ng-class="isChecked(categoria.idCategoria)"></i> {{categoria.nombreCategoria}}
-                        </a>
+                <div class="col-sm-3 col-md-2">
+                    <div class="sidebar affix">
+                        <div class="list-group">
+                            <span class="list-group-item categorias">Categorias</span>
+                           <input class="list-group-item" type="text" placeholder="Buscar" ng-model="filtro">
+                            <a ng-repeat="categoria in listaCategorias" href="" ng-click="setCategoria()"  class="list-group-item">
+                                <i ng-class="isChecked(categoria.idCategoria)"></i> {{categoria.nombreCategoria}}
+                            </a>
                         </div>
+                    </div>
                 </div>
                 <div class="col-md-8 col-sm-6"> <!--  -->
                     <div class="row">
@@ -36,10 +38,4 @@
                 </div>
             </div>
         </div>
-</div>
-<div class="footer navbar-fixed-bottom">
-    <div class="container">
-        <p class="text-center">Desarrollado por @Jacobo y @Pablo</p>    
-    </div>
-    
 </div>

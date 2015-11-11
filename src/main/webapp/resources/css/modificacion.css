@@ -2,7 +2,6 @@
     padding-top: 70px;
 }
 .list-group:active {
-    background-color: red;
     color: aqua;
 }
 .pedidos5{
@@ -10,6 +9,12 @@
     color: white;
 
 }
+
+.list-group input{
+    width: 100%;
+}
+
+
 .categorias{
     background-color: #E57D24;
     color: white;

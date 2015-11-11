@@ -4,7 +4,7 @@
             <div class="col-sm-12 col-md-2 col-lg-2">
                 <div class="sidebar affix">
                     <div class="list-group">
-                        <span href="#" class="list-group-item categorias">Categorias</span>
+                        <span class="list-group-item categorias">Categorias</span>
                         <input class="list-group-item" type="text" placeholder="Buscar" ng-model="filtro">
                         <a ng-repeat="categoria in listaCategorias | orderBy: 'nombreCategoria'" class="list-group-item" ng-click="scrollTo(categoria.nombreCategoria)" href="">
                             <i class="fa fa-search"></i> 
@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-8 col-lg-8">
+            <div class="col-sm-6 col-md-6 col-lg-6">
                 <div ng-repeat="categoria in listaCategorias | orderBy: 'nombreCategoria' | filter:filtro">
                     <section class="anchor" id="{{categoria.nombreCategoria}}">
                     </section>
@@ -38,7 +38,7 @@
                         </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-2 col-lg-2">
+            <div class="col-sm-12 col-md-4 col-lg-2">
                 <div class="col-md-2 col-sm-3 col-lg-2">
                     <div class="sidebar affix">
                         <div class="well">
