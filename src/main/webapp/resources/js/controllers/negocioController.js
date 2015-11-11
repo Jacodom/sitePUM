@@ -22,10 +22,10 @@ myApp.filter('negociosFiltrados',[function(){
             return negocios;
         }
     };
-}]); 
-    
+}]);
+
 myApp.controller('NegocioCtrl',['$scope','NegocioService',function($scope, NegocioService){
-    
+
     $scope.categoriaSeleccionada = [];
     $scope.setCategoria = function(){
         var id = this.categoria.idCategoria;
@@ -37,7 +37,7 @@ myApp.controller('NegocioCtrl',['$scope','NegocioService',function($scope, Negoc
         }
         return false;
     };
-    
+
     $scope.isChecked =function(id){
         if(_.contains($scope.categoriaSeleccionada, id)){
             return 'fa fa-check-circle';
@@ -45,22 +45,21 @@ myApp.controller('NegocioCtrl',['$scope','NegocioService',function($scope, Negoc
         return 'fa fa-search';
     };
 
-    
+
     obtenerCategorias();
     //obtenerNegocios();
-    
+
     function obtenerCategorias(){
         NegocioService.obtenerCategorias().then(function(categorias){
             $scope.listaCategorias = categorias;
             obtenerNegocios();
         });
     }
-    
+
     function obtenerNegocios(){
         NegocioService.obtenerNegocios().then(function(negocios){
             $scope.listaNegocio = negocios;
         });
     }
-    
-}])
 
+}])
