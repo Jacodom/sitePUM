@@ -1,61 +1,39 @@
-<div class="nvar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" data-target=".navbar-ex1-collapse" data-toggle="collapse" class="navbar-toggle">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-             <a class="navbar-brand" href="/#">Pickupmeal</a>
-        </div>
-        <div class="navbar-collapse collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#/elegirNegocio">Elegir Negocio</a>
-                </li>
-                <li>
-                    <a href="#/map">Mapa</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a >Usuario</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-  </div>
-    <div class="container-fluid contenido">
-      <form>
-        <div class="form-group">
-          <div class="col-lg-6 col-sm-12">
-            <h1>Hola [Username]</h1>
-          </div>
-        </div>
-        <div class="form-group">
-            <h3>¿Esta es tu direccion?</h3>
-            <div class="col-lg-4 col-sm-8">
-              <label for="direccionPedido">Direccion</label>
-              <input type="text" class="form-control" id="direccionPedido">
-            </div>
-            <div class="col-lg-2 col-sm-4">
-              <button class="btn btn-primary"><i class="fa fa-pencil"></i> Modificar</button>
-            </div>
-        </div>
-        <div class="form-control">
-          <h3>¿Con cuanto abonás?</h3>
-          <div class="col-lg-4 col-sm-8">
-            <label for="abonaCon">Abona Con </label>
-            <a>$</a><input type="number" class="form-control" id="abonaCon">
-          </div>
-          <div class="col-lg-4 col-sm-4">
-            <label id="vuelto">Vuelto</label>
-          </div>
-        </div>
-      </div>
+<div class="container-fluid contenido">
+  <form role="form">
+              <div class="form-group">
+                  <h1 class="primatyTitle">Hola [Username]</h1>
+              </div>
+              <div class="form-group">
+                <h3 class="secondaryTitle">¿Esta es tu direccion?</h3>
+                <div class="row">
+                  <div class="col-lg-8 col-xs-8">
+                    <label for="direccionPedido">Direccion</label>
+                    <div class="form-inline">
+                      <input type="text" class="form-control input-fix" id="direccionPedido">
+                      <button class="btn btn-primary button-fix"><i class="fa fa-pencil"></i> Modificar</button>
+                    </div>
+                </div>
+                </div>
+              </div>
 
-
-
-      </form>
-    </div>
+              <div class="form-group">
+                <h3 class="secondaryTitle">¿Con cuanto abonás?</h3>
+                <div class="row">
+                  <div class="col-lg-4 col-sm-8">
+                    <label for="abonaCon">Abona Con </label>
+                    <input type="number" class="form-control input-fix" id="abonaCon">
+                  </div>
+                  <div class="col-lg-4 col-sm-4">
+                    <label for="vuelto">Vuelto</label>
+                    <span id="vuelto" >[vuelto]</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <h2 class="primatyTitle">Tiempo estimado: [Time] <i class="fa fa-clock-o"></i></h2>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-lg btn-primary"><i class="fa fa-paper-plane-o bounceOutRight animated"></i> Enviar</button>
+              </div>
+  </form>
+</div>

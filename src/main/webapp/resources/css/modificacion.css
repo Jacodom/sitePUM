@@ -91,3 +91,15 @@ section.anchor{padding-top: 100px ,visibility: hidden;}
         position: static;
     }
 }
+.button-fix{
+  width: 28%;
+}
+.form-control.input-fix{
+  width: 70%;
+}
+.primatyTitle{
+  font-style: bold;
+}
+.secondaryTitle{
+  font-style: oblique;
+}

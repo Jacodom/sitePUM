@@ -26,6 +26,7 @@
     "angular-route": "~1.4.1",
     "underscore": "~1.8.3",
     "angular-google-maps": "~2.2.1",
+    "animate.css": "~3.4.0",
     "perfect-scrollbar": "~0.6.7"
   }
 }
