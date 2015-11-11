@@ -24,11 +24,65 @@
     position: fixed;
 }
 
+.categoryLead {
+    margin-bottom: 15px;
+}
+
+.thumbnail{
+    cursor: pointer;
+    background-color: #ECECEC;
+}
+
+.thumbnail:hover{
+    background-color: #F5AB35;
+    -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.infoPlate{
+    padding: 10px 10px 10px 20px;
+}
+
+.infoPlate p {
+    font-style: italic;
+}
+
+.addPlate,
+.price{
+    font-size: 17px;
+}
+
+.addPlate:hover{
+    color: white;
+}
+
+
+.detallePedido{
+    height: 250px;
+    width: 300px;   
+    cursor: pointer;
+}
+
 .angular-google-map-container {
   height: 400px;
 }
 
+header .fa-trash {
+    font-size: 18px;
+    color: gray;
+}
 
+header .fa-trash:hover {
+    color: red;
+}
+
+.scrollContainer {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
 
 section.anchor{padding-top: 100px ,visibility: hidden;}
 
