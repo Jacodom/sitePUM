@@ -15,10 +15,14 @@ myApp.config(['$routeProvider', 'uiGmapGoogleMapApiProvider', function ($routePr
             templateUrl: "views/maps.html",
             controller: "MapsCtrl"
         })
+        .when('/enviarPedido',{
+          templateUrl: "views/enviarPedido.html",
+          controller: "EnviarPedidoCtrl"
+        })
         .otherwise({
             redirectTo: "/"
         });
-    
+
     uiGmapGoogleMapApiProvider.configure({
         v: '3.20', //defaults to latest 3.X anyhow            libraries: 'weather,geometry,visualization'
     });
