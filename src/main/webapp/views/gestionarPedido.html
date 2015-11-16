@@ -66,8 +66,7 @@
                                     <span>Pedido</span>
                                     <i class="fa fa-trash pull-right"></i>
                                 </header>
-                                <div class="scrollContainer">
-                                    <div class="scrollContent">
+                                <perfect-scrollbar wheel-propagation="false" wheel-speed="1" min-scrollbar-length="20" class="scrollContainer">
                                         <ul class="list-group">
                                             <li class="list-group-item" ng-repeat="detalle in listaDetallesPedido track by $index">
                                                 <div class="textPedido">
@@ -82,8 +81,7 @@
                                                 </div>   
                                             </li>
                                         </ul>
-                                    </div>
-                                </div>
+                                </perfect-scrollbar>
                             </div>
                         
 

@@ -79,9 +79,20 @@ header .fa-trash:hover {
 }
 
 .scrollContainer {
+    overflow-y: hidden;
     position: relative;
     display: inline-block;
     width: 100%;
+    height: auto;
+    max-height: 250px;
+}
+
+.scrollContent{
+    height: auto;
+}
+
+.scrollContent > *{
+    padding: 0;
 }
 
 section.anchor{padding-top: 100px ,visibility: hidden;}

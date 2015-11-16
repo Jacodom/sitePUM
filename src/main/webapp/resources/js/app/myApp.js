@@ -1,6 +1,7 @@
 var myApp = angular.module('myApp', [
     'ui.router',
-    'uiGmapgoogle-maps'
+    'uiGmapgoogle-maps',
+    'perfect_scrollbar'
 ]);
 
 myApp.config(['$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvider', function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
