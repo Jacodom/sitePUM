@@ -11,7 +11,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvide
     $stateProvider
         .state('elegirNegocio',
         {
-            url: '/elegirNegocio',
+            url: '/',
             templateUrl: "/views/elegirNegocio.html",
             controller: "NegocioCtrl"
         })
@@ -26,11 +26,10 @@ myApp.config(['$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvide
             controller: "MapsCtrl"
         })
         .state('enviarPedido',{
-            url: "/gestionarPedido/enviarPedido",
+            url: "/enviarPedido",
             templateUrl: "views/enviarPedido.html",
             controller: "EnviarPedidoCtrl"
-        })
-    });
+        });
 
     uiGmapGoogleMapApiProvider.configure({
         v: '3.20', //defaults to latest 3.X anyhow            libraries: 'weather,geometry,visualization'

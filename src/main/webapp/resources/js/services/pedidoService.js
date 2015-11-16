@@ -3,6 +3,9 @@ var myApp = angular.module('myApp');
 
 myApp.factory('PedidoService', ['$http', '$q', function($http){
     
+    
+    var p = {};
+    
     return {
         
         obtenerCategoriasNegocio : function(parametroIdNegocio){
@@ -77,6 +80,14 @@ myApp.factory('PedidoService', ['$http', '$q', function($http){
                 }
             });
             
+        },
+        
+        agregarPedidoEnvio : function(pedido){
+            p = pedido;
+        },
+        
+        obtenerPedidoEnvio : function(){
+            return p;
         }
     }    
 }]);

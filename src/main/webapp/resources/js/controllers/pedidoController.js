@@ -5,9 +5,10 @@ myApp.controller('PedidoCtrl', [
     'PedidoService',
     '$location',
     '$anchorScroll',
-    '$routeParams',
-    function($scope, PedidoService, $location, $anchorScroll, $routeParams){
-        $scope.idNegocio = $routeParams.idNegocio;
+    '$stateParams',
+    '$state',
+    function($scope, PedidoService, $location, $anchorScroll, $stateParams, $state){
+        $scope.idNegocio = $stateParams.idNegocio;
         $scope.listaDetallesPedido = [];
         $scope.platoModal = {};
         $scope.cantidades = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
@@ -16,7 +17,6 @@ myApp.controller('PedidoCtrl', [
             $scope.obtenerNegocio($scope.idNegocio);
             $scope.obtenerCategoriasNegocio($scope.idNegocio);
             $scope.obtenerMenuActivo($scope.idNegocio);
-           // obtenerPlatosMenu($scope.menuActivo);
         }
 
         $scope.obtenerNegocio = function(idNegocio){
@@ -104,7 +104,10 @@ myApp.controller('PedidoCtrl', [
 
         
         $scope.guardarPedido = function(listaDetallesPedido){
-            alert(listaDetallesPedido);
+            var pedido = {};
+            pedido.listaDetallesPedido = listaDetallesPedido;
+            PedidoService.agregarPedidoEnvio(pedido);
+            $state.go('enviarPedido');
         }
 
 }]);
