@@ -1,27 +1,36 @@
-var myApp = angular.module('myApp', ['ngRoute','uiGmapgoogle-maps']);
+var myApp = angular.module('myApp', [
+    'ui.router',
+    'uiGmapgoogle-maps'
+]);
 
-myApp.config(['$routeProvider', 'uiGmapGoogleMapApiProvider', function ($routeProvider, uiGmapGoogleMapApiProvider) {
-    $routeProvider
-        .when('/',
+myApp.config(['$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvider', function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
+    
+    
+    $urlRouterProvider.otherwise("/");
+    
+    $stateProvider
+        .state('elegirNegocio',
         {
+            url: '/elegirNegocio',
             templateUrl: "/views/elegirNegocio.html",
             controller: "NegocioCtrl"
         })
-        .when('/gestionarPedido/:idNegocio', {
+        .state('gestionarPedido', {
+            url: "/gestionarPedido/:idNegocio",
             templateUrl: "/views/gestionarPedido.html",
             controller: "PedidoCtrl"
         })
-        .when('/map',{
+        .state('map',{
+            url: "/map",
             templateUrl: "views/maps.html",
             controller: "MapsCtrl"
         })
-        .when('/enviarPedido',{
-          templateUrl: "views/enviarPedido.html",
-          controller: "EnviarPedidoCtrl"
+        .state('enviarPedido',{
+            url: "/gestionarPedido/enviarPedido",
+            templateUrl: "views/enviarPedido.html",
+            controller: "EnviarPedidoCtrl"
         })
-        .otherwise({
-            redirectTo: "/"
-        });
+    });
 
     uiGmapGoogleMapApiProvider.configure({
         v: '3.20', //defaults to latest 3.X anyhow            libraries: 'weather,geometry,visualization'
