@@ -11,7 +11,7 @@
                     <label for="direccionPedido">Direccion</label>
                     <div class="form-inline">
                       <input type="text" class="form-control input-fix" id="direccionPedido">
-                      <button class="btn btn-primary button-fix"><i class="fa fa-pencil"></i> Modificar</button>
+                      <button class="btn btn-primary button-fix" ng-click="abrirModal()" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i> Modificar</button>
                     </div>
                 </div>
                 </div>
@@ -37,4 +37,42 @@
                 <button class="btn btn-lg btn-primary"><i class="fa fa-paper-plane-o bounceOutRight animated"></i> Enviar</button>
               </div>
   </form>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Direccion</h4>
+          <div class="modal-body">
+            <div container>
+              <div class="row">
+                <div class="col-lg-7">
+                  <input class="form-control" id="searchBox" type="text" placeholder="Mitre 120, Rosario, Santa Fe, Argentina" ng-model="address"/>
+                </div>
+                <div class="col-lg-2">
+                  <button class="btn btn-success" ng-click="addAddress()">Buscar <i class="fa fa-search"></i></button>
+                </div>
+                <div class="col-lg-1">
+                  <button class="btn btn-primary" ng-click="addCurrentLocation()">Localizar! <i class="fa fa-map-marker"></i></button>
+                </div>
+              </div>
+            </div>
+            <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" control="map.control" options="map.options">
+              <ui-gmap-marker ng-repeat="m in map.markers" coords="m.coords"
+              icon="m.icon" idkey="m.id" options="m.options"></ui-gmap-marker>
+            </ui-gmap-google-map>
+            <br>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </div>
