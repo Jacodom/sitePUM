@@ -2,14 +2,14 @@ var myApp = angular.module('myApp');
 
 
 myApp.factory('PedidoService', ['$http', '$q', function($http){
-    
-    
+
+
     var p = {};
-    
+
     return {
-        
+
         obtenerCategoriasNegocio : function(parametroIdNegocio){
-        
+
             return $http({
                     method: "GET",
                     url: "/gestionarPedido/obtenerCategoriasNegocio",
@@ -23,11 +23,11 @@ myApp.factory('PedidoService', ['$http', '$q', function($http){
                         return("error");
                     }
             });
-        
+
         },
-                              
+
         obtenerMenuActivo : function(parametroIdNegocio){
-                              
+
 
             return $http({
                     method: "GET",
@@ -43,10 +43,10 @@ myApp.factory('PedidoService', ['$http', '$q', function($http){
                     }
                 });
         },
-                              
+
         obtenerPlatosMenu : function(menuActivoParametro){
-                                                
-        
+
+
             return $http({
                 method: "GET",
                 url: "/gestionarPedido/obtenerPlatosMenu",
@@ -62,9 +62,9 @@ myApp.factory('PedidoService', ['$http', '$q', function($http){
             });
 
         },
-        
+
         obtenerNegocio : function(parametroIdNegocio){
-            
+
 
             return $http({
                 method: "GET",
@@ -79,14 +79,14 @@ myApp.factory('PedidoService', ['$http', '$q', function($http){
                     return response.error;
                 }
             });
-            
+
         },
-        
+
         guardarPedido : function(pedido){
             return $http({
                 method: "POST",
                 url: "/gestionarPedido/guardarPedido",
-                data: pedido;
+                data: pedido
             }).then(function(response){
                 if(response.status == 200){
                     return true;
@@ -94,14 +94,14 @@ myApp.factory('PedidoService', ['$http', '$q', function($http){
                     return false;
                 }
             });
-        }
-        
+        },
+
         agregarPedidoEnvio : function(pedido){
             p = pedido;
         },
-        
+
         obtenerPedidoEnvio : function(){
             return p;
         }
-    }    
+    }
 }]);
