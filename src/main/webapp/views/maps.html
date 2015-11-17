@@ -1,4 +1,11 @@
-<h2>Dirección</h2>
+
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+  </button>
+      <div class="modal-title"><h4>Direccion</h4></div>
+</div>
+<div class="modal-body">
 <div class="container padding">
   <div class="row">
     <div class="col-lg-8">
@@ -17,3 +24,4 @@
   <ui-gmap-marker ng-repeat="m in map.markers" coords="m.coords"
   icon="m.icon" idkey="m.id" options="m.options"></ui-gmap-marker>
 </ui-gmap-google-map>
+</div>

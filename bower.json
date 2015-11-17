@@ -29,6 +29,7 @@
     "animate.css": "~3.4.0",
     "perfect-scrollbar": "~0.6.7",
     "angular-ui-router": "~0.2.15",
-    "angular-perfect-scrollbar": "~0.0.4"
+    "angular-perfect-scrollbar": "~0.0.4",
+    "angular-bootstrap": "~0.14.3"
   }
 }
