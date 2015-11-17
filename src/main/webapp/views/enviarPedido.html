@@ -10,8 +10,8 @@
                   <div class="col-lg-8 col-xs-8">
                     <label for="direccionPedido">Direccion</label>
                     <div class="form-inline">
-                      <input type="text" class="form-control input-fix" id="direccionPedido">
-                      <button class="btn btn-primary button-fix" ng-click="abrirModal()" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i> Modificar</button>
+                      <input type="text" class="form-control input-fix" id="direccionPedido" ng-model="direccion">
+                      <button class="btn btn-primary button-fix" ng-click="abrirModal(direccion)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i> Modificar</button>
                     </div>
                 </div>
                 </div>
@@ -67,6 +67,9 @@
               icon="m.icon" idkey="m.id" options="m.options"></ui-gmap-marker>
             </ui-gmap-google-map>
             <br>
+            <div class="modal-footer">
+              <button class="btn btn-success" data-dismiss="modal" ng-click="modificarDire(address)">Modificar</button>
+            </div>
 
           </div>
         </div>
