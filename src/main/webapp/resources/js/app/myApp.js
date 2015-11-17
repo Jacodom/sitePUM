@@ -1,13 +1,14 @@
 var myApp = angular.module('myApp', [
     'ui.router',
-    'uiGmapgoogle-maps'
+    'uiGmapgoogle-maps',
+    'ui.bootstrap'
 ]);
 
 myApp.config(['$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvider', function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
-    
-    
+
+
     $urlRouterProvider.otherwise("/");
-    
+
     $stateProvider
         .state('elegirNegocio',
         {
