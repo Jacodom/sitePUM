@@ -66,24 +66,27 @@
                                     <span>Pedido</span>
                                     <i class="fa fa-trash pull-right"></i>
                                 </header>
-                                <div class="scrollContainer">
-                                    <div class="scrollContent">
-                                        <ul class="list-group">
-                                            <li class="list-group-item" ng-repeat="detalle in listaDetallesPedido track by $index">
-                                                <div class="textPedido">
-                                                    <p>{{detalle.nombrePlato}}</p>
-                                                    <p>{{detalle.aclaracionDetalle}}</p>
+                                <perfect-scrollbar wheel-propagation="false" wheel-speed="1" min-scrollbar-length="20" suppressScrollX="true" class="scrollContainer">
+                                    <ul>
+                                        <li ng-repeat="detalle in listaDetallesPedido track by $index">
+                                            <div class="detalleContainer">
+                                                <div class="col-lg-6">
+                                                    <div class="textPedido">
+                                                        <p class="plateName">{{detalle.nombrePlato}}</p>
+                                                        <p class="plateAclaracion">{{detalle.aclaracionDetalle}}<p>
+                                                    </div>
                                                 </div>
-                                                <div class="modificacionPedido">
-                                                    <select class="form-control">
-                                                        Cant:{{detalle.cantidadDetalle}}
-                                                    </select>
-                                                    <span>${{detalle.subtotalDetalle}} </span>
-                                                </div>   
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="modificacionPedido">
+                                                        <select class="form-control" ng-model="detalle.cantidadDetalle" ng-options="c for c in cantidades">
+                                                        </select>
+                                                        <span>${{detalle.subtotalDetalle}} </span>
+                                                    </div>   
+                                                </div>
+                                            </div>    
+                                        </li>
+                                    </ul>
+                                </perfect-scrollbar>
                             </div>
                         
 
@@ -91,6 +94,10 @@
                             <button class="btn btn-primary" ng-click="guardarPedido(listaDetallesPedido)">
                                 <i class="fa fa-floppy-o"></i>
                                     Guardar
+                            </button>
+                            <button class="btn btn-primary" ng-click="enviarPedido(listaDetallesPedido)">
+                                <i class="fa fa-paper-plane"></i>
+                                    Enviar
                             </button>
                         </div>
                     </div>
