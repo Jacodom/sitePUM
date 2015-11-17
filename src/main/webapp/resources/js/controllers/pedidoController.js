@@ -113,6 +113,8 @@ myApp.controller('PedidoCtrl', [
         $scope.enviarPedido = function(listaDetallesPedido){
             
             //etc
+            //implementar JWT y en el caso que este OK --> enviarPedido
+            //si está mal, enviar al estado LOGIN.
             var pedido = {};
             pedido.listaDetallesPedido = listaDetallesPedido;
             PedidoService.agregarPedidoEnvio(pedido);
