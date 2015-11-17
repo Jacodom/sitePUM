@@ -61,7 +61,7 @@
 
 .detallePedido{
     height: 250px;
-    width: 300px;   
+    width: 350px;   
     cursor: pointer;
 }
 
@@ -87,13 +87,48 @@ header .fa-trash:hover {
     max-height: 250px;
 }
 
-.scrollContent{
-    height: auto;
+
+
+.scrollContainer ul{
+    padding-left: 0px;  
+    padding-top: 20px;
+    border-top: solid 2px #eeeeee
 }
 
-.scrollContent > *{
-    padding: 0;
+.scrollContainer li{
+    list-style: none;
 }
+
+.detallePedido header{
+    margin-bottom: 10px;
+}
+
+
+
+.textPedido > *{
+    padding-bottom: 3px;
+    padding-top: 3px;
+    margin-bottom: 0px;
+}
+
+.plateName{
+    font-size: 16px;
+}
+
+.plateAclaracion {
+    font-style: italic;
+}
+
+.scrollContainer select{
+    display: inline-block;
+    width: 60px;
+} 
+
+.modificacionPedido span{
+    display: inline-block;
+    margin-left: 10px;
+}
+
 
 section.anchor{padding-top: 100px ,visibility: hidden;}
 

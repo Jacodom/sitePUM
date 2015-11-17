@@ -101,9 +101,15 @@ myApp.controller('PedidoCtrl', [
             $scope.pedidoModal = {};
             $('#myModal').modal('hide');
         }
-
         
         $scope.guardarPedido = function(listaDetallesPedido){
+            ///
+        }
+
+        
+        $scope.enviarPedido = function(listaDetallesPedido){
+            
+            //etc
             var pedido = {};
             pedido.listaDetallesPedido = listaDetallesPedido;
             PedidoService.agregarPedidoEnvio(pedido);

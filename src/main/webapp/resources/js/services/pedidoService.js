@@ -82,6 +82,20 @@ myApp.factory('PedidoService', ['$http', '$q', function($http){
             
         },
         
+        guardarPedido : function(pedido){
+            return $http({
+                method: "POST",
+                url: "/gestionarPedido/guardarPedido",
+                data: pedido;
+            }).then(function(response){
+                if(response.status == 200){
+                    return true;
+                }else{
+                    return false;
+                }
+            });
+        }
+        
         agregarPedidoEnvio : function(pedido){
             p = pedido;
         },
