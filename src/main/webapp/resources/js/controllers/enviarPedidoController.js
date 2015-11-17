@@ -9,10 +9,15 @@ myApp.controller('EnviarPedidoCtrl', [
     function(factoryMaps,$scope, PedidoService, $location, $anchorScroll, $stateParams, $state){
         $scope.pedido = PedidoService.obtenerPedidoEnvio()
 
+        $scope.modificarDire = function(address) {
+          console.log(address);
+          
+        }
 
-        $scope.abrirModal = function(){
+        $scope.abrirModal = function(direccion){
             $scope.direccion = {};
             $scope.direccion = direccion;
+            console.log(direccion);
         };
         factoryMaps.createByCoords(-33.333333, -60.216667, function (marker) {
             marker.options.labelContent = 'Pickupmeal';
