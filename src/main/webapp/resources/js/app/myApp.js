@@ -1,6 +1,7 @@
 var myApp = angular.module('myApp', [
     'ui.router',
     'uiGmapgoogle-maps',
+    'perfect_scrollbar',
     'ui.bootstrap'
 ]);
 

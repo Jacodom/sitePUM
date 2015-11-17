@@ -7,7 +7,7 @@ myApp.controller('EnviarPedidoCtrl', [
     'PedidoService',
     '$state',
     function(factoryMaps,$scope, PedidoService, $location, $anchorScroll, $stateParams, $state){
-        $scope.pedido = PedidoService.obtenerPedidoEnvio()
+        $scope.pedido = PedidoService.obtenerPedidoEnvio();
 
         $scope.modificarDire = function(address) {
           console.log(address);

@@ -12,6 +12,9 @@ myApp.controller('PedidoCtrl', [
         $scope.listaDetallesPedido = [];
         $scope.platoModal = {};
         $scope.cantidades = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+        $scope.pedido = {};
+        $scope.pedido.listaDetalles = [];
+        
 
         $scope.cargarPagina = function(){
             $scope.obtenerNegocio($scope.idNegocio);
@@ -81,7 +84,7 @@ myApp.controller('PedidoCtrl', [
             $scope.e = false;
             $scope.listaDetallesPedido.forEach(function (detalle, index) {
                 if(detalle.idPlato == $scope.platoModal.idPlato){
-
+                    
                     detalle.cantidadDetalle += parseInt(pedidoModal.cantidadDetalle);
                     detalle.subtotalDetalle = parseFloat($scope.platoModal.precioPlato*detalle.cantidadDetalle);
                     $scope.e = true;
@@ -101,9 +104,17 @@ myApp.controller('PedidoCtrl', [
             $scope.pedidoModal = {};
             $('#myModal').modal('hide');
         }
-
         
         $scope.guardarPedido = function(listaDetallesPedido){
+            
+        }
+
+        
+        $scope.enviarPedido = function(listaDetallesPedido){
+            
+            //etc
+            //implementar JWT y en el caso que este OK --> enviarPedido
+            //si está mal, enviar al estado LOGIN.
             var pedido = {};
             pedido.listaDetallesPedido = listaDetallesPedido;
             PedidoService.agregarPedidoEnvio(pedido);
