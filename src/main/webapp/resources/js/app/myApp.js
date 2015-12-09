@@ -7,8 +7,18 @@ var myApp = angular.module('myApp', [
     'toastr'
 ]);
 
-myApp.config(['$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvider', function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
+myApp.config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider, toastrConfig) {
 
+      angular.extend(toastrConfig, {
+        autoDismiss: false,
+        containerId: 'toast-container',
+        maxOpened: 0,
+        newestOnTop: true,
+        positionClass: 'toast-bottom-right',
+        preventDuplicates: true,
+        preventOpenDuplicates: true,
+        target: 'body'
+      });
 
     $urlRouterProvider.otherwise("/");
 
@@ -39,9 +49,10 @@ myApp.config(['$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvide
         v: '3.20', //defaults to latest 3.X anyhow            libraries: 'weather,geometry,visualization'
     });
     
+
     
 
-}]);
+});
 
 myApp.run(['$anchorScroll', function($anchorScroll) {
       $anchorScroll.yOffset = 75;   // always scroll by 50 extra pixels
