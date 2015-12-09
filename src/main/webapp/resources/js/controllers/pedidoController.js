@@ -130,9 +130,9 @@ myApp.controller('PedidoCtrl', [
             $scope.pedido.listaDetalles = listaDetallesPedido;
             $scope.pedido.totalPedido = $scope.calcularTotalPedido();
             if(PedidoService.guardarPedido($scope.pedido)){
-                toastr.success('Atencion!', "Tu pedido se guardó con éxito!");
+                toastr.success("Tu pedido se guardó con éxito!",'Atencion!');
             }else{
-                toastr.error('Atencion!', "tu pedido no pudo guardarse!");
+                toastr.error("Tu pedido no pudo guardarse!",'Atencion!');
             }
         }
 
