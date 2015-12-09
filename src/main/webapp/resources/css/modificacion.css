@@ -61,7 +61,7 @@
 
 .detallePedido{
     height: 250px;
-    width: 350px;   
+    width: 350px;
     cursor: pointer;
 }
 
@@ -90,7 +90,7 @@ header .fa-trash:hover {
 
 
 .scrollContainer ul{
-    padding-left: 0px;  
+    padding-left: 0px;
     padding-top: 20px;
     border-top: solid 2px #eeeeee
 }
@@ -122,7 +122,7 @@ header .fa-trash:hover {
 .scrollContainer select{
     display: inline-block;
     width: 60px;
-} 
+}
 
 .modificacionPedido span{
     display: inline-block;
@@ -148,4 +148,7 @@ section.anchor{padding-top: 100px ,visibility: hidden;}
 }
 .secondaryTitle{
   font-style: oblique;
+}
+.mapubi{
+  margin-top: 10px;
 }
