@@ -11,7 +11,7 @@ myApp.controller('EnviarPedidoCtrl', [
 
         $scope.modificarDire = function(address) {
           console.log(address);
-          
+
         }
 
         $scope.abrirModal = function(direccion){
@@ -19,10 +19,11 @@ myApp.controller('EnviarPedidoCtrl', [
             $scope.direccion = direccion;
             console.log(direccion);
         };
-        factoryMaps.createByCoords(-33.333333, -60.216667, function (marker) {
+        // factory maps esta en service maps.js
+      /*  factoryMaps.createByCoords(-33.333333, -60.216667, function (marker) {
             marker.options.labelContent = 'Pickupmeal';
             $scope.PickupmealMarker = marker;
-        });
+        });*/
 
         $scope.address = '';
         function autocomplete() {
