@@ -3,6 +3,7 @@ var myApp = angular.module('myApp', [
     'uiGmapgoogle-maps',
     'perfect_scrollbar',
     'ui.bootstrap',
+    'ngAnimate',
     'toastr'
 ]);
 
