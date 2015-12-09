@@ -1,4 +1,4 @@
-<div class="container-fluid contenido">
+<div class="container contenido">
     <pre>{{pedido}}</pre>
   <form role="form">
               <div class="form-group">
@@ -49,7 +49,7 @@
           </button>
           <h4 class="modal-title" id="myModalLabel">Direccion</h4>
           <div class="modal-body">
-            <div container>
+            <div>
               <div class="row">
                 <div class="col-lg-7">
                   <input class="form-control" id="searchBox" type="text" placeholder="Mitre 120, Rosario, Santa Fe, Argentina" ng-model="address"/>
@@ -62,7 +62,8 @@
                 </div>
               </div>
             </div>
-            <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" control="map.control" options="map.options">
+
+            <ui-gmap-google-map class="mapubi" center="map.center" zoom="map.zoom" draggable="true" control="map.control" options="map.options">
               <ui-gmap-marker ng-repeat="m in map.markers" coords="m.coords"
               icon="m.icon" idkey="m.id" options="m.options"></ui-gmap-marker>
             </ui-gmap-google-map>
