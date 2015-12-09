@@ -2,7 +2,8 @@ var myApp = angular.module('myApp', [
     'ui.router',
     'uiGmapgoogle-maps',
     'perfect_scrollbar',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'toastr'
 ]);
 
 myApp.config(['$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvider', function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
@@ -36,6 +37,9 @@ myApp.config(['$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvide
     uiGmapGoogleMapApiProvider.configure({
         v: '3.20', //defaults to latest 3.X anyhow            libraries: 'weather,geometry,visualization'
     });
+    
+    
+
 }]);
 
 myApp.run(['$anchorScroll', function($anchorScroll) {
