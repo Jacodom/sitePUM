@@ -38,7 +38,7 @@ public class Plato implements Serializable{
     private Categoria categoria;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "plato")
-    private Set<DetallePedido> detallesPedido;
+    public Set<DetallePedido> detallesPedido;
 
     public int getIdPlato() {
         return idPlato;

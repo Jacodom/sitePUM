@@ -98,7 +98,7 @@ public class PedidoController {
     }
 
     @ResponseBody
-    @ResponseStatus(HttpStatus.OK)
+
     @RequestMapping(value = "/guardarPedido", method = RequestMethod.POST)
     public Boolean guardarPedido(@RequestBody DtoNewPedido newPedido){
         Pedido pedido = new Pedido();
@@ -118,6 +118,7 @@ public class PedidoController {
             detallePedido.setCantidadDetalle(detalle.getCantidadDetalle());
             detallePedido.setSubtotalDetalle(detalle.getSubtotalDetalle());
             detallePedido.setPlato(platoService.obtenerPlato(detalle.getIdPlato()));
+            //detallePedido.setPedido(pedido) ;
             listaDetallesPedido.add(detallePedido);
         }
 

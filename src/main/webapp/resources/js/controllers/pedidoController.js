@@ -7,13 +7,23 @@ myApp.controller('PedidoCtrl', [
     '$anchorScroll',
     '$stateParams',
     '$state',
-    function($scope, PedidoService, $location, $anchorScroll, $stateParams, $state){
+    'toastr',
+    function($scope, PedidoService, $location, $anchorScroll, $stateParams, $state, toastr){
         $scope.idNegocio = $stateParams.idNegocio;
         $scope.listaDetallesPedido = [];
         $scope.platoModal = {};
         $scope.cantidades = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
         $scope.pedido = {};
         $scope.pedido.listaDetalles = [];
+        $scope.tst = {};
+
+
+        
+        //cuestiones de testeo
+        $scope.usuario = {
+            idUsuario : 1,
+            username : "pepito"
+        }
         
 
         $scope.cargarPagina = function(){
@@ -105,8 +115,28 @@ myApp.controller('PedidoCtrl', [
             $('#myModal').modal('hide');
         }
         
-        $scope.guardarPedido = function(listaDetallesPedido){
+        $scope.calcularTotalPedido = function(){
+            var total = 0;
+            $scope.listaDetallesPedido.forEach(function(detalle, index){
+                total += detalle.subtotalDetalle;
+            });
             
+            return total;
+        }
+        
+        $scope.guardarPedido = function(listaDetallesPedido){
+            $scope.pedido.direccionPedido = "";
+            $scope.pedido.pagaconPedido = 0;
+            $scope.pedido.estadoPedido = "GUARDADO";
+            $scope.pedido.idUsuario = $scope.usuario.idUsuario;
+            $scope.pedido.idNegocio = $scope.idNegocio;
+            $scope.pedido.listaDetalles = listaDetallesPedido;
+            $scope.pedido.totalPedido = $scope.calcularTotalPedido();
+            if(PedidoService.guardarPedido($scope.pedido)){
+                toastr.success("Tu pedido se guardó con éxito!",'Atencion!', $scope.tst.options);
+            }else{
+                toastr.error("Tu pedido no pudo guardarse!",'Atencion!', $scope.tst.options);
+            }
         }
 
         
