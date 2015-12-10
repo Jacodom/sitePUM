@@ -88,7 +88,7 @@ myApp.factory('PedidoService', ['$http', '$q', function($http){
                 url: "/gestionarPedido/guardarPedido",
                 data: pedido
             }).then(function(response){
-                if(response.status == 200){
+                if(response == true){
                     return true;
                 }else{
                     return false;
