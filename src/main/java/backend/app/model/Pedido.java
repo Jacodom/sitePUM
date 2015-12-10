@@ -34,8 +34,8 @@ public class Pedido extends BaseModelEntity implements Serializable {
     @Column(name = "estado_pedido")
     private String estadoPedido;
 
-    @OneToMany(mappedBy = "pedido")
-    private Set<DetallePedido> detallePedidos = new HashSet<DetallePedido>();
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    public Set<DetallePedido> detallePedidos = new HashSet<DetallePedido>();
 
     @ManyToOne()
     private Negocio negocio;

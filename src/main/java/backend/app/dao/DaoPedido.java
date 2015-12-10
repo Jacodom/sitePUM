@@ -48,7 +48,7 @@ public class DaoPedido implements DaoBase {
     public Boolean guardarPedido(Pedido pedido){
         try{
             iniciarOperacion();
-            sesion.save(pedido);
+            sesion.merge(pedido);
             transaccion.commit();
         }catch (HibernateException he){
             manejarExcepcion(he);

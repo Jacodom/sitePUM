@@ -32,7 +32,7 @@ public class DetallePedido extends BaseModelEntity implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Plato plato;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Pedido pedido;
 
     public int getIdDetalle() {
