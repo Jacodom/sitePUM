@@ -27,11 +27,17 @@ myApp.config(['$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvide
             templateUrl: "views/maps.html",
             controller: "MapsCtrl"
         })
+        .state('Login',{
+            url: "/login",
+            templateUrl: "views/login.html",
+            controller: "LoginCtrl"
+        })
         .state('enviarPedido',{
             url: "/enviarPedido",
             templateUrl: "views/enviarPedido.html",
             controller: "EnviarPedidoCtrl"
         });
+
 
     uiGmapGoogleMapApiProvider.configure({
         v: '3.20', //defaults to latest 3.X anyhow            libraries: 'weather,geometry,visualization'

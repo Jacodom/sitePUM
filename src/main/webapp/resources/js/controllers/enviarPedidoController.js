@@ -8,7 +8,7 @@ myApp.controller('EnviarPedidoCtrl', [
     '$state',
     function(factoryMaps,$scope, PedidoService, $location, $anchorScroll, $stateParams, $state){
         $scope.pedido = PedidoService.obtenerPedidoEnvio();
-
+        
         $scope.modificarDire = function(address) {
           console.log(address);
 
@@ -20,6 +20,7 @@ myApp.controller('EnviarPedidoCtrl', [
             console.log(direccion);
         };
         // factory maps esta en service maps.js
+        factoryMaps.createByAddress
       /*  factoryMaps.createByCoords(-33.333333, -60.216667, function (marker) {
             marker.options.labelContent = 'Pickupmeal';
             $scope.PickupmealMarker = marker;
