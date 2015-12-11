@@ -145,7 +145,7 @@ header .fa-trash:hover {
 
 .totalDetalle {
     text-align: right;
-    padding: 10px 10px 38px 0px;
+    padding: 10px 38px 15px 0px;
 }
 
 .fa.eliminarProd {
@@ -154,6 +154,24 @@ header .fa-trash:hover {
     font-size: 16px;
 }
 
+.emptyPedido {
+    text-align: center;
+    color: #8C8989;
+    margin: 10px 10px;
+}
+
+.emptyPedido i {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.emptyPedido p {
+    margin-top: 5px;
+}
+
+.btns {
+    text-align: center;
+}
 
 section.anchor{padding-top: 100px ,visibility: hidden;}
 
