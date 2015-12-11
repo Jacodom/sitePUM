@@ -68,21 +68,29 @@
                                 </header>
                                 <perfect-scrollbar wheel-propagation="false" wheel-speed="1" min-scrollbar-length="20" suppressScrollX="true" class="scrollContainer">
                                     <ul>
-                                        <li ng-repeat="detalle in listaDetallesPedido track by $index">
+                                        <li class="lineDetail" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" ng-repeat="detalle in listaDetallesPedido track by $index">
                                             <div class="detalleContainer">
-                                                <div class="col-lg-6">
-                                                    <div class="textPedido">
-                                                        <p class="plateName">{{detalle.nombrePlato}}</p>
-                                                        <p class="plateAclaracion">{{detalle.aclaracionDetalle}}<p>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="textPedido">
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <p class="plateName">{{detalle.nombrePlato}}</p>
+                                                                    <p class="plateAclaracion">{{detalle.aclaracionDetalle}}<p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="modificacionPedido">
+                                                            <select class="form-control cantSelector" ng-model="detalle.cantidadDetalle" ng-options="c for c in cantidades">
+                                                            </select>
+                                                            <span ng-show="subMostrar">${{detalle.subtotalDetalle}} </span>
+                                                            <i ng-show="eliminarMostrar" class="fa fa-times-circle eliminarProd"></i>
+                                                        </div>   
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <div class="modificacionPedido">
-                                                        <select class="form-control" ng-model="detalle.cantidadDetalle" ng-options="c for c in cantidades">
-                                                        </select>
-                                                        <span>${{detalle.subtotalDetalle}} </span>
-                                                    </div>   
-                                                </div>
+                                                
                                             </div>    
                                         </li>
                                     </ul>

@@ -16,8 +16,10 @@ myApp.controller('PedidoCtrl', [
         $scope.pedido = {};
         $scope.pedido.listaDetalles = [];
         $scope.tst = {};
+        $scope.subMostrar = true;
+        $scope.eliminarMostrar = false;
 
-
+        
         
         //cuestiones de testeo
         $scope.usuario = {
@@ -66,7 +68,16 @@ myApp.controller('PedidoCtrl', [
             //reset to old to keep any additional routing logic from kicking in
             $location.hash(old);
         }
-
+        
+        $scope.hoverIn = function(){
+            $scope.subMostrar = false;  
+            $scope.eliminarMostrar = true;
+        }
+        
+        $scope.hoverOut = function(){
+            $scope.subMostrar = true;  
+            $scope.eliminarMostrar = false;           
+        }
 
         //modal
         $scope.abrirModal = function(plato){
@@ -123,6 +134,8 @@ myApp.controller('PedidoCtrl', [
             
             return total;
         }
+        
+        
         
         $scope.guardarPedido = function(listaDetallesPedido){
             $scope.pedido.direccionPedido = "";

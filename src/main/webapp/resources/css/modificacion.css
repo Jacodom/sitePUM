@@ -65,6 +65,10 @@
     cursor: pointer;
 }
 
+.detallePedido footer {
+    border-top: 2px dashed #ABB7B7;
+}
+
 .angular-google-map-container {
   height: 400px;
 }
@@ -92,7 +96,7 @@ header .fa-trash:hover {
 .scrollContainer ul{
     padding-left: 0px;
     padding-top: 20px;
-    border-top: solid 2px #eeeeee
+    border-top: solid 2px #ABB7B7;
 }
 
 .scrollContainer li{
@@ -112,11 +116,21 @@ header .fa-trash:hover {
 }
 
 .plateName{
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .plateAclaracion {
     font-style: italic;
+    font-size: 12px;
+}
+
+.lineDetail {
+    margin: 10px 0px 10px 0px;
+    padding: 5px 5px 5px 15px;
+}
+
+.lineDetail:hover {
+    background-color: #DADFE1;
 }
 
 .scrollContainer select{
@@ -126,7 +140,18 @@ header .fa-trash:hover {
 
 .modificacionPedido span{
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 8px;
+}
+
+.totalDetalle {
+    text-align: right;
+    padding: 10px 10px 38px 0px;
+}
+
+.fa.eliminarProd {
+    color: firebrick;
+    margin-left: 20px;
+    font-size: 16px;
 }
 
 
