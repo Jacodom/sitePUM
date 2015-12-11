@@ -13,11 +13,24 @@ myApp.controller('PedidoCtrl', [
         $scope.listaDetallesPedido = [];
         $scope.platoModal = {};
         $scope.cantidades = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+        $scope.cantDefault = 1;
         $scope.pedido = {};
         $scope.pedido.listaDetalles = [];
         $scope.tst = {};
+        $scope.subMostrar = true;
+        $scope.eliminarMostrar = false;
+        $scope.empty = true;
 
 
+        
+        
+        $scope.verificarPedido = function(){
+            if($scope.listaDetallesPedido == null || $scope.listaDetallesPedido.length == 0 ){
+                $scope.empty = true;
+            }else{
+                $scope.empty = false;
+            }
+        }
         
         //cuestiones de testeo
         $scope.usuario = {
@@ -66,14 +79,29 @@ myApp.controller('PedidoCtrl', [
             //reset to old to keep any additional routing logic from kicking in
             $location.hash(old);
         }
-
+        
+        $scope.hoverIn = function(detalle){
+            detalle.subMostrar = false;  
+            detalle.eliminarMostrar = true;
+        }
+        
+        $scope.hoverOut = function(detalle){
+            detalle.subMostrar = true;  
+            detalle.eliminarMostrar = false;           
+        }
 
         //modal
         $scope.abrirModal = function(plato){
+            $scope.pedidoModal = {};
             $scope.platoModal = {};
             $scope.platoModal = plato;
         }
-
+        
+        $scope.confirmarBorrar = function(pedido){
+            $scope.pedidoModal = {};
+            $scope.pedidoModal = pedido;
+        }
+        
         $scope.calcularSubtotal = function(pedidoModal){
             if(pedidoModal!==undefined){
                 var r = eval(pedidoModal.cantidadDetalle * $scope.platoModal.precioPlato);
@@ -91,6 +119,15 @@ myApp.controller('PedidoCtrl', [
             if(!pedidoModal){
                 return;
             }
+            
+            if(isNaN(pedidoModal.cantidadDetalle)){
+                      $('.cantSelect').removeClass('animated shake').addClass('animated shake').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $(this).removeClass('animated shake');
+        });
+                return;
+            }
+            
+            
             $scope.e = false;
             $scope.listaDetallesPedido.forEach(function (detalle, index) {
                 if(detalle.idPlato == $scope.platoModal.idPlato){
@@ -108,12 +145,34 @@ myApp.controller('PedidoCtrl', [
                 d.cantidadDetalle = parseInt(pedidoModal.cantidadDetalle);
                 d.subtotalDetalle = parseFloat(d.cantidadDetalle * d.precioPlato);
                 d.aclaracionDetalle = pedidoModal.aclaracionDetalle;
+                d.subMostrar = true;
+                d.eliminarMostrar = false;
                 $scope.listaDetallesPedido.push(d); 
             }
             
             $scope.pedidoModal = {};
+            $scope.verificarPedido();
             $('#myModal').modal('hide');
         }
+        
+        $scope.borrarTodos = function() {
+            
+            $scope.listaDetallesPedido = null;
+            $scope.verificarPedido();
+            $('#modalEliminar').modal('hide');
+        }
+        
+        $scope.eliminarUno = function(detalle) {
+            angular.forEach($scope.listaDetallesPedido, function(py, k){
+                if(py.idPlato==detalle.idPlato){
+                    $scope.listaDetallesPedido.splice(k,1);
+                }
+            });
+            
+            console.log($scope.listaDetallesPedido);
+            $scope.verificarPedido();
+        }
+                    
         
         $scope.calcularTotalPedido = function(){
             var total = 0;
@@ -124,6 +183,8 @@ myApp.controller('PedidoCtrl', [
             return total;
         }
         
+        
+        
         $scope.guardarPedido = function(listaDetallesPedido){
             $scope.pedido.direccionPedido = "";
             $scope.pedido.pagaconPedido = 0;
@@ -132,11 +193,16 @@ myApp.controller('PedidoCtrl', [
             $scope.pedido.idNegocio = $scope.idNegocio;
             $scope.pedido.listaDetalles = listaDetallesPedido;
             $scope.pedido.totalPedido = $scope.calcularTotalPedido();
-            if(PedidoService.guardarPedido($scope.pedido)){
-                toastr.success("Tu pedido se guardó con éxito!",'Atencion!', $scope.tst.options);
+            if($scope.pedido.listaDetalles==null){
+                toastr.error("No tienes ningun plato en tu pedido! elige al menos uno!","Atencion!")
             }else{
-                toastr.error("Tu pedido no pudo guardarse!",'Atencion!', $scope.tst.options);
-            }
+                if(PedidoService.guardarPedido($scope.pedido)){
+                    toastr.success("Tu pedido se guardó con éxito!",'Atencion!');
+                }else{
+                    toastr.error("Tu pedido no pudo guardarse!",'Atencion!');
+                    }
+                }
+
         }
 
         
