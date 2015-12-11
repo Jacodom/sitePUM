@@ -38,6 +38,9 @@
                         <li>
                           <a ui-sref="enviarPedido">Enviar Pedido</a>
                         </li>
+                        <li>
+                          <a ui-sref="chart">Reportes</a>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -50,13 +53,15 @@
                 </div>
             </div>
         </div>
-    <div ui-view></div>
-    <div class="footer navbar-fixed-bottom">
-        <div class="container">
-            <p class="text-center">Desarrollado por @Jacobo y @Pablo</p>
-        </div>
+          <div class="main">
+            <div ui-view></div>
+          </div>
 
-    </div>
+    <footer class="footerClass">
+      <div class="container mapubi">
+        <p class="text-center">Desarrollado por @Jacobo y @Pablo</p>
+      </div>
+    </footer>
 
     <script src="../resources/bower_components/angular/angular.min.js"></script>
     <!--<script src="../resources/bower_components/angular-route/angular-route.js"></script>-->

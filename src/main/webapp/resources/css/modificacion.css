@@ -152,3 +152,25 @@ section.anchor{padding-top: 100px ,visibility: hidden;}
 .mapubi{
   margin-top: 10px;
 }
+.rptubi{
+  margin-top: 70px;
+}
+html, body {height: 100%;}
+.main{
+  overflow: auto;
+  padding-bottom: 40px;
+}
+.footerClass {
+  position: fixed;
+  margin-top: -180px;
+  height: 40px;
+  clear: both;
+  bottom: 0px;
+  width: 100%;
+  border-top: 3px solid #CF000F;
+  background-color: #c33a2c;
+  color: white;
+}
+.splitInline{
+  margin-left: 15px;
+}
