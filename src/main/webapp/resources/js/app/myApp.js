@@ -4,7 +4,9 @@ var myApp = angular.module('myApp', [
     'perfect_scrollbar',
     'ui.bootstrap',
     'ngAnimate',
-    'toastr'
+    'toastr',
+    'chart.js'
+
 ]);
 
 myApp.config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider, toastrConfig) {
@@ -44,6 +46,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiPro
             templateUrl: "views/login.html",
             controller: "LoginCtrl"
         })
+        .state('chart',{
+            url: "/chart",
+            templateUrl: "views/chart.html",
+            controller: "ChartCtrl"
+        })
         .state('enviarPedido',{
             url: "/enviarPedido",
             templateUrl: "views/enviarPedido.html",
@@ -54,9 +61,9 @@ myApp.config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiPro
     uiGmapGoogleMapApiProvider.configure({
         v: '3.20', //defaults to latest 3.X anyhow            libraries: 'weather,geometry,visualization'
     });
-    
 
-    
+
+
 
 });
 

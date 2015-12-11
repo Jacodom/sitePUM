@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="../resources/bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css">
     <link rel="stylesheet" href="../resources/bower_components/angular-toastr/dist/angular-toastr.min.css">
     <link rel="stylesheet" href="../resources/bower_components/animate.css/animate.css">
+    <link rel="stylesheet" href="../resources/bower_components/angular-chart.js/dist/angular-chart.css">
     <link rel="stylesheet" href="../resources/css/modificacion.css"></link>
+
     <meta name="viewport" content="width=device-width">
 </head>
 <body ng-app="myApp">
@@ -37,6 +39,9 @@
                         <li>
                           <a ui-sref="enviarPedido">Enviar Pedido</a>
                         </li>
+                        <li>
+                          <a ui-sref="chart">Reportes</a>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -49,24 +54,30 @@
                 </div>
             </div>
         </div>
-    <div ui-view></div>
-    <div class="footer navbar-fixed-bottom">
-        <div class="container">
-            <p class="text-center">Desarrollado por @Jacobo y @Pablo</p>
-        </div>
+          <div class="main">
+            <div ui-view></div>
+          </div>
 
-    </div>
+    <footer class="footerClass">
+      <div class="container mapubi">
+        <p class="text-center">Desarrollado por @Jacobo y @Pablo</p>
+      </div>
+    </footer>
 
     <script src="../resources/bower_components/angular/angular.min.js"></script>
     <!--<script src="../resources/bower_components/angular-route/angular-route.js"></script>-->
+    <script src="../resources/bower_components/Chart.js/Chart.js"></script>
+    <script src="../resources/bower_components/angular-chart.js/dist/angular-chart.js"></script>
     <script src="../resources/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="../resources/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
     <script src="../resources/bower_components/underscore/underscore-min.js"></script>
     <script src="../resources/bower_components/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
     <script src="../resources/bower_components/perfect-scrollbar/js/min/perfect-scrollbar.jquery.min.js"></script>
     <script src="../resources/bower_components/angular-perfect-scrollbar/src/angular-perfect-scrollbar.js"></script>
     <script src="../resources/bower_components/angular-animate/angular-animate.js"></script>
     <script src="../resources/bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+
     <script src="../resources/js/app/myApp.js"></script>
     <script src="../resources/js/controllers/login.js"></script>
     <script src="../resources/js/services/pedidoService.js"></script>
@@ -76,6 +87,7 @@
     <script src="../resources/js/controllers/maps.js"></script>
     <script src="../resources/js/services/maps.js"></script>
     <script src="../resources/js/controllers/enviarPedidoController.js"></script>
+    <script src="../resources/js/controllers/chart.js"></script>
 
     <script src="../resources/js/controllers/modalController.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=places&sensor=false"></script>

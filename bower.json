@@ -32,6 +32,11 @@
     "angular-perfect-scrollbar": "~0.0.4",
     "angular-bootstrap": "~0.14.3",
     "angular-toastr": "~1.6.0",
-    "angular-animate": "~1.4.8"
+    "angular-animate": "~1.4.8",
+    "angular-chart.js": "~0.8.8",
+    "Chart.js": "~1.0.2"
+  },
+  "resolutions": {
+    "perfect-scrollbar": "~0.6.7"
   }
 }

@@ -20,4 +20,8 @@ public class PedidoService {
         daoPedido = new DaoPedido();
         return daoPedido.guardarPedido(pedido);
     }
+    public List<Pedido> obtenerPedidosTemporada(int anio){
+        daoPedido = new DaoPedido();
+        return daoPedido.obtenerPedidosTemporada();
+    }
 }

@@ -45,6 +45,22 @@ public class DaoPedido implements DaoBase {
         }
     }
 
+    public List<Pedido> obtenerPedidosTemporada(){
+        try{
+            iniciarOperacion();
+            Query query = sesion.createQuery("FROM Pedido p");
+            List<Pedido> listaPedidosTemporada = query.list();
+            return listaPedidosTemporada;
+        }catch (HibernateException he){
+            manejarExcepcion(he);
+            throw he;
+        }finally {
+            if(sesion!=null){
+                sesion.close();
+            }
+        }
+    }
+
     public Boolean guardarPedido(Pedido pedido){
         try{
             iniciarOperacion();

@@ -1,6 +1,7 @@
 package backend.app.dto;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,6 +13,16 @@ public class DtoNewPedido {
     private BigDecimal totalPedido;
     private BigDecimal pagaconPedido;
     private String estadoPedido;
+
+    public Date getFechaPedido() {
+        return fechaPedido;
+    }
+
+    public void setFechaPedido(Date fechaPedido) {
+        this.fechaPedido = fechaPedido;
+    }
+
+    private Date fechaPedido;
     private int idUsuario;
     private int idNegocio;
     private List<DtoDetallePedido> listaDetalles;
