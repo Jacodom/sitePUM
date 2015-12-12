@@ -3,6 +3,7 @@ package backend.app.service;
 import backend.app.dao.DaoUsuario;
 import backend.app.model.Pedido;
 import backend.app.model.Usuario;
+import org.springframework.security.core.userdetails.User;
 
 import java.util.List;
 
@@ -26,5 +27,14 @@ public class UsuarioService {
     public List<Pedido> obtenerPedidosUsuario(int idUsuario){
         daoUsuario = new DaoUsuario();
         return daoUsuario.obtenerPedidosUsuario(idUsuario);
+    }
+
+
+    public Usuario obtenerUsuarioUsername(String username) {
+        daoUsuario = new DaoUsuario();
+        for(Usuario usuario: daoUsuario.obtener())
+            if(usuario.getUsernameUsuario()==username)
+                return usuario;
+        return null;
     }
 }

@@ -128,5 +128,27 @@
         <artifactId>jackson-databind</artifactId>
         <version>2.2.2</version>
     </dependency>
+
+
+    <!-- SPRING SECURITY & JSON WEB TOKENS -->
+    <dependency>
+         <groupId>org.springframework.security</groupId>
+         <artifactId>spring-security-web</artifactId>
+         <version>3.2.5.RELEASE</version>
+    </dependency>
+
+    <dependency>
+         <groupId>org.springframework.security</groupId>
+         <artifactId>spring-security-config</artifactId>
+         <version>3.2.5.RELEASE</version>
+    </dependency>
+
+
+    <dependency>
+         <groupId>io.jsonwebtoken</groupId>
+         <artifactId>jjwt</artifactId>
+         <version>0.4</version>
+    </dependency>
+
 </dependencies>
 </project>

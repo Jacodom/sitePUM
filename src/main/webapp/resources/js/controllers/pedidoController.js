@@ -195,7 +195,7 @@ myApp.controller('PedidoCtrl', [
         $scope.borrarTodos = function() {
             
 
-            $scope.listaDetallesPedido = null;
+            $scope.listaDetallesPedido = [];
             $scope.verificarPedido();
             $scope.calcularTotalPedido();
             $('#modalEliminar').modal('hide');

@@ -1,6 +1,7 @@
 package backend.config;
 
 
+import backend.config.appConfig.AppSecurityConfig;
 import backend.config.appConfig.WebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -13,7 +14,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return null;
+        return new Class<?>[]{AppSecurityConfig.class};
     }
 
     @Override
