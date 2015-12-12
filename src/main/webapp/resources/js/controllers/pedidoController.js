@@ -112,7 +112,7 @@ myApp.controller('PedidoCtrl', [
         }
         
         $scope.confirmarBorrar = function(pedido){
-            if($scope.listaDetallesPedido.length==0){
+            if( $scope.listaDetallesPedido==null || $scope.listaDetallesPedido.length==0){
                 $('.emptyPedido').removeClass('animated shake').addClass('animated shake').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
                 $(this).removeClass('animated shake');
                     return;
@@ -235,13 +235,13 @@ myApp.controller('PedidoCtrl', [
             $scope.pedido.idNegocio = $scope.idNegocio;
             $scope.pedido.listaDetalles = listaDetallesPedido;
             $scope.pedido.totalPedido = $scope.calcularTotalPedido();
-            if($scope.pedido.listaDetalles.length==0){
-                if($scope.listaDetallesPedido.length==0){
+            if($scope.listaDetallesPedido==null || $scope.listaDetallesPedido.length==0){
                     $('.emptyPedido').removeClass('animated shake').addClass('animated shake').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
                         $(this).removeClass('animated shake');
                         return;
                 });
-            }else{
+            }
+            else{
                 if(PedidoService.guardarPedido($scope.pedido)){
                     toastr.success("Tu pedido se guardó con éxito!",'Atencion!');
                 }else{
@@ -249,28 +249,25 @@ myApp.controller('PedidoCtrl', [
                     }
                 }
             }
-        }
         
         $scope.enviarPedido = function(listaDetallesPedido){
             
             //etc
             //implementar JWT y en el caso que este OK --> enviarPedido
             //si está mal, enviar al estado LOGIN.
-            
-            if($scope.pedido.listaDetalles.length==0){
-                if($scope.listaDetallesPedido.length==0){
+        
+            if( $scope.listaDetallesPedido==null || $scope.listaDetallesPedido.length==0){
                     $('.emptyPedido').removeClass('animated shake').addClass('animated shake').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
                         $(this).removeClass('animated shake');
                         return;
-                });
+                    });
                 }
-            }else{
+            else{
                 var pedido = {};
                 pedido.listaDetallesPedido = listaDetallesPedido;
                 PedidoService.agregarPedidoEnvio(pedido);
                 $state.go('enviarPedido');  
             }
-
-        }
+    }
 
 }]);
