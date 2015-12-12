@@ -18,11 +18,11 @@ public class ReportesController {
 
     private PedidoService pedidoService = new PedidoService();
 
-    @ResponseBody
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/obtenerPedidoTemporada", method = RequestMethod.GET)
-    public List<DtoNewPedido> obtenerPedidosTemporada (@RequestParam int Ano){
-        List<Pedido> listaPedidos = pedidoService.obtenerPedidos();
-    }
+//    @ResponseBody
+//    @ResponseStatus(HttpStatus.OK)
+//    @RequestMapping(value = "/obtenerPedidoTemporada", method = RequestMethod.GET)
+//    public List<DtoNewPedido> obtenerPedidosTemporada (@RequestParam int Ano){
+//        List<Pedido> listaPedidos = pedidoService.obtenerPedidos();
+//    }
 }
 

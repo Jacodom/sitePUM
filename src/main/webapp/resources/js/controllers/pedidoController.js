@@ -91,20 +91,43 @@ myApp.controller('PedidoCtrl', [
         }
 
         //modal
-        $scope.abrirModal = function(plato){
+        $scope.abrirModal = function(plato, detalle){
             $scope.pedidoModal = {};
+            if(detalle!=null){
+                $scope.pedidoModal = detalle;
+                $('.cantSelect').attr('disabled', true);
+            }else{
+                $('.cantSelect').attr('disabled', false);
+            }
             $scope.platoModal = {};
-            $scope.platoModal = plato;
+            if(plato == null){
+                angular.forEach($scope.platosMenu, function(p,k){
+                   if(p.idPlato==$scope.pedidoModal.idPlato){
+                       $scope.platoModal = p;
+                   } 
+                });
+            }else{
+                $scope.platoModal = plato;   
+            }
         }
         
         $scope.confirmarBorrar = function(pedido){
-            $scope.pedidoModal = {};
-            $scope.pedidoModal = pedido;
+            if( $scope.listaDetallesPedido==null || $scope.listaDetallesPedido.length==0){
+                $('.emptyPedido').removeClass('animated shake').addClass('animated shake').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $(this).removeClass('animated shake');
+                    return;
+                });
+            }else{
+                $scope.pedidoModal = {};
+                $scope.pedidoModal = pedido;
+                $('#modalEliminar').modal('show');
+            }
+            
         }
         
         $scope.calcularSubtotal = function(pedidoModal){
             if(pedidoModal!==undefined){
-                var r = eval(pedidoModal.cantidadDetalle * $scope.platoModal.precioPlato);
+                    var r = eval(pedidoModal.cantidadDetalle * $scope.platoModal.precioPlato);    
                 if(!isNaN(r)){
                     return r;
                 }else{
@@ -126,13 +149,17 @@ myApp.controller('PedidoCtrl', [
         });
                 return;
             }
-            
+                    
             
             $scope.e = false;
             $scope.listaDetallesPedido.forEach(function (detalle, index) {
                 if(detalle.idPlato == $scope.platoModal.idPlato){
-                    
-                    detalle.cantidadDetalle += parseInt(pedidoModal.cantidadDetalle);
+                    if($('.cantSelect').prop("disabled")){
+                        detalle.cantidadDetalle = parseInt(pedidoModal.cantidadDetalle);
+                    }else{
+                        detalle.cantidadDetalle += parseInt(pedidoModal.cantidadDetalle);                        
+                    }
+
                     detalle.subtotalDetalle = parseFloat($scope.platoModal.precioPlato*detalle.cantidadDetalle);
                     $scope.e = true;
                 }
@@ -155,10 +182,22 @@ myApp.controller('PedidoCtrl', [
             $('#myModal').modal('hide');
         }
         
+        
+        $scope.actualizarTotales = function (detalle){
+            angular.forEach($scope.listaDetallesPedido, function(py, k){
+                if(py.idPlato==detalle.idPlato){
+                    py.subtotalDetalle = detalle.cantidadDetalle * detalle.precioPlato;
+                }
+            });
+            $scope.calcularTotalPedido();
+        }
+        
         $scope.borrarTodos = function() {
             
+
             $scope.listaDetallesPedido = null;
             $scope.verificarPedido();
+            $scope.calcularTotalPedido();
             $('#modalEliminar').modal('hide');
         }
         
@@ -171,15 +210,18 @@ myApp.controller('PedidoCtrl', [
             
             console.log($scope.listaDetallesPedido);
             $scope.verificarPedido();
+            $scope.calcularTotalPedido();
         }
                     
         
         $scope.calcularTotalPedido = function(){
             var total = 0;
-            $scope.listaDetallesPedido.forEach(function(detalle, index){
-                total += detalle.subtotalDetalle;
-            });
-            
+            if($scope.listaDetallesPedido!=null){
+                $scope.listaDetallesPedido.forEach(function(detalle, index){
+                    total += detalle.subtotalDetalle;
+                });
+            }
+                        
             return total;
         }
         
@@ -193,28 +235,39 @@ myApp.controller('PedidoCtrl', [
             $scope.pedido.idNegocio = $scope.idNegocio;
             $scope.pedido.listaDetalles = listaDetallesPedido;
             $scope.pedido.totalPedido = $scope.calcularTotalPedido();
-            if($scope.pedido.listaDetalles==null){
-                toastr.error("No tienes ningun plato en tu pedido! elige al menos uno!","Atencion!")
-            }else{
+            if($scope.listaDetallesPedido==null || $scope.listaDetallesPedido.length==0){
+                    $('.emptyPedido').removeClass('animated shake').addClass('animated shake').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                        $(this).removeClass('animated shake');
+                        return;
+                });
+            }
+            else{
                 if(PedidoService.guardarPedido($scope.pedido)){
                     toastr.success("Tu pedido se guardó con éxito!",'Atencion!');
                 }else{
                     toastr.error("Tu pedido no pudo guardarse!",'Atencion!');
                     }
                 }
-
-        }
-
+            }
         
         $scope.enviarPedido = function(listaDetallesPedido){
             
             //etc
             //implementar JWT y en el caso que este OK --> enviarPedido
             //si está mal, enviar al estado LOGIN.
-            var pedido = {};
-            pedido.listaDetallesPedido = listaDetallesPedido;
-            PedidoService.agregarPedidoEnvio(pedido);
-            $state.go('enviarPedido');
-        }
+        
+            if( $scope.listaDetallesPedido==null || $scope.listaDetallesPedido.length==0){
+                    $('.emptyPedido').removeClass('animated shake').addClass('animated shake').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                        $(this).removeClass('animated shake');
+                        return;
+                    });
+                }
+            else{
+                var pedido = {};
+                pedido.listaDetallesPedido = listaDetallesPedido;
+                PedidoService.agregarPedidoEnvio(pedido);
+                $state.go('enviarPedido');  
+            }
+    }
 
 }]);

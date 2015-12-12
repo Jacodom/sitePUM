@@ -24,7 +24,7 @@
                     <h1 class="categoryLead">{{categoria.nombreCategoria}}</h1>
                         <div class="row">
                             <div ng-repeat="plato in platosMenu | filter: {categoria : categoria.nombreCategoria} | filter:filtro" class="col-lg-6 col-md-6 col-xs-6">
-                                <div class="thumbnail" ng-click="abrirModal(plato)" data-toggle="modal" data-target="#myModal">
+                                <div class="thumbnail" ng-click="abrirModal(plato, null)" data-toggle="modal" data-target="#myModal">
                                     <div class="row">
                                         <div class="col-xs-12 col-md-8 col-lg-8">
                                             <div class="infoPlate">
@@ -64,7 +64,7 @@
                             <div class="well">
                                 <header>
                                     <span>Pedido</span>
-                                    <i class="fa fa-trash pull-right" ng-click="confirmarBorrar(pedido)" data-toggle="modal" data-target="#modalEliminar"></i>
+                                    <i class="fa fa-trash pull-right" ng-click="confirmarBorrar(pedido)"></i>
                                 </header>
                                 <perfect-scrollbar wheel-propagation="false" wheel-speed="1" min-scrollbar-length="20" suppressScrollX="true" class="scrollContainer">
                                     
@@ -87,7 +87,7 @@
                                                         <div class="textPedido">
                                                             <div class="row">
                                                                 <div class="col-lg-12">
-                                                                    <p class="plateName">{{detalle.nombrePlato}}</p>
+                                                                    <p class="plateName" ng-click="abrirModal(null, detalle)" data-toggle="modal" data-target="#myModal">{{detalle.nombrePlato}}</p>
                                                                     <p class="plateAclaracion">{{detalle.aclaracionDetalle}}<p>
                                                                 </div>
                                                             </div>
@@ -95,7 +95,7 @@
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="modificacionPedido">
-                                                            <select class="form-control cantSelector" ng-model="detalle.cantidadDetalle" ng-options="c for c in cantidades">
+                                                            <select class="form-control cantSelector" ng-model="detalle.cantidadDetalle" ng-options="c for c in cantidades" ng-change="actualizarTotales(detalle)">
                                                             </select>
                                                             <span ng-show="detalle.subMostrar">${{detalle.subtotalDetalle}} </span>
                                                             <i ng-show="detalle.eliminarMostrar" class="fa fa-times-circle eliminarProd" ng-click="eliminarUno(detalle)" ></i>
@@ -118,7 +118,7 @@
                                         <i class="fa fa-floppy-o"></i>
                                             Guardar
                                     </button>
-                                    <button class="btn btn-primary" ng-click="enviarPedido(listaDetallesPedido)">
+                                    <button class="btn btn-success" ng-click="enviarPedido(listaDetallesPedido)">
                                         <i class="fa fa-paper-plane"></i>
                                             Enviar
                                     </button>
@@ -143,7 +143,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <h4 class="modal-title" id="myModalLabel">Agregar Plato al pedido  - {{platoModal.nombrePlato}}</h4>
+            <h4 class="modal-title" id="myModalLabel">Agregar Plato al pedido - <span class="label label-success">{{platoModal.nombrePlato}}</span></h4>
           </div>
           <div class="modal-body">
             <h2>Detalle de Pedido</h2>
@@ -154,10 +154,7 @@
                   </div>
                   <div class="col-md-4 col-sm-12 col-lg-4">
                     <h4>Cantidad</h4>
-                    <select class="form-control cantSelect" ng-model="pedidoModal.cantidadDetalle">
-                        <option ng-repeat="n in cantidades">
-                          {{n}}                        
-                        </option>
+                    <select class="form-control cantSelect" ng-model="pedidoModal.cantidadDetalle" ng-options="n for n in cantidades">
                     </select>
                     <h5>Subtotal:</h5>
                     <h5>${{calcularSubtotal(pedidoModal)}}</h5>
@@ -165,8 +162,8 @@
                 </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" ng-click="agregarPlatoPedido(pedidoModal)">Agregar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-success" ng-click="agregarPlatoPedido(pedidoModal)">Agregar</button>
           </div>
         </div>
       </div>
@@ -183,11 +180,11 @@
             <h4 class="modal-title" id="myModalLabel">Atencion!</h4>
           </div>
           <div class="modal-body">
-            <h1>¿Está seguro de borrar todos los platos agregados?</h1>
+            <h4 style="text-align: center">¿Está seguro de borrar todos los platos agregados?</h4>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-            <button type="button" class="btn btn-primary" ng-click="borrarTodos()">Si</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+            <button type="button" class="btn btn-danger" ng-click="borrarTodos()">Si</button>
           </div>
         </div>
       </div>
