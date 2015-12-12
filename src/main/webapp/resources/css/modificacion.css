@@ -10,6 +10,20 @@
 
 }
 
+
+.btn.btn-primary {
+    background-color: #FB9833;
+    border-color: #FB8F33;
+}
+
+.btn.btn-primary:hover {
+    background-color: #FB8F33;
+}
+
+.btn.btn-primary:active {
+    background-color: #E17A23;
+}
+
 .list-group input{
     width: 100%;
 }
@@ -117,6 +131,11 @@ header .fa-trash:hover {
 
 .plateName{
     font-size: 14px;
+}
+
+.plateName:hover {
+    color: #FB9833;
+    text-decoration: underline;
 }
 
 .plateAclaracion {
