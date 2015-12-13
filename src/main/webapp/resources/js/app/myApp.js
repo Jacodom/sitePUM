@@ -57,12 +57,18 @@ myApp.config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiPro
         .state('chart',{
             url: "/chart",
             templateUrl: "views/chart.html",
-            controller: "ChartCtrl"
+            controller: "ChartCtrl",
+            data: {
+                requiresLogin: true
+            }
         })
         .state('enviarPedido',{
             url: "/enviarPedido",
             templateUrl: "views/enviarPedido.html",
-            controller: "EnviarPedidoCtrl"
+            controller: "EnviarPedidoCtrl",
+            data: {
+                requiresLogin: true
+            }
         });
 
 
@@ -75,6 +81,17 @@ myApp.config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiPro
 
 });
 
-myApp.run(['$anchorScroll', function($anchorScroll) {
-      $anchorScroll.yOffset = 75;   // always scroll by 50 extra pixels
-    }]);
+myApp.run(function($anchorScroll, $state, store, $rootScope) {
+    $anchorScroll.yOffset = 75;   // always scroll by 50 extra pixels
+    
+    $rootScope.$on('$stateChangeStart', function(e,to){
+       if(to.data && to.data.requiresLogin){
+           if(!store.get('jwt')){
+               e.preventDefault();
+               $state.go('elegirNegocio');
+           }
+        } 
+    });
+    
+        
+});
