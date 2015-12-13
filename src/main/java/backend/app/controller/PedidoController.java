@@ -98,8 +98,7 @@ public class PedidoController {
     }
 
     @ResponseBody
-
-    @RequestMapping(value = "/guardarPedido", method = RequestMethod.POST)
+    @RequestMapping(value = "/pedido/guardarPedido", method = RequestMethod.POST)
     public Boolean guardarPedido(@RequestBody DtoNewPedido newPedido){
         Pedido pedido = new Pedido();
 

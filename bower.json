@@ -34,7 +34,9 @@
     "angular-toastr": "~1.6.0",
     "angular-animate": "~1.4.8",
     "angular-chart.js": "~0.8.8",
-    "Chart.js": "~1.0.2"
+    "Chart.js": "~1.0.2",
+    "a0-angular-storage": "~0.0.13",
+    "angular-jwt": "~0.0.9"
   },
   "resolutions": {
     "perfect-scrollbar": "~0.6.7"

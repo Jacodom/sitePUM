@@ -103,6 +103,7 @@ header .fa-trash:hover {
     width: 100%;
     height: auto;
     max-height: 250px;
+    overflow-x: hidden;
 }
 
 
@@ -154,7 +155,7 @@ header .fa-trash:hover {
 
 .scrollContainer select{
     display: inline-block;
-    width: 60px;
+    width: 70px;
 }
 
 .modificacionPedido span{
