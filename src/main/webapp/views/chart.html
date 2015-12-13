@@ -4,18 +4,17 @@
     <div class="form-inline">
       <div class="form-group">
         <label for="año" class="text-danger">Año</label>
-        <input type="number" name="año" value="2015">
+        <input type="number" name="año" ng-model="year"  id="yearSelector" min="2013"  max="2015">
       </div>
       <div class="form-group splitInline">
         <label for="negocio" class="text-danger">Negocio</label>
-        <select class="form-control" name="negocios"> <!-- ng-repeat -->
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="opel">Opel</option>
-            <option value="audi">Audi</option>
+        <select class="form-control" name="negocios" id="negocioSelector" ng-model="business"> <!-- ng-repeat -->
+          <option value="todos">Todos</option>
+          <option value="La Mira">La Mira</option>
+          <option value="La Caleta">La Caleta</option>
+          <option value="Rocco">Rocco</option>
         </select>
       </div>
-      <button type="submit" name="submit" class="btn btn-danger splitInline"><i class="fa fa-search"></i> Buscar</button>
     </div>
   </div>
 </div>
@@ -30,7 +29,7 @@
       <div class="col-lg-6">
         <h3 class="text-danger text-center">Reportes por Categorías</h3>
           <canvas id="bar" class="chart chart-bar"
-          chart-data="bar.data" chart-labels="bar.labels" chart-series="bar.series">
+          chart-data="barra.data" chart-labels="barra.labels">
         </canvas>
       </div>
     </div>
@@ -38,8 +37,8 @@
     <div class="row">
       <h3 class="text-danger text-center">Ventas por Negocios</h3>
       <div class="col-lg-offset-3 col-lg-6 col-lg-offset-3">
-        <canvas id="line" class="chart chart-line" chart-data="data"
-          chart-labels="labels" chart-series="series"
+        <canvas id="line" class="chart chart-line" chart-data="lineChart.data"
+          chart-labels="lineChart.labels" chart-series="series"
           chart-click="onClick">
         </canvas>
       </div>

@@ -1,0 +1,226 @@
+[
+    {
+        "negocio":"La Mira",
+        "categoria": "Pastas",
+        "cantidad": 84,
+        "año": 2013
+    },
+    {
+        "negocio":"La Mira",
+        "categoria": "Parrilla",
+        "cantidad": 74,
+        "año": 2013
+    },
+    {
+        "negocio":"La Mira",
+        "categoria": "Gourmet",
+        "cantidad": 66,
+        "año": 2013
+    },
+    {
+        "negocio":"La Mira",
+        "categoria": "Ensalada",
+        "cantidad": 79,
+        "año": 2013
+    },
+    {
+        "negocio":"La Caleta",
+        "categoria": "Pastas",
+        "cantidad": 89,
+        "año": 2013
+    },
+    {
+        "negocio":"La Caleta",
+        "categoria": "Parrilla",
+        "cantidad": 63,
+        "año": 2013
+    },
+    {
+        "negocio":"La Caleta",
+        "categoria": "Gourmet",
+        "cantidad": 80,
+        "año": 2013
+    },
+    {
+        "negocio":"La Caleta",
+        "categoria": "Ensalada",
+        "cantidad": 69,
+        "año": 2013
+    },
+    {
+        "negocio":"Rocco",
+        "categoria": "Pastas",
+        "cantidad": 95,
+        "año": 2013
+    },
+    {
+        "negocio":"Rocco",
+        "categoria": "Parrilla",
+        "cantidad": 62,
+        "año": 2013
+    },
+    {
+        "negocio":"Rocco",
+        "categoria": "Gourmet",
+        "cantidad": 79,
+        "año": 2013
+    },
+    {
+        "negocio":"Rocco",
+        "categoria": "Ensalada",
+        "cantidad": 65,
+        "año": 2013
+    },
+
+
+
+
+    {
+        "negocio":"La Mira",
+       "categoria": "Pastas",
+       "cantidad": 84,
+       "año": 2014
+   },
+   {
+        "negocio":"La Mira",
+       "categoria": "Parrilla",
+       "cantidad": 70,
+       "año": 2014
+   },
+   {
+        "negocio":"La Mira",
+       "categoria": "Gourmet",
+       "cantidad": 93,
+       "año": 2014
+   },
+   {
+      	"negocio":"La Mira",
+       "categoria": "Ensalada",
+       "cantidad": 67,
+       "año": 2014
+   },
+   {
+       "negocio":"La Caleta",
+      "categoria": "Pastas",
+      "cantidad": 97,
+      "año": 2014
+  },
+  {
+       "negocio":"La Caleta",
+      "categoria": "Parrilla",
+      "cantidad": 83,
+      "año": 2014
+  },
+  {
+       "negocio":"La Caleta",
+      "categoria": "Gourmet",
+      "cantidad": 76,
+      "año": 2014
+  },
+  {
+      "negocio":"La Caleta",
+      "categoria": "Ensalada",
+      "cantidad": 63,
+      "año": 2014
+  },
+  {
+      "negocio":"Rocco",
+     "categoria": "Pastas",
+     "cantidad": 85,
+     "año": 2014
+ },
+ {
+      "negocio":"Rocco",
+     "categoria": "Parrilla",
+     "cantidad": 98,
+     "año": 2014
+ },
+ {
+      "negocio":"Rocco",
+     "categoria": "Gourmet",
+     "cantidad": 72,
+     "año": 2014
+ },
+ {
+     "negocio":"Rocco",
+     "categoria": "Ensalada",
+     "cantidad": 62,
+     "año": 2014
+ },
+
+
+
+
+   {
+        "negocio":"La Mira",
+        "categoria": "Pastas",
+        "cantidad": 70,
+        "año": 2015
+    },
+    {
+        "negocio":"La Mira",
+        "categoria": "Parrilla",
+        "cantidad": 87,
+        "año": 2015
+    },
+    {
+        "negocio":"La Mira",
+        "categoria": "Gourmet",
+        "cantidad": 65,
+        "año": 2015
+    },
+    {
+        "negocio":"La Mira",
+        "categoria": "Ensalada",
+        "cantidad": 40,
+        "año": 2015
+    },
+    {
+         "negocio":"La Caleta",
+         "categoria": "Pastas",
+         "cantidad": 67,
+         "año": 2015
+     },
+     {
+         "negocio":"La Caleta",
+         "categoria": "Parrilla",
+         "cantidad": 87,
+         "año": 2015
+     },
+     {
+         "negocio":"La Caleta",
+         "categoria": "Gourmet",
+         "cantidad": 72,
+         "año": 2015
+     },
+     {
+         "negocio":"La Caleta",
+         "categoria": "Ensalada",
+         "cantidad": 62,
+         "año": 2015
+     },
+     {
+          "negocio":"Rocco",
+          "categoria": "Pastas",
+          "cantidad": 97,
+          "año": 2015
+      },
+      {
+          "negocio":"Rocco",
+          "categoria": "Parrilla",
+          "cantidad": 88,
+          "año": 2015
+      },
+      {
+          "negocio":"Rocco",
+          "categoria": "Gourmet",
+          "cantidad": 93,
+          "año": 2015
+      },
+      {
+          "negocio":"Rocco",
+          "categoria": "Ensalada",
+          "cantidad": 65,
+          "año": 2015
+      }
+]
