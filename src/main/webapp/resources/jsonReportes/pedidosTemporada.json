@@ -1,0 +1,226 @@
+[
+    {
+        "negocio":"La Mira",
+        "temporada": "Primavera",
+        "cantidad": 50,
+        "año": 2013
+    },
+    {
+        "negocio":"La Mira",
+        "temporada": "Verano",
+        "cantidad": 5,
+        "año": 2013
+    },
+    {
+        "negocio":"La Mira",
+        "temporada": "Otoño",
+        "cantidad": 15,
+        "año": 2013
+    },
+    {
+        "negocio":"La Mira",
+        "temporada": "Invierno",
+        "cantidad": 20,
+        "año": 2013
+    },
+    {
+        "negocio":"La Caleta",
+        "temporada": "Primavera",
+        "cantidad": 80,
+        "año": 2013
+    },
+    {
+        "negocio":"La Caleta",
+        "temporada": "Verano",
+        "cantidad": 45,
+        "año": 2013
+    },
+    {
+        "negocio":"La Caleta",
+        "temporada": "Otoño",
+        "cantidad": 90,
+        "año": 2013
+    },
+    {
+        "negocio":"La Caleta",
+        "temporada": "Invierno",
+        "cantidad": 60,
+        "año": 2013
+    },
+    {
+        "negocio":"Rocco",
+        "temporada": "Primavera",
+        "cantidad": 20,
+        "año": 2013
+    },
+    {
+        "negocio":"Rocco",
+        "temporada": "Verano",
+        "cantidad": 15,
+        "año": 2013
+    },
+    {
+        "negocio":"Rocco",
+        "temporada": "Otoño",
+        "cantidad": 40,
+        "año": 2013
+    },
+    {
+        "negocio":"Rocco",
+        "temporada": "Invierno",
+        "cantidad": 30,
+        "año": 2013
+    },
+
+
+
+
+    {
+        "negocio":"La Mira",
+       "temporada": "Primavera",
+       "cantidad": 10,
+       "año": 2014
+   },
+   {
+        "negocio":"La Mira",
+       "temporada": "Verano",
+       "cantidad": 30,
+       "año": 2014
+   },
+   {
+        "negocio":"La Mira",
+       "temporada": "Otoño",
+       "cantidad": 35,
+       "año": 2014
+   },
+   {
+      	"negocio":"La Mira",
+       "temporada": "Invierno",
+       "cantidad": 15,
+       "año": 2014
+   },
+   {
+       "negocio":"La Caleta",
+      "temporada": "Primavera",
+      "cantidad": 18,
+      "año": 2014
+  },
+  {
+       "negocio":"La Caleta",
+      "temporada": "Verano",
+      "cantidad": 45,
+      "año": 2014
+  },
+  {
+       "negocio":"La Caleta",
+      "temporada": "Otoño",
+      "cantidad": 42,
+      "año": 2014
+  },
+  {
+      "negocio":"La Caleta",
+      "temporada": "Invierno",
+      "cantidad": 29,
+      "año": 2014
+  },
+  {
+      "negocio":"Rocco",
+     "temporada": "Primavera",
+     "cantidad": 8,
+     "año": 2014
+ },
+ {
+      "negocio":"Rocco",
+     "temporada": "Verano",
+     "cantidad": 17,
+     "año": 2014
+ },
+ {
+      "negocio":"Rocco",
+     "temporada": "Otoño",
+     "cantidad": 22,
+     "año": 2014
+ },
+ {
+     "negocio":"Rocco",
+     "temporada": "Invierno",
+     "cantidad": 12,
+     "año": 2014
+ },
+
+
+
+
+   {
+        "negocio":"La Mira",
+        "temporada": "Primavera",
+        "cantidad": 30,
+        "año": 2015
+    },
+    {
+        "negocio":"La Mira",
+        "temporada": "Verano",
+        "cantidad": 50,
+        "año": 2015
+    },
+    {
+        "negocio":"La Mira",
+        "temporada": "Otoño",
+        "cantidad": 20,
+        "año": 2015
+    },
+    {
+        "negocio":"La Mira",
+        "temporada": "Invierno",
+        "cantidad": 35,
+        "año": 2015
+    },
+    {
+         "negocio":"La Caleta",
+         "temporada": "Primavera",
+         "cantidad": 20,
+         "año": 2015
+     },
+     {
+         "negocio":"La Caleta",
+         "temporada": "Verano",
+         "cantidad": 47,
+         "año": 2015
+     },
+     {
+         "negocio":"La Caleta",
+         "temporada": "Otoño",
+         "cantidad": 27,
+         "año": 2015
+     },
+     {
+         "negocio":"La Caleta",
+         "temporada": "Invierno",
+         "cantidad": 42,
+         "año": 2015
+     },
+     {
+          "negocio":"Rocco",
+          "temporada": "Primavera",
+          "cantidad": 12,
+          "año": 2015
+      },
+      {
+          "negocio":"Rocco",
+          "temporada": "Verano",
+          "cantidad": 37,
+          "año": 2015
+      },
+      {
+          "negocio":"Rocco",
+          "temporada": "Otoño",
+          "cantidad": 15,
+          "año": 2015
+      },
+      {
+          "negocio":"Rocco",
+          "temporada": "Invierno",
+          "cantidad": 35,
+          "año": 2015
+      }
+]
