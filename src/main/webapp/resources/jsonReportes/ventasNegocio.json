@@ -1,0 +1,226 @@
+[
+    {
+        "negocio":"La Mira",
+        "horario": "Almuerzo",
+        "cantidad": 120,
+        "año": 2013
+    },
+    {
+        "negocio":"La Mira",
+        "horario": "Cena",
+        "cantidad": 80,
+        "año": 2013
+    },
+    {
+        "negocio":"La Mira",
+        "horario": "Desayuno",
+        "cantidad": 65,
+        "año": 2013
+    },
+    {
+        "negocio":"La Mira",
+        "horario": "Merienda",
+        "cantidad": 40,
+        "año": 2013
+    },
+    {
+        "negocio":"La Caleta",
+        "horario": "Almuerzo",
+        "cantidad": 56,
+        "año": 2013
+    },
+    {
+        "negocio":"La Caleta",
+        "horario": "Cena",
+        "cantidad": 119,
+        "año": 2013
+    },
+    {
+        "negocio":"La Caleta",
+        "horario": "Desayuno",
+        "cantidad": 56,
+        "año": 2013
+    },
+    {
+        "negocio":"La Caleta",
+        "horario": "Merienda",
+        "cantidad": 75,
+        "año": 2013
+    },
+    {
+        "negocio":"Rocco",
+        "horario": "Almuerzo",
+        "cantidad": 96,
+        "año": 2013
+    },
+    {
+        "negocio":"Rocco",
+        "horario": "Cena",
+        "cantidad": 145,
+        "año": 2013
+    },
+    {
+        "negocio":"Rocco",
+        "horario": "Desayuno",
+        "cantidad": 67,
+        "año": 2013
+    },
+    {
+        "negocio":"Rocco",
+        "horario": "Merienda",
+        "cantidad": 35,
+        "año": 2013
+    },
+
+
+
+
+    {
+        "negocio":"La Mira",
+       "horario": "Almuerzo",
+       "cantidad": 90,
+       "año": 2014
+   },
+   {
+        "negocio":"La Mira",
+       "horario": "Cena",
+       "cantidad": 149,
+       "año": 2014
+   },
+   {
+        "negocio":"La Mira",
+       "horario": "Desayuno",
+       "cantidad": 96,
+       "año": 2014
+   },
+   {
+      	"negocio":"La Mira",
+       "horario": "Merienda",
+       "cantidad": 87,
+       "año": 2014
+   },
+   {
+       "negocio":"La Caleta",
+      "horario": "Almuerzo",
+      "cantidad": 97,
+      "año": 2014
+  },
+  {
+       "negocio":"La Caleta",
+      "horario": "Cena",
+      "cantidad": 94,
+      "año": 2014
+  },
+  {
+       "negocio":"La Caleta",
+      "horario": "Desayuno",
+      "cantidad": 72,
+      "año": 2014
+  },
+  {
+      "negocio":"La Caleta",
+      "horario": "Merienda",
+      "cantidad": 63,
+      "año": 2014
+  },
+  {
+      "negocio":"Rocco",
+     "horario": "Almuerzo",
+     "cantidad": 95,
+     "año": 2014
+ },
+ {
+      "negocio":"Rocco",
+     "horario": "Cena",
+     "cantidad": 128,
+     "año": 2014
+ },
+ {
+      "negocio":"Rocco",
+     "horario": "Desayuno",
+     "cantidad": 82,
+     "año": 2014
+ },
+ {
+     "negocio":"Rocco",
+     "horario": "Merienda",
+     "cantidad": 69,
+     "año": 2014
+ },
+
+
+
+
+   {
+        "negocio":"La Mira",
+        "horario": "Almuerzo",
+        "cantidad": 118,
+        "año": 2015
+    },
+    {
+        "negocio":"La Mira",
+        "horario": "Cena",
+        "cantidad": 97,
+        "año": 2015
+    },
+    {
+        "negocio":"La Mira",
+        "horario": "Desayuno",
+        "cantidad": 75,
+        "año": 2015
+    },
+    {
+        "negocio":"La Mira",
+        "horario": "Merienda",
+        "cantidad": 34,
+        "año": 2015
+    },
+    {
+         "negocio":"La Caleta",
+         "horario": "Almuerzo",
+         "cantidad": 93,
+         "año": 2015
+     },
+     {
+         "negocio":"La Caleta",
+         "horario": "Cena",
+         "cantidad": 143,
+         "año": 2015
+     },
+     {
+         "negocio":"La Caleta",
+         "horario": "Desayuno",
+         "cantidad": 52,
+         "año": 2015
+     },
+     {
+         "negocio":"La Caleta",
+         "horario": "Merienda",
+         "cantidad": 42,
+         "año": 2015
+     },
+     {
+          "negocio":"Rocco",
+          "horario": "Almuerzo",
+          "cantidad": 127,
+          "año": 2015
+      },
+      {
+          "negocio":"Rocco",
+          "horario": "Cena",
+          "cantidad": 146,
+          "año": 2015
+      },
+      {
+          "negocio":"Rocco",
+          "horario": "Desayuno",
+          "cantidad": 54,
+          "año": 2015
+      },
+      {
+          "negocio":"Rocco",
+          "horario": "Merienda",
+          "cantidad": 37,
+          "año": 2015
+      }
+]
