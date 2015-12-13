@@ -8,7 +8,8 @@ myApp.controller('PedidoCtrl', [
     '$stateParams',
     '$state',
     'toastr',
-    function($scope, PedidoService, $location, $anchorScroll, $stateParams, $state, toastr){
+    'store',
+    function($scope, PedidoService, $location, $anchorScroll, $stateParams, $state, toastr, store){
         $scope.idNegocio = $stateParams.idNegocio;
         $scope.listaDetallesPedido = [];
         $scope.platoModal = {};
@@ -33,11 +34,7 @@ myApp.controller('PedidoCtrl', [
         }
         
         //cuestiones de testeo
-        $scope.usuario = {
-            idUsuario : 1,
-            username : "pepito"
-        }
-        
+        $scope.usuario = store.get('user');
 
         $scope.cargarPagina = function(){
             $scope.obtenerNegocio($scope.idNegocio);
@@ -195,7 +192,7 @@ myApp.controller('PedidoCtrl', [
         $scope.borrarTodos = function() {
             
 
-            $scope.listaDetallesPedido = null;
+            $scope.listaDetallesPedido = [];
             $scope.verificarPedido();
             $scope.calcularTotalPedido();
             $('#modalEliminar').modal('hide');
@@ -228,26 +225,36 @@ myApp.controller('PedidoCtrl', [
         
         
         $scope.guardarPedido = function(listaDetallesPedido){
-            $scope.pedido.direccionPedido = "";
-            $scope.pedido.pagaconPedido = 0;
-            $scope.pedido.estadoPedido = "GUARDADO";
-            $scope.pedido.idUsuario = $scope.usuario.idUsuario;
-            $scope.pedido.idNegocio = $scope.idNegocio;
-            $scope.pedido.listaDetalles = listaDetallesPedido;
-            $scope.pedido.totalPedido = $scope.calcularTotalPedido();
+            
             if($scope.listaDetallesPedido==null || $scope.listaDetallesPedido.length==0){
                     $('.emptyPedido').removeClass('animated shake').addClass('animated shake').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
                         $(this).removeClass('animated shake');
                         return;
                 });
-            }
-            else{
-                if(PedidoService.guardarPedido($scope.pedido)){
-                    toastr.success("Tu pedido se guardó con éxito!",'Atencion!');
+            }else{
+                if(!store.get('jwt')||!store.get('authUser')){
+                    toastr.error("Debe estar loggeado para guardar el pedido!", "Atención!");
                 }else{
-                    toastr.error("Tu pedido no pudo guardarse!",'Atencion!');
+                    $scope.authUser = {};
+                    $scope.authUser = store.get('authUser');
+                    
+                    $scope.pedido.direccionPedido = "";
+                    $scope.pedido.pagaconPedido = 0;
+                    $scope.pedido.estadoPedido = "GUARDADO";
+                    $scope.pedido.idUsuario = $scope.authUser.idUsuario;
+                    $scope.pedido.idNegocio = $scope.idNegocio;
+                    $scope.pedido.listaDetalles = listaDetallesPedido;
+                    $scope.pedido.totalPedido = $scope.calcularTotalPedido();
+                    PedidoService.guardarPedido($scope.pedido).then(function(prom){
+                       if(prom=true){
+                           toastr.success("Tu pedido se guardó con éxito!", "Atencion!");
+                       } else{
+                           toastr.error("Tu pedido no pudo guardarse!", "Atención!");
+                       }
+                    });
                     }
                 }
+                
             }
         
         $scope.enviarPedido = function(listaDetallesPedido){
@@ -255,6 +262,8 @@ myApp.controller('PedidoCtrl', [
             //etc
             //implementar JWT y en el caso que este OK --> enviarPedido
             //si está mal, enviar al estado LOGIN.
+            
+
         
             if( $scope.listaDetallesPedido==null || $scope.listaDetallesPedido.length==0){
                     $('.emptyPedido').removeClass('animated shake').addClass('animated shake').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
@@ -263,10 +272,24 @@ myApp.controller('PedidoCtrl', [
                     });
                 }
             else{
-                var pedido = {};
-                pedido.listaDetallesPedido = listaDetallesPedido;
-                PedidoService.agregarPedidoEnvio(pedido);
-                $state.go('enviarPedido');  
+                if(!store.get('jwt')||!store.get('authUser')){
+                    toastr.error("Debe estar loggeado para enviar el pedido!", "Atención!");
+                }else{
+                    $scope.authUser = {};
+                    $scope.authUser = store.get('authUser');
+                    
+                    
+                    $scope.pedido.direccionPedido = "";
+                    $scope.pedido.pagaconPedido = 0;
+                    $scope.pedido.estadoPedido = "POR_CONFIRMAR";
+                    $scope.pedido.idUsuario = $scope.authUser.idUsuario;
+                    $scope.pedido.idNegocio = $scope.idNegocio;
+                    $scope.pedido.listaDetalles = listaDetallesPedido;
+                    $scope.pedido.totalPedido = $scope.calcularTotalPedido();
+                    
+                    PedidoService.agregarPedidoEnvio($scope.pedido);
+                    $state.go('enviarPedido');  
+                }
             }
     }
 

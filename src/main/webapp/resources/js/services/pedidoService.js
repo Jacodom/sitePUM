@@ -85,14 +85,12 @@ myApp.factory('PedidoService', ['$http', '$q', function($http){
         guardarPedido : function(pedido){
             return $http({
                 method: "POST",
-                url: "/gestionarPedido/guardarPedido",
+                url: "/gestionarPedido/pedido/guardarPedido",
                 data: pedido
             }).then(function(response){
-                if(response == true){
-                    return true;
-                }else{
-                    return false;
-                }
+                return response.data;
+            }, function(response){
+                return response.data;
             });
         },
 

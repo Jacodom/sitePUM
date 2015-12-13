@@ -1,9 +1,13 @@
 package backend.config;
 
 
+
+import backend.app.filters.AuthenticationFilter;
+import backend.config.appConfig.AppSecurityConfig;
 import backend.config.appConfig.WebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.Filter;
 
 
 /**
@@ -13,7 +17,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return null;
+        return new Class<?>[]{AppSecurityConfig.class};
     }
 
     @Override
@@ -25,5 +29,10 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
+
+/*    @Override
+    protected Filter[] getServletFilters() {
+        return new Filter[]{new AuthenticationFilter()};
+    }*/
 
 }

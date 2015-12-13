@@ -5,11 +5,12 @@ var myApp = angular.module('myApp', [
     'ui.bootstrap',
     'ngAnimate',
     'toastr',
-    'chart.js'
-
+    'chart.js',
+    'angular-storage',
+    'angular-jwt'
 ]);
 
-myApp.config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider, toastrConfig) {
+myApp.config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider, toastrConfig, jwtInterceptorProvider, $httpProvider) {
 
       angular.extend(toastrConfig, {
         autoDismiss: false,
@@ -17,11 +18,18 @@ myApp.config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiPro
         maxOpened: 0,
         newestOnTop: true,
         positionClass: 'toast-bottom-right',
-        preventDuplicates: true,
-        preventOpenDuplicates: true,
+        preventDuplicates: false,
+        preventOpenDuplicates: false,
         target: 'body'
       });
 
+    jwtInterceptorProvider.tokenGetter = function(store){
+        return store.get('jwt');
+    }
+    
+    $httpProvider.interceptors.push('jwtInterceptor');
+    
+    
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
