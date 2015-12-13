@@ -14,6 +14,7 @@ angular.module('myApp')
       obtenerPedidosTemporada : function(){
         return $http({
           method:"GET",
+            skipAuthorization: true,
           url:"http://www.json-generator.com/api/json/get/bIuaqAcrNe?indent=2"
         }).then(function(res){
           if(res.status == 200){
@@ -27,6 +28,7 @@ angular.module('myApp')
       obtenerPedidosCategoria : function () {
         return $http({
           method:"GET",
+            skipAuthorization: true,
           url:"http://www.json-generator.com/api/json/get/caXJOyRYEi?indent=2"
         }).then(function(res){
           if (res.status ==200) {
@@ -39,6 +41,7 @@ angular.module('myApp')
       obtenerVentasNegocio : function(){
         return $http({
           method:"GET",
+            skipAuthorization: true,
           url:"http://www.json-generator.com/api/json/get/bSzDdcROWa?indent=2"
         }).then(function(res){
           if (res.status ==200) {
