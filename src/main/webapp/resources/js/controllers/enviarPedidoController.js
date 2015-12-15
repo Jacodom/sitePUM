@@ -7,11 +7,31 @@ myApp.controller('EnviarPedidoCtrl', [
     'PedidoService',
     '$state',
     'store',
-    function(factoryMaps,$scope, PedidoService, $state, store){
+    'toastr',
+    'PedidoService',
+    function(factoryMaps,$scope, PedidoService, $state, store, toastr, PedidoService){
         $scope.pedido = store.get('pedidoUser');
         $scope.user = store.get('authUser');
-        $scope.PickupmealMarker = {}; 
+        $scope.pagaCon = $scope.pedido.totalPedido;
+        $scope.time;
         
+        
+        
+        $scope.getTime = function(){
+            var win={};
+            win = $scope.pedido.listaDetalles[0];
+            console.log(win);
+            angular.forEach($scope.pedido.listaDetalles, function(v,k){
+                if(parseInt(win.plato.coccionPlato)< parseInt(v.plato.coccionPlato))
+                    {
+                        win = v;
+                    }
+            });
+            
+            $scope.time = win.plato.coccionPlato;
+        }
+        
+        $scope.getTime();
         
         $scope.map = {
             center: {
@@ -28,21 +48,29 @@ myApp.controller('EnviarPedidoCtrl', [
         
         
         $scope.modificarDire = function(address) {
-          console.log(address);
-
+            $scope.pedido.direccionPedido=address;
         }
 
         $scope.abrirModal = function(direccion){
             $scope.direccionModal = {};
             $scope.direccionModal = direccion;
+            $scope.addAddress();
             $scope.autocomplete();
         };
         
         
-        factoryMaps.createByCoords(-33.333333, -60.216667, function (marker) {
-            marker.options.labelContent = 'Pickupmeal';
-            $scope.PickupmealMarker = marker;
-        });
+        $scope.calcularTotalPedido = function(){
+            var total = 0;
+            if($scope.pedido.listaDetalles!=null){
+                $scope.pedido.listaDetalles.forEach(function(detalle, index){
+                    total += detalle.subtotalDetalle;
+                });
+            }
+                        
+            return total;
+        }
+        
+
 
         
         $scope.autocomplete = function() {
@@ -63,7 +91,7 @@ myApp.controller('EnviarPedidoCtrl', [
 
  
 
-        $scope.map.markers.push($scope.PickupmealMarker);
+        //$scope.map.markers.push($scope.PickupmealMarker);
 
         $scope.addCurrentLocation = function () {
           $scope.map.markers.length = [];
@@ -72,6 +100,7 @@ myApp.controller('EnviarPedidoCtrl', [
                     $scope.map.markers.push(marker);
                     $scope.refresh(marker.coords);
                     console.log(marker.coords + "coords");
+                    factoryMaps.createFrom
                 });
             };
 
@@ -95,5 +124,30 @@ myApp.controller('EnviarPedidoCtrl', [
             $scope.map.control.refresh({latitude: coords.latitude,
                 longitude: coords.longitude});
         }
+        
+        $scope.calcularVuelto = function(){
+            return eval($scope.pagaCon - $scope.pedido.totalPedido);
+        }
+        
+        $scope.enviarPedido = function(){
+            if($scope.calcularVuelto()<0){
+                toastr.error("No puede pagar con menos de lo que sale el pedido!");
+                return;
+            }else{
+                if($scope.pedido.direccionPedido == ''){
+                    toastr.error("Debe especificar una direccion de envío");
+                    return;
+                }else{
+                    $scope.pedido.estadoPedido = "ENVIADO_A_LOCAL";
+                    if(PedidoService.guardarPedido($scope.pedido)){
+                        store.remove('pedidoUser');
+                        $state.go('elegirNegocio');
+                    }
+                                        
+                }
+            }
+        }
+    
+        
 
 }]);

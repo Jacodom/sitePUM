@@ -179,6 +179,8 @@ myApp.controller('PedidoCtrl', [
                 d.aclaracionDetalle = pedidoModal.aclaracionDetalle;
                 d.subMostrar = true;
                 d.eliminarMostrar = false;
+                d.plato = {};
+                d.plato = $scope.platoModal;
                 $scope.listaDetallesPedido.push(d); 
             }
             
