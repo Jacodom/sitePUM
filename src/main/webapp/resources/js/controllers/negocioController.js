@@ -24,7 +24,10 @@ myApp.filter('negociosFiltrados',[function(){
     };
 }]);
 
-myApp.controller('NegocioCtrl',['$scope','NegocioService',function($scope, NegocioService){
+myApp.controller('NegocioCtrl',[
+    '$scope',
+    'NegocioService',
+    function($scope, NegocioService){
 
     $scope.categoriaSeleccionada = [];
     $scope.setCategoria = function(){

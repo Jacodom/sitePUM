@@ -237,3 +237,13 @@ html, body {height: 100%;}
 .splitInline{
   margin-left: 15px;
 }
+
+
+<!-- modalmap -->
+.pac-container{
+    z-index: 1200 !important;
+}
+
+.angular-google-map{
+    margin-top: 15px;
+}
