@@ -32,6 +32,7 @@ public class AuthController {
                 //setear todos los atributos
                 user.setIdUsuario(usuarioBD.getIdUsuario());
                 user.setUsernameUsuario(usuarioBD.getUsernameUsuario());
+                user.setNombreUsuario(usuarioBD.getNombreUsuario()  );
                 user.setApellidoUsuario(usuarioBD.getApellidoUsuario());
                 user.setEmailUsuario(usuarioBD.getEmailUsuario());
                 user.setTelefonoUsuario(usuarioBD.getTelefonoUsuario());

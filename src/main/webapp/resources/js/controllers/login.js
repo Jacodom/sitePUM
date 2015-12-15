@@ -16,6 +16,7 @@ angular.module('myApp')
     
         $scope.user = {};
         $scope.userAuth = {};
+        $scope.fromPage = {};
         
         $scope.login = function (){
             $http({
@@ -29,7 +30,13 @@ angular.module('myApp')
                     $scope.userAuth.passwordUsuario = "";
                     $scope.userAuth.token="";
                     store.set("authUser", $scope.userAuth);
-                    $state.go('enviarPedido');
+                    $scope.fromPage = store.get('fromPage');
+                    if($scope.fromPage.name==='gestionarPedido'){
+                        $scope.fromPage.param = store.get('fromPageParam');
+                        console.log($scope.fromPage.param.idNegocio);
+                        $state.go($scope.fromPage.name, {idNegocio: $scope.fromPage.param.idNegocio});
+                    }
+                    $state.go($scope.fromPage.name);
                 }
                 else{
                     console.log("no che");

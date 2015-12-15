@@ -42,7 +42,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiPro
         .state('gestionarPedido', {
             url: "/gestionarPedido/:idNegocio",
             templateUrl: "/views/gestionarPedido.html",
-            controller: "PedidoCtrl"
+            controller: "PedidoCtrl",
+            params:{
+                idNegocio: ""
+            }
         })
         .state('map',{
             url: "/map",
@@ -84,13 +87,30 @@ myApp.config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiPro
 myApp.run(function($anchorScroll, $state, store, $rootScope) {
     $anchorScroll.yOffset = 75;   // always scroll by 50 extra pixels
     
-    $rootScope.$on('$stateChangeStart', function(e,to){
+    $rootScope.$on('$stateChangeStart', function(e, to, toP, from, fromP){
        if(to.data && to.data.requiresLogin){
            if(!store.get('jwt')){
                e.preventDefault();
-               $state.go('elegirNegocio');
+               $state.go('Login');
            }
-        } 
+        }
+        
+        if(to.name === 'enviarPedido' && !store.get('pedidoUser')){
+            $state.go('elegirNegocio');
+        }
+        
+        if(fromP != {}&& to.name!=='gestionarPedido'){
+           store.set('fromPageParam', fromP);
+        }
+        
+        if(from.name==='elegirNegocio'&&to.name==='gestionarPedido'){
+            if(store.get('pedidoUser')){
+                store.remove('pedidoUser');
+            }
+        }
+        console.log(to.param);
+        store.set('fromPage', from);
+
     });
     
         

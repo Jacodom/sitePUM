@@ -11,6 +11,7 @@ myApp.controller('PedidoCtrl', [
     'store',
     function($scope, PedidoService, $location, $anchorScroll, $stateParams, $state, toastr, store){
         $scope.idNegocio = $stateParams.idNegocio;
+        console.log("parametro que vino:"+ $scope.idNegocio);
         $scope.listaDetallesPedido = [];
         $scope.platoModal = {};
         $scope.cantidades = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
@@ -22,7 +23,7 @@ myApp.controller('PedidoCtrl', [
         $scope.eliminarMostrar = false;
         $scope.empty = true;
 
-
+        
         
         
         $scope.verificarPedido = function(){
@@ -37,9 +38,16 @@ myApp.controller('PedidoCtrl', [
         $scope.usuario = store.get('user');
 
         $scope.cargarPagina = function(){
+            if(store.get('pedidoUser')&& $scope.idNegocio==""){
+                $scope.idNegocio = store.get('fromPageParam').idNegocio;
+                $scope.pedido = store.get('pedidoUser');
+                $scope.listaDetallesPedido = $scope.pedido.listaDetalles;
+                $scope.verificarPedido();
+            }
             $scope.obtenerNegocio($scope.idNegocio);
             $scope.obtenerCategoriasNegocio($scope.idNegocio);
             $scope.obtenerMenuActivo($scope.idNegocio);
+
         }
 
         $scope.obtenerNegocio = function(idNegocio){
@@ -171,6 +179,8 @@ myApp.controller('PedidoCtrl', [
                 d.aclaracionDetalle = pedidoModal.aclaracionDetalle;
                 d.subMostrar = true;
                 d.eliminarMostrar = false;
+                d.plato = {};
+                d.plato = $scope.platoModal;
                 $scope.listaDetallesPedido.push(d); 
             }
             
@@ -233,18 +243,31 @@ myApp.controller('PedidoCtrl', [
                 });
             }else{
                 if(!store.get('jwt')||!store.get('authUser')){
-                    toastr.error("Debe estar loggeado para guardar el pedido!", "Atención!");
+                    //toastr.error("Debe estar loggeado para guardar el pedido!", "Atención!");
+                    $scope.pedido.pagaconPedido = 0;
+                    $scope.pedido.estadoPedido = "POR_GUARDAR";
+                    $scope.pedido.idNegocio = $scope.idNegocio;
+                    $scope.pedido.listaDetalles = listaDetallesPedido;
+                    $scope.pedido.totalPedido = $scope.calcularTotalPedido();
+                    
+                    store.set('pedidoUser', $scope.pedido);
+                    
+                    $state.go('Login');
+                    
                 }else{
                     $scope.authUser = {};
                     $scope.authUser = store.get('authUser');
                     
-                    $scope.pedido.direccionPedido = "";
+                    $scope.pedido.direccionPedido = $scope.authUser.direccionUsuario;
                     $scope.pedido.pagaconPedido = 0;
                     $scope.pedido.estadoPedido = "GUARDADO";
                     $scope.pedido.idUsuario = $scope.authUser.idUsuario;
                     $scope.pedido.idNegocio = $scope.idNegocio;
                     $scope.pedido.listaDetalles = listaDetallesPedido;
                     $scope.pedido.totalPedido = $scope.calcularTotalPedido();
+                    
+                    store.set('pedidoUser', $scope.pedido);
+                    
                     PedidoService.guardarPedido($scope.pedido).then(function(prom){
                        if(prom=true){
                            toastr.success("Tu pedido se guardó con éxito!", "Atencion!");
@@ -273,21 +296,27 @@ myApp.controller('PedidoCtrl', [
                 }
             else{
                 if(!store.get('jwt')||!store.get('authUser')){
-                    toastr.error("Debe estar loggeado para enviar el pedido!", "Atención!");
-                }else{
-                    $scope.authUser = {};
-                    $scope.authUser = store.get('authUser');
-                    
-                    
-                    $scope.pedido.direccionPedido = "";
                     $scope.pedido.pagaconPedido = 0;
                     $scope.pedido.estadoPedido = "POR_CONFIRMAR";
+                    $scope.pedido.idNegocio = $scope.idNegocio;
+                    $scope.pedido.listaDetalles = listaDetallesPedido;
+                    $scope.pedido.totalPedido = $scope.calcularTotalPedido();
+                    store.set('pedidoUser', $scope.pedido);
+                    //toastr.error("Debe estar loggeado para enviar el pedido!", "Atención!");
+                    $state.go('enviarPedido');
+                }else{
+                    $scope.authUser = {};
+                    $scope.authUser = store.get('authUser');                    
+                    $scope.pedido.direccionPedido = $scope.authUser.direccionUsuario;                  
                     $scope.pedido.idUsuario = $scope.authUser.idUsuario;
+                    $scope.pedido.pagaconPedido = 0;
+                    $scope.pedido.estadoPedido = "POR_CONFIRMAR";
                     $scope.pedido.idNegocio = $scope.idNegocio;
                     $scope.pedido.listaDetalles = listaDetallesPedido;
                     $scope.pedido.totalPedido = $scope.calcularTotalPedido();
                     
-                    PedidoService.agregarPedidoEnvio($scope.pedido);
+                    
+                    store.set('pedidoUser', $scope.pedido);
                     $state.go('enviarPedido');  
                 }
             }
