@@ -18,7 +18,7 @@
     <meta name="viewport" content="width=device-width">
 </head>
 <body ng-app="myApp">
-     <div class="nvar navbar-default navbar-fixed-top">
+     <div ng-controller="NavCtrl" class="nvar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" data-target=".navbar-ex1-collapse" data-toggle="collapse" class="navbar-toggle">
@@ -45,11 +45,14 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a>[Usuario]</a>
+                        <li  ng-show="loggedin">
+                            <a>{{userLog.nombreUsuario}}</a>
                         </li>
-                        <li>
-                          <a ui-sref="Login">Login</a>
+                        <li ng-show="loggedout">
+                          <a ui-sref="Login">Login <i class="fa fa-sign-in"></i></a>
+                        </li>
+                        <li ng-show="loggedin">
+                            <a style="cursor: pointer" ng-click="logOut()">Logout <i class="fa fa-sign-out"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -82,6 +85,7 @@
     <script src="../resources/bower_components/angular-jwt/dist/angular-jwt.js"></script>
 
     <script src="../resources/js/app/myApp.js"></script>
+    <script src="../resources/js/controllers/navController.js"></script>
     <script src="../resources/js/controllers/login.js"></script>
     <script src="../resources/js/services/pedidoService.js"></script>
     <script src="../resources/js/controllers/pedidoController.js"></script>
