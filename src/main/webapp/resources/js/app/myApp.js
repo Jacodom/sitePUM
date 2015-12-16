@@ -95,7 +95,8 @@ myApp.run(function($anchorScroll, $state, store, $rootScope) {
            }
         }
         
-        if(to.name === 'enviarPedido' && !store.get('pedidoUser')){
+        if(to.name === 'enviarPedido' && !store.get('pedidoUser') && store.get('authUser')){
+            e.preventDefault();
             $state.go('elegirNegocio');
         }
         
@@ -105,9 +106,11 @@ myApp.run(function($anchorScroll, $state, store, $rootScope) {
         
         if(from.name==='elegirNegocio'&&to.name==='gestionarPedido'){
             if(store.get('pedidoUser')){
+                e.preventDefault();
                 store.remove('pedidoUser');
             }
         }
+        
         console.log(to.param);
         store.set('fromPage', from);
 
