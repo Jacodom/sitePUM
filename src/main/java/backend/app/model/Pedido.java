@@ -35,7 +35,7 @@ public class Pedido extends BaseModelEntity implements Serializable {
     @Column(name = "estado_pedido")
     private String estadoPedido;
 
-    /*@Column (name = "fecha_pedido")
+    @Column (name = "fecha_pedido")
     private Date fechaPedido;
 
     public Date getFechaPedido() {
@@ -44,7 +44,7 @@ public class Pedido extends BaseModelEntity implements Serializable {
 
     public void setFechaPedido(Date fechaPedido) {
         this.fechaPedido = fechaPedido;
-    }*/
+    }
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     public Set<DetallePedido> detallePedidos = new HashSet<DetallePedido>();
