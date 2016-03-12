@@ -281,4 +281,60 @@ html, body {height: 100%;}
 .groupito{
     margin-top: 10px;
 }
+/* Class for grid page*/
+
+.Pumgrid{
+    width: 100%;
+    height: 100%;
+}
+.ui-grid-header-canvas{
+    color:#F9690E;
+}
+.ui-grid-row-selected{
+    color: white;
+    background: #C13A2B;
+
+}
+.btnSltGrid{
+    color: white;
+    background-color: #C13A2B;
+    padding: 7px 8px;
+}
+.btnSltGrid:hover,pressed{
+    color:white;
+}
+.detalleGridIz{
+    width: 210px;
+    height: 40px;
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 0px;
+}
+
+.detalleGridDer{
+    width: 220px;
+    height: 40px;
+    margin: auto;
+    padding-left: 0;
+    padding-right: 28px;
+}
+.headerDetails{
+    color: #F9690E;
+    font-size: 16px;
+    text-align: center;
+    border-bottom: 2px solid #e5e5e5;
+
+}
+.bodyDetails{
+    text-align: center;
+}
+.InfoCadetes{
+    font-size: 15px;
+    border-collapse: separate;
+    border-spacing: 14px 11px;
+}
+.crearRonda{
+    margin-left: 32px;
+    margin-top: 35px;
+}
 
