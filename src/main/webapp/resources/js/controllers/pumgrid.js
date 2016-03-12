@@ -35,7 +35,9 @@ angular.module('myApp')
                 gridApi.selection.on.rowSelectionChanged($scope,function(rows){
                     $scope.cantidaSel =gridApi.selection.getSelectedRows().length;
                     $scope.sumarTotales(rows.entity.Total,rows.entity.PagaCon);
-                    //sumarTotales($scope.SumTot);
+                    $('#errorRonda').addClass('hide')
+
+                    $('#modalRonda1').attr("id","modalRonda");
                 });
                 gridApi.selection.on.rowSelectionChangedBatch($scope,function(rows){
                     if(rows > 0){ // select all
@@ -129,16 +131,26 @@ angular.module('myApp')
         $scope
         // modal
         $scope.abrirModal = function(detalleRonda){
-            $scope.saleCon = 0;
-            $('#ipSaleCon').bind('input',function(){
-                $scope.saleCon =$(this).val();
-                if($scope.saleCon < $scope.sumVuelto){
-                    $('#errorVuelto').removeClass('hide')
-                }else {
-                    $('#errorVuelto').addClass('hide')
-                    $scope.recaudacion = $scope.SumTot + ($scope.saleCon - $scope.sumVuelto);
-                }
-            });
+            if($scope.cantidaSel>0){
+                $scope.saleCon = 0;
+                $('#ipSaleCon').bind('input',function(){
+                    $scope.saleCon =$(this).val();
+                    if($scope.saleCon < $scope.sumVuelto){
+                        $('#errorVuelto').removeClass('hide')
+                    }else {
+                        $('#errorVuelto').addClass('hide')
+                        $scope.recaudacion = $scope.SumTot + ($scope.saleCon - $scope.sumVuelto);
+                    }
+                });
+            }else {
+                $('#modalRonda').attr("id","modalRonda1");
+                //toastr.error("Tu pedido no pudo guardarse!", "Atención!");
+                $('#errorRonda').removeClass('hide')
+                $('#btnCrearRonda').removeClass('animated shake').addClass('animated shake').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                    $(this).removeClass('animated shake');
+                    return;
+                });
+            }
         };
         //calcula recaudacion
 

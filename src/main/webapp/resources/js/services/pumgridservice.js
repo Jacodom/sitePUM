@@ -8,7 +8,7 @@
  * @name dashboardApp.pumGridService
  * @description
  * # pumGridService
- * Factory in the dashboardApp.
+ * Factory in the dashboardApp.asdaas
  */
 angular.module('myApp')
     .factory('pumGridService', function ($http,$q) {

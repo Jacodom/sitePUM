@@ -337,4 +337,7 @@ html, body {height: 100%;}
     margin-left: 32px;
     margin-top: 35px;
 }
+span#errorRonda{
+    margin-left: -28px;
+}
 
