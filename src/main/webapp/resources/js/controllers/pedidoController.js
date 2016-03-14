@@ -171,6 +171,7 @@ myApp.controller('PedidoCtrl', [
             });
             if($scope.e==false){
                 var d = {};
+                d.idPedido = parseInt($scope.pedidoModal.idPedido);  //nuevo iteracion 3
                 d.idPlato = parseInt($scope.platoModal.idPlato);
                 d.nombrePlato = $scope.platoModal.nombrePlato;
                 d.precioPlato = parseFloat($scope.platoModal.precioPlato);

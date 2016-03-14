@@ -110,7 +110,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter{
         http
                 //csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/gestionarPedido/pedido/**").permitAll()
+                .antMatchers("/sede/**").permitAll()
+                .antMatchers("/gestionarPedido/pedido/**")
+                .permitAll()
                 .and().anonymous().and()
                 .addFilterBefore(new AuthenticationFilter(), BasicAuthenticationFilter.class);
     }

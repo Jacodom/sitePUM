@@ -38,10 +38,6 @@ public class DaoPedido implements DaoBase {
         }catch (HibernateException he){
             manejarExcepcion(he);
             throw he;
-        }finally {
-            if(sesion!=null){
-                sesion.close();
-            }
         }
     }
 
@@ -69,9 +65,6 @@ public class DaoPedido implements DaoBase {
         }catch (HibernateException he){
             manejarExcepcion(he);
             throw he;
-        }finally {
-            if(sesion!=null)
-                sesion.close();
         }
 
         return true;

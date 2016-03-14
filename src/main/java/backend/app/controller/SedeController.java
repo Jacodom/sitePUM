@@ -50,10 +50,10 @@ public class SedeController {
 
             for(DetallePedido detallePedido : pedido.getDetallePedidos()){
                 DtoDetallePedido detallePedidoDto = new DtoDetallePedido();
-                detallePedido.setAclaracionDetalle(detallePedido.getAclaracionDetalle());
-                detallePedido.setCantidadDetalle(detallePedido.getCantidadDetalle());
-                detallePedido.setSubtotalDetalle(detallePedido.getSubtotalDetalle());
-                detallePedido.setPlato(platoService.obtenerPlato(detallePedido.getIdDetalle()));
+                detallePedidoDto.setAclaracionDetalle(detallePedido.getAclaracionDetalle());
+                detallePedidoDto.setCantidadDetalle(detallePedido.getCantidadDetalle());
+                detallePedidoDto.setSubtotalDetalle(detallePedido.getSubtotalDetalle());
+                detallePedidoDto.setIdPlato(detallePedido.getPlato().getIdPlato());
                 //detallePedido.setPedido(pedido) ;
                 listaDetallesDto.add(detallePedidoDto);
             }
