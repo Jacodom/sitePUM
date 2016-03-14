@@ -1,0 +1,95 @@
+<div class="container-fluid">
+    <div class="contenido">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="sidebar detalleGridIz">
+                    <div class="well">
+                        <header class="headerDetails">
+                            <span>Ronda</span>
+                        </header>
+                        <body class="bodyDetails">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h3 class="text-center">Selecionados</h3>
+                            </div>
+                            <div class="col-xs-12">
+                                <h3 class="text-center" ng-init="0">{{cantidaSel}}</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h3 class="text-center">Total</h3>
+                            </div>
+                            <div class="col-xs-12">
+                                <h3 class="text-center">${{SumTot}}</h3>
+                            </div>
+                        </div>
+                        </body>
+                    </div>
+                    <div class="crearRonda">
+                        <button class="btn btn-lg btn-danger block-center" ng-click="abrirModal(ronda)" data-toggle="modal" data-target="#modalRonda">Crear Ronda</button>
+                        <span id="errorRonda" class="label label-warning mgRonda hide">Debe seleccionar al menos un pedido</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div id="businessGrid" ui-grid="gridOptions" ui-grid-selection class="Pumgrid" ng-init="CargarGrilla()"></div>
+            </div>
+            <div class="col-lg-2">
+                <div class="sidebar detalleGridDer">
+                    <div class="well">
+                        <header class="headerDetails">
+                            <span>Cadetes</span>
+                        </header>
+                        <div ng-init="CargarCadetes()">
+                            <table class="InfoCadetes" >
+                                <tr ng-repeat="x in cadetes">
+                                    <td ng-class="{'fa fa-motorcycle':x.Estado=='Calle', 'fa fa-home':x.Estado=='Base', 'fa fa-bed':x.Estado=='Ausente'}">  </td>
+                                    <td>{{ x.Nombre }}</td>
+                                    <td ng-class="{'fa fa-coffee':x.Estado=='Base','fa fa-bell-slash-o':x.Estado=='Ausente'}"><timer ng-if="x.Estado=='Calle'" interval="1000">{{mminutes}}:{{sseconds}}</timer></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal detalle Ronda -->
+        <div class="modal fade" id="modalRonda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Detalle Ronda<span class="label label-success"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-8 col-xs-12 col-lg-8">
+                                <h3>Pedidos Asignados: {{cantidaSel}}</h3>
+                                <h3>Total: ${{SumTot}}</h3>
+                                <h3>Vuelto: ${{sumVuelto}}</h3>
+                                <h3>Recaudacion: ${{recaudacion}}</h3>
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-lg-4">
+                                <h4>Cadete</h4>
+                                <select id="selectCadetes" class="form-control cantSelect" ng-model="ronda.cadete" ng-options="cadete.Nombre group by cadete.Estado disable when cadete.Ausente  for cadete in cadetes">
+                                    <option value="">-- Seleccionar --</option>
+                                </select>
+                                <h4>Sale con: $</h4><input id="ipSaleCon" type="number" class="form-control" ng-model="ronda.saleCon" ng-required="required"/>
+                                <span id="errorVuelto" class="label label-danger hide">El monto debe ser mayor al vuelto</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-success" ng-click="crearRonda(ronda)">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

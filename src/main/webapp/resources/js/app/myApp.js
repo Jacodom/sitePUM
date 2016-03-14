@@ -7,7 +7,10 @@ var myApp = angular.module('myApp', [
     'toastr',
     'chart.js',
     'angular-storage',
-    'angular-jwt'
+    'angular-jwt',
+    'ui.grid',
+    'ui.grid.selection',
+    'timer'
 ]);
 
 myApp.config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider, toastrConfig, jwtInterceptorProvider, $httpProvider) {
@@ -61,6 +64,14 @@ myApp.config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiPro
             url: "/chart",
             templateUrl: "views/chart.html",
             controller: "ChartCtrl",
+            data: {
+                requiresLogin: true
+            }
+        })
+        .state('grid',{
+            url: "/grid",
+            templateUrl: "views/pumGrid.html",
+            controller: "PumgridCtrl",
             data: {
                 requiresLogin: true
             }
