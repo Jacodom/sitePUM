@@ -9,10 +9,25 @@ import java.util.List;
  */
 public class DtoNewPedido {
 
+
+
+    private int idPedido;
     private String direccionPedido;
     private BigDecimal totalPedido;
     private BigDecimal pagaconPedido;
     private String estadoPedido;
+    private Date fechaPedido;
+    private int idUsuario;
+    private int idNegocio;
+    private List<DtoDetallePedido> listaDetalles;
+
+    public int getIdPedido() {
+        return idPedido;
+    }
+
+    public void setIdPedido(int idPedido) {
+        this.idPedido = idPedido;
+    }
 
     public Date getFechaPedido() {
         return fechaPedido;
@@ -21,11 +36,6 @@ public class DtoNewPedido {
     public void setFechaPedido(Date fechaPedido) {
         this.fechaPedido = fechaPedido;
     }
-
-    private Date fechaPedido;
-    private int idUsuario;
-    private int idNegocio;
-    private List<DtoDetallePedido> listaDetalles;
 
     public String getDireccionPedido() {
         return direccionPedido;

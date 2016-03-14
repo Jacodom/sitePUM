@@ -24,4 +24,12 @@ public class PedidoService {
         daoPedido = new DaoPedido();
         return daoPedido.obtenerPedidosTemporada();
     }
+
+    public Pedido obtenerPedido(int idPedido){
+        daoPedido = new DaoPedido();
+        for(Pedido pedido: daoPedido.obtener())
+            if(pedido.getIdPedido()==idPedido)
+                return pedido;
+        return null;
+    }
 }

@@ -1,6 +1,7 @@
 package backend.app.model;
 
 import javax.persistence.*;
+import javax.persistence.criteria.Fetch;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -35,7 +36,7 @@ public class Pedido extends BaseModelEntity implements Serializable {
     @Column(name = "estado_pedido")
     private String estadoPedido;
 
-    /*@Column (name = "fecha_pedido")
+    @Column (name = "fecha_pedido")
     private Date fechaPedido;
 
     public Date getFechaPedido() {
@@ -44,7 +45,7 @@ public class Pedido extends BaseModelEntity implements Serializable {
 
     public void setFechaPedido(Date fechaPedido) {
         this.fechaPedido = fechaPedido;
-    }*/
+    }
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     public Set<DetallePedido> detallePedidos = new HashSet<DetallePedido>();
@@ -54,6 +55,9 @@ public class Pedido extends BaseModelEntity implements Serializable {
 
     @ManyToOne()
     private Usuario usuario;
+
+    @ManyToOne()
+    private Ronda ronda;
 
     public int getIdPedido() {
         return idPedido;
