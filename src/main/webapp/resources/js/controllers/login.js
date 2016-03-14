@@ -36,7 +36,12 @@ angular.module('myApp')
                         console.log($scope.fromPage.param.idNegocio);
                         $state.go($scope.fromPage.name, {idNegocio: $scope.fromPage.param.idNegocio});
                     }
-                    $state.go($scope.fromPage.name);
+                    if($scope.userAuth.usernameUsuario==="sede"){
+                        $state.go("grid");
+                    }else{
+                        $state.go($scope.fromPage.name);
+                    }
+                    
                 }
                 else{
                     console.log("no che");

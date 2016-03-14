@@ -35,8 +35,19 @@ angular.module('myApp')
             guardarRonda : function(ronda){
                 return $http({
                     method: "POST",
-                    //url: ; //urlBackend
+                    url:  "/sede/crearRonda",
                     data: ronda
+                }).then(function(response){
+                    return response.data
+                }, function(response){
+                    return $q.reject(response.data)
+                });
+            },
+            modificarEstadoCadete: function(cadete){
+                return $http({
+                    method: "POST",
+                    url: "/sede/modificarCadete",
+                    data: cadete
                 }).then(function(response){
                     return response.data
                 }, function(response){

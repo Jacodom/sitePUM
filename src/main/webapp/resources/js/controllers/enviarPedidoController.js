@@ -139,6 +139,8 @@ myApp.controller('EnviarPedidoCtrl', [
                     return;
                 }else{
                     $scope.pedido.estadoPedido = "ENVIADO_A_LOCAL";
+                    $scope.pedido.pagaconPedido = $scope.pagaCon;
+                    console.log($scope.pedido.pagaconPedido);
                     if(PedidoService.guardarPedido($scope.pedido)){
                         store.remove('pedidoUser');
                         $state.go('elegirNegocio');

@@ -27,7 +27,7 @@
                         </body>
                     </div>
                     <div class="crearRonda">
-                        <button class="btn btn-lg btn-danger block-center" ng-click="abrirModal(ronda)" data-toggle="modal" data-target="#modalRonda">Crear Ronda</button>
+                        <button class="btn btn-lg btn-danger block-center" ng-click="abrirModal(ronda)">Crear Ronda</button>
                         <span id="errorRonda" class="label label-warning mgRonda hide">Debe seleccionar al menos un pedido</span>
                     </div>
 
@@ -76,7 +76,7 @@
                             </div>
                             <div class="col-md-2 col-sm-12 col-lg-4">
                                 <h4>Cadete</h4>
-                                <select id="selectCadetes" class="form-control cantSelect" ng-model="ronda.cadete" ng-options="cadete.Nombre group by cadete.Estado disable when cadete.Ausente  for cadete in cadetes">
+                                <select id="selectCadetes" class="form-control cantSelect" ng-model="ronda.cadete" ng-options="cadete.nombre group by cadete.estado disable when cadete.Ausente  for cadete in cadetes">
                                     <option value="">-- Seleccionar --</option>
                                 </select>
                                 <h4>Sale con: $</h4><input id="ipSaleCon" type="number" class="form-control" ng-model="ronda.saleCon" ng-required="required"/>
