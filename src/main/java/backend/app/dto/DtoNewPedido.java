@@ -20,6 +20,33 @@ public class DtoNewPedido {
     private int idUsuario;
     private int idNegocio;
     private List<DtoDetallePedido> listaDetalles;
+    private String nombreNegocio;
+    private  String nombreUsuario;
+    private String telefonoUsuario;
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public String getTelefonoUsuario() {
+        return telefonoUsuario;
+    }
+
+    public void setTelefonoUsuario(String telefonoUsuario) {
+        this.telefonoUsuario = telefonoUsuario;
+    }
+
+    public String getNombreNegocio() {
+        return nombreNegocio;
+    }
+
+    public void setNombreNegocio(String nombreNegocio) {
+        this.nombreNegocio = nombreNegocio;
+    }
 
     public int getIdPedido() {
         return idPedido;

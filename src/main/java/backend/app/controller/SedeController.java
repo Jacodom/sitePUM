@@ -35,7 +35,7 @@ public class SedeController {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/obtenerPedidos", method = RequestMethod.GET)
     public List<DtoNewPedido> obtenerPedidos(){
-        List<Pedido> listaPedidos = pedidoService.obtenerPedidos();
+        List<Pedido> listaPedidos = pedidoService.obtenerPedidosFiltrados();
         List<DtoNewPedido> listaPedidosDto = new ArrayList<DtoNewPedido>();
         PlatoService platoService = new PlatoService();
         List<DtoDetallePedido> listaDetallesDto = new ArrayList<DtoDetallePedido>();
@@ -63,6 +63,9 @@ public class SedeController {
             dtoPedido.setPagaconPedido(pedido.getPagaconPedido());
             dtoPedido.setTotalPedido(pedido.getTotalPedido());
             dtoPedido.setIdPedido(pedido.getIdPedido());
+            dtoPedido.setNombreNegocio(pedido.getNegocio().getNombreNegocio());
+            dtoPedido.setNombreUsuario(pedido.getUsuario().getNombreUsuario());
+            dtoPedido.setTelefonoUsuario(pedido.getUsuario().getTelefonoUsuario());
 
             listaPedidosDto.add(dtoPedido);
         }
@@ -122,7 +125,7 @@ public class SedeController {
         //cadete
         cadete.setTelefonoCadete(dtoRonda.getCadete().getTelefono());
         cadete.setNombreCadete(dtoRonda.getCadete().getNombre());
-        cadete.setEstadoCadete(dtoRonda.getCadete().getEstado());
+        cadete.setEstadoCadete("Calle");
         cadete.setApellidoCadete(dtoRonda.getCadete().getApellido());
         cadete.setIdCadete(dtoRonda.getCadete().getIdCadete());
 
@@ -132,7 +135,7 @@ public class SedeController {
 
         for(DtoNewPedido dtoPedido : dtoRonda.getPedidos() ){
             Pedido pedido = pedidoService.obtenerPedido(dtoPedido.getIdPedido());
-
+            pedido.setEstadoPedido("ASIGNADO");
             listaPedidos.add(pedido);
         }
 

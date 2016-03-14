@@ -11,9 +11,9 @@
  * Controller of the dashboardApp
  */
 angular.module('myApp')
-    .controller('PumgridCtrl', function ($scope,pumGridService,uiGridConstants) {
+    .controller('PumgridCtrl', function ($scope,pumGridService,uiGridConstants, toastr) {
         //get para pedidos
-        var flag = 0;
+        $scope.flag = 0;
         var suma = 0;
         $scope.timerRunning = true;
         $scope.SumTot = 0;
@@ -21,6 +21,10 @@ angular.module('myApp')
         //$scope.mySelections = [];
         $scope.cadetes = {};
         $scope.ronda ={};
+    
+        $scope.ronda.cadete={};
+        $scope.ronda.pedidos = [];    
+    //ojo
         $scope.sumVuelto = 0;
         $scope.recaudacion = 0;
         $scope.gridOptions = {
@@ -34,10 +38,8 @@ angular.module('myApp')
                 $scope.gridApi = gridApi;
                 gridApi.selection.on.rowSelectionChanged($scope,function(rows){
                     $scope.cantidaSel =gridApi.selection.getSelectedRows().length;
-                    $scope.sumarTotales(rows.entity.Total,rows.entity.PagaCon);
+                    $scope.sumarTotales(rows.entity.totalPedido,rows.entity.pagaconPedido,rows.entity);
                     $('#errorRonda').addClass('hide')
-
-                    $('#modalRonda1').attr("id","modalRonda");
                 });
                 gridApi.selection.on.rowSelectionChangedBatch($scope,function(rows){
                     if(rows > 0){ // select all
@@ -51,17 +53,27 @@ angular.module('myApp')
             }
         };
 
-        $scope.sumarTotales = function(total,pagaCon){
+        $scope.sumarTotales = function(total,pagaCon,pedido){
             //console.log(value);
-            if($scope.cantidaSel >flag ){
+            if($scope.cantidaSel >$scope.flag ){
                 $scope.SumTot = $scope.SumTot + total;
                 $scope.sumVuelto += pagaCon- total;
-
-                flag = $scope.cantidaSel;
+                
+                $scope.ronda.pedidos.push(pedido);
+                
+                $scope.flag = $scope.cantidaSel;
             }else {
-                flag =  $scope.cantidaSel -1;
+                $scope.flag =  $scope.cantidaSel -1;
                 $scope.SumTot = $scope.SumTot - total;
                 $scope.sumVuelto -= pagaCon- total;
+                
+                angular.forEach($scope.ronda.pedidos, function(py, k){
+                if(py.idPedido==pedido.idPedido){
+                    $scope.ronda.pedidos.splice(k,1);
+                }
+                    
+            });
+                //$scope.ronda.pedidos.push(rows.entity);
             }
         }
 
@@ -72,9 +84,9 @@ angular.module('myApp')
             { name:'Estado',field: 'estadoPedido',width:'9%', filter:{
                 type: uiGridConstants.filter.SELECT,
                 selectOptions:[{value:'Sede',label:'Sede'},{value:'Calle',label:"Calle"}]}}, /// reemplazar por estado de pedidos, en calle finalizado etc
-            { name:'Usuario', field: 'idUsuario'},
-            { name:'Telefono', field: 'Telefono',enableFiltering: false},
-            { name:'Negocio', field: 'Negocio'},
+            { name:'Usuario', field: 'nombreUsuario'},
+            { name:'Telefono', field: 'telefonoUsuario',enableFiltering: false},
+            { name:'Negocio', field: 'nombreNegocio'},
             { name:'PagaCon', field: 'pagaconPedido',width:'11%',cellFilter: 'currency', enableFiltering: false,aggregationType: uiGridConstants.aggregationTypes.sum,},
             { name:'Total', field: 'totalPedido',width:'10 %',cellFilter: 'currency',enableFiltering: false,aggregationType:uiGridConstants.aggregationTypes.sum},
         ];
@@ -128,12 +140,14 @@ angular.module('myApp')
             };
 
         }
-        $scope
+
         // modal
         $scope.abrirModal = function(detalleRonda){
             if($scope.cantidaSel>0){
                 $scope.saleCon = 0;
-                $('#ipSaleCon').bind('input',function(){
+                $scope.recaudacion = 0;
+                $('#modalRonda').modal('show');
+                /*$('#ipSaleCon').bind('input',function(){
                     $scope.saleCon =$(this).val();
                     if($scope.saleCon < $scope.sumVuelto){
                         $('#errorVuelto').removeClass('hide')
@@ -141,9 +155,8 @@ angular.module('myApp')
                         $('#errorVuelto').addClass('hide')
                         $scope.recaudacion = $scope.SumTot + ($scope.saleCon - $scope.sumVuelto);
                     }
-                });
+                });*/
             }else {
-                $('#modalRonda').attr("id","modalRonda1");
                 //toastr.error("Tu pedido no pudo guardarse!", "Atención!");
                 $('#errorRonda').removeClass('hide')
                 $('#btnCrearRonda').removeClass('animated shake').addClass('animated shake').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
@@ -154,6 +167,21 @@ angular.module('myApp')
         };
         //calcula recaudacion
 
+        $('#ipSaleCon').bind('input',function(){
+                    $scope.saleCon = $(this).val();                     
+                    if($scope.saleCon < $scope.sumVuelto){
+                        $('#errorVuelto').removeClass('hide');
+                    }else {
+                        $('#errorVuelto').addClass('hide');
+                        $scope.recaudacion = $scope.SumTot + ($scope.saleCon - $scope.sumVuelto);
+                    }
+                    
+                    if($scope.saleCon==""){
+                        $('#errorVuelto').addClass('hide');
+                        $scope.recaudacion = 0;
+                    }
+        });
+    
         $scope.crearRonda = function(ronda){
             if(ronda.cadete == undefined){
                 $('#selectCadetes').removeClass('animated shake').addClass('animated shake').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
@@ -175,17 +203,35 @@ angular.module('myApp')
                         return;
                     });
                 }else {
-                    $scope.ronda.IdRonda = 1
-                    $scope.ronda.total = $scope.SumTot
-                    $scope.ronda.recaudacion =$scope.recaudacion
-
+                    //$scope.ronda.IdRonda = 1
+                    $scope.ronda.total = $scope.SumTot;
+                    $scope.ronda.recaudacion =$scope.recaudacion;
+                    $scope.ronda.vuelto=$scope.sumVuelto;
+                    
                     pumGridService.guardarRonda($scope.ronda)
                         .then(function(promise){
-                            if(promise=true){
-                                //toastr.success("Tu pedido se guardó con éxito!", "Atencion!");
+                            if(promise==true){
+                                toastr.success("Ronda guardada con éxito!", "Atencion!");
+                                
+                                $scope.ronda.cadete.estado= "Calle";
+                                pumGridService.modificarEstadoCadete($scope.ronda.cadete).then(function(promise){
+                                    if(promise==true){
+                                         $scope.ronda={};
+                                $scope.CargarGrilla();
+                                $scope.CargarCadetes();
+                                $scope.SumTot = 0;
+                                $scope.cantidaSel = 0;
+                                $scope.sumVuelto = 0;
+                                $scope.flag = 0;
+                                 $('#modalRonda').modal('hide');
+                                    }
+                                });
+                                
+                               
+                                
                                 console.log("True");
                             } else{
-                                //toastr.error("Tu pedido no pudo guardarse!", "Atención!");
+                                toastr.error("La Ronda no pudo guardarse!", "Atención!");
                                 console.log("False");
                             }
                         });
