@@ -16,7 +16,7 @@ angular.module('myApp')
         console.log("entro factory");
         return{
             obtenerPedidosPum : function(){
-                return $http.get('http://www.json-generator.com/api/json/get/cesPoGRrnm?indent=2')
+                return $http.get('/sede/obtenerPedidos')
                     .then(function(response) {
                         return response.data
                     }, function(response) {
@@ -24,7 +24,7 @@ angular.module('myApp')
                     });
             },
             obtenerCadetes : function(){
-                return $http.get('http://www.json-generator.com/api/json/get/bIozKDhqzS?indent=2') // -http://www.json-generator.com/api/json/get/bTrCcWhvAO?indent=2
+                return $http.get('/sede/obtenerCadetes') // -http://www.json-generator.com/api/json/get/bTrCcWhvAO?indent=2
                     .then(function(response) {
                         console.log(response);
                         return response.data

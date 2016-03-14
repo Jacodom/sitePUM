@@ -67,16 +67,16 @@ angular.module('myApp')
 
         $scope.gridOptions.multiSelect = true;
         $scope.gridOptions.columnDefs = [
-            { name:'Codigo', field: 'Codigo',width:'9%' },
-            { name:'Direccion', field: 'Direccion' },
-            { name:'Estado',field: 'Estado',width:'9%', filter:{
+            { name:'Codigo', field: 'idPedido',width:'9%' },
+            { name:'Direccion', field: 'direccionPedido' },
+            { name:'Estado',field: 'estadoPedido',width:'9%', filter:{
                 type: uiGridConstants.filter.SELECT,
-                selectOptions:[{value:'false',label:'False'},{value:'true',label:"True"}]}}, /// reemplazar por estado de pedidos, en calle finalizado etc
-            { name:'Usuario', field: 'Usuario'},
+                selectOptions:[{value:'Sede',label:'Sede'},{value:'Calle',label:"Calle"}]}}, /// reemplazar por estado de pedidos, en calle finalizado etc
+            { name:'Usuario', field: 'idUsuario'},
             { name:'Telefono', field: 'Telefono',enableFiltering: false},
             { name:'Negocio', field: 'Negocio'},
-            { name:'PagaCon', field: 'PagaCon',width:'11%',cellFilter: 'currency', enableFiltering: false,aggregationType: uiGridConstants.aggregationTypes.sum,},
-            { name:'Total', field: 'Total',width:'10 %',cellFilter: 'currency',enableFiltering: false,aggregationType:uiGridConstants.aggregationTypes.sum},
+            { name:'PagaCon', field: 'pagaconPedido',width:'11%',cellFilter: 'currency', enableFiltering: false,aggregationType: uiGridConstants.aggregationTypes.sum,},
+            { name:'Total', field: 'totalPedido',width:'10 %',cellFilter: 'currency',enableFiltering: false,aggregationType:uiGridConstants.aggregationTypes.sum},
         ];
         $scope.CargarGrilla = function(){
             pumGridService.obtenerPedidosPum()

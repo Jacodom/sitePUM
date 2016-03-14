@@ -45,9 +45,9 @@
                         <div ng-init="CargarCadetes()">
                             <table class="InfoCadetes" >
                                 <tr ng-repeat="x in cadetes">
-                                    <td ng-class="{'fa fa-motorcycle':x.Estado=='Calle', 'fa fa-home':x.Estado=='Base', 'fa fa-bed':x.Estado=='Ausente'}">  </td>
-                                    <td>{{ x.Nombre }}</td>
-                                    <td ng-class="{'fa fa-coffee':x.Estado=='Base','fa fa-bell-slash-o':x.Estado=='Ausente'}"><timer ng-if="x.Estado=='Calle'" interval="1000">{{mminutes}}:{{sseconds}}</timer></td>
+                                    <td ng-class="{'fa fa-motorcycle':x.estado=='Calle', 'fa fa-home':x.estado=='Sede', 'fa fa-bed':x.estado=='Ausente'}">  </td>
+                                    <td>{{ x.nombre }}</td>
+                                    <td ng-class="{'fa fa-coffee':x.estado=='Sede','fa fa-bell-slash-o':x.estado=='Ausente'}"><timer ng-if="x.estado=='Calle'" interval="1000">{{mminutes}}:{{sseconds}}</timer></td>
                                 </tr>
                             </table>
                         </div>

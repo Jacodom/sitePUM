@@ -1,21 +1,19 @@
 package backend.app.dao;
 
 import backend.app.hibernate.HibernateUtil;
-import backend.app.model.Pedido;
+import backend.app.model.Ronda;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
 
 /**
- * Created by Jacobo on 20/06/2015.
+ * Created by Jacobo on 13/03/2016.
  */
-public class DaoPedido implements DaoBase {
+public class DaoRonda implements DaoBase {
     private Session sesion;
     private Transaction transaccion;
-
 
     private void iniciarOperacion() throws HibernateException
     {
@@ -29,42 +27,32 @@ public class DaoPedido implements DaoBase {
         throw new HibernateException("Error en la capa de acceso a datos", he);
     }
 
-    public List<Pedido> obtener(){
+    public List<Ronda> obtener(){
         try{
             iniciarOperacion();
-            Query query = sesion.createQuery("FROM Pedido p");
-            List<Pedido> listaPedidos = query.list();
-            return listaPedidos;
-        }catch (HibernateException he){
-            manejarExcepcion(he);
-            throw he;
-        }
-    }
-
-    public List<Pedido> obtenerPedidosTemporada(){
-        try{
-            iniciarOperacion();
-            Query query = sesion.createQuery("FROM Pedido p");
-            List<Pedido> listaPedidosTemporada = query.list();
-            return listaPedidosTemporada;
+            org.hibernate.Query query = sesion.createQuery("FROM Ronda r");
+            List<Ronda> listaRondas = query.list();
+            return listaRondas;
         }catch (HibernateException he){
             manejarExcepcion(he);
             throw he;
         }finally {
-            if(sesion!=null){
+            if(sesion!= null)
                 sesion.close();
-            }
         }
     }
 
-    public Boolean guardarPedido(Pedido pedido){
+    public Boolean guardarRonda(Ronda ronda){
         try{
             iniciarOperacion();
-            sesion.merge(pedido);
+            sesion.merge(ronda);
             transaccion.commit();
         }catch (HibernateException he){
             manejarExcepcion(he);
             throw he;
+        }finally {
+            if(sesion!=null)
+                sesion.close();
         }
 
         return true;

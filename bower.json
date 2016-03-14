@@ -43,6 +43,8 @@
     "momentjs": "~2.12.0"
   },
   "resolutions": {
-    "perfect-scrollbar": "~0.6.7"
+    "perfect-scrollbar": "~0.6.7",
+    "humanize-duration": "~3.6.1",
+    "momentjs": "~2.12.0"
   }
 }
